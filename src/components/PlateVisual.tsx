@@ -47,13 +47,13 @@ export default function PlateVisual({ value, onChange }: PlateVisualProps) {
         autoCapitalize="characters"
         autoComplete="off"
         spellCheck={false}
-        placeholder="WSI"
+        placeholder="Wpisz tablicę"
         value={value}
         onChange={(e) =>
           onChange(e.target.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 8))
         }
         aria-label="Początkowe znaki tablicy rejestracyjnej"
-        className="h-full min-w-0 flex-1 bg-transparent px-2 text-center font-mono text-2xl font-bold tracking-[0.15em] text-black outline-none placeholder:text-zinc-300 sm:text-4xl"
+        className="h-full min-w-0 flex-1 bg-transparent px-2 text-center font-mono text-2xl font-bold tracking-[0.15em] text-black outline-none placeholder:text-zinc-300 placeholder:text-sm placeholder:font-normal placeholder:tracking-normal sm:text-4xl sm:placeholder:text-base"
       />
     </div>
   );
