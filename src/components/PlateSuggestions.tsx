@@ -1,10 +1,7 @@
 "use client";
 
+import { capitalize } from "@/lib/format";
 import type { Suggestion } from "@/types/powiat";
-
-function capitalize(text: string): string {
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
 
 interface PlateSuggestionsProps {
   suggestions: Suggestion[];

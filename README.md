@@ -12,6 +12,7 @@ Zero kluczy API, zero zewnętrznych serwisów mapowych wymagających autoryzacji
 - Rozpoznawanie powiatu metodą longest-prefix-match — dłuższy, bardziej precyzyjny kod (np. `WSI` → powiat siedlecki) zawsze poprawnie przesłania krótszy (np. `WS` → miasto Siedlce), a wpis niepasujący do żadnego realnego kodu (np. `WSP`) pokazuje jawny brak dopasowania zamiast zgadywać.
 - Nazwa powiatu, województwo i trzy ciekawostki o powiecie.
 - Mapa Polski (SVG, renderowana lokalnie) z podświetlonym, rozpoznanym powiatem.
+- **Tryb odwrotny** (przełącznik w prawym górnym rogu): wpisujesz nazwę gminy, miasta lub powiatu — na osobnej makiecie nawiązującej do samorządów, a nie do tablicy — i widzisz kod(y) tablic tego powiatu w tej samej wizualnej formie co w trybie tablicy, razem z ciekawostkami i podświetleniem na mapie. Dopasowanie jest dokładne (bez zgadywania) i niewrażliwe na polskie znaki diakrytyczne oraz wielkość liter.
 
 ## Uruchomienie
 
@@ -40,3 +41,5 @@ Otwórz [http://localhost:3000](http://localhost:3000).
 
 - Działa tylko dla Polski — selektor kraju jest przygotowany pod rozszerzenie, ale nie ma jeszcze logiki dla innych krajów.
 - Większość ciekawostek (306 z 380 powiatów) to placeholdery do ręcznego uzupełnienia w przyszłości.
+- Tryb odwrotny nie zna miast będących siedzibami powiatów ziemskich, jeśli miasto samo nie jest osobnym powiatem grodzkim (np. „Mińsk Mazowiecki" nie trafi „powiatu mińskiego") — dane nie zawierają pola „siedziba", a dopisywanie takiego mapowania na podstawie zgadywania nazw byłoby sprzeczne z zasadą projektu, by nie zmyślać danych.
+- Kilka par powiatów ziemskich ma identyczną nazwę w różnych województwach (np. dwa „powiat brzeski"). Tryb odwrotny nie zgaduje wtedy, o który chodzi — pokazuje obie opcje do wyboru z podpowiedzi.

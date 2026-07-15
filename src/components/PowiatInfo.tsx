@@ -1,33 +1,41 @@
-import type { MatchResult } from "@/types/powiat";
+import { capitalize } from "@/lib/format";
+import type { Powiat } from "@/types/powiat";
 
-function capitalize(text: string): string {
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
+const DEFAULT_PROMPT = "Wpisz początkowe znaki tablicy rejestracyjnej, aby rozpoznać powiat.";
+const DEFAULT_NO_MATCH =
+  "Nie rozpoznano powiatu — sprawdź wpisane znaki albo dopisz kolejną literę.";
 
 interface PowiatInfoProps {
-  result: MatchResult | null;
+  powiat: Powiat | null;
+  matchedCode?: string;
   hasInput: boolean;
+  promptText?: string;
+  noMatchText?: string;
 }
 
-export default function PowiatInfo({ result, hasInput }: PowiatInfoProps) {
-  if (!result) {
+export default function PowiatInfo({
+  powiat,
+  matchedCode,
+  hasInput,
+  promptText = DEFAULT_PROMPT,
+  noMatchText = DEFAULT_NO_MATCH,
+}: PowiatInfoProps) {
+  if (!powiat) {
     return (
       <div className="w-full max-w-xl rounded-lg border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
-        {hasInput
-          ? "Nie rozpoznano powiatu — sprawdź wpisane znaki albo dopisz kolejną literę."
-          : "Wpisz początkowe znaki tablicy rejestracyjnej, aby rozpoznać powiat."}
+        {hasInput ? noMatchText : promptText}
       </div>
     );
   }
 
-  const { powiat, matchedCode } = result;
-
   return (
     <div className="flex w-full max-w-xl flex-col gap-4 rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
-          Kod {matchedCode}
-        </p>
+        {matchedCode && (
+          <p className="text-xs font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
+            Kod {matchedCode}
+          </p>
+        )}
         <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
           {capitalize(powiat.nazwa)}
         </h2>
