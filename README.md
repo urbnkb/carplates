@@ -35,11 +35,10 @@ Otwórz [http://localhost:3000](http://localhost:3000).
 
 - **Kody tablic → powiat → województwo** (`src/data/powiaty.ts`): transkrybowane programowo z [Wikiźródeł — „Polskie tablice rejestracyjne"](https://pl.wikisource.org/wiki/Polskie_tablice_rejestracyjne), zweryfikowane krzyżowo z listą 380 powiatów z pliku granic oraz z [Wikipedią — „Tablice rejestracyjne w Polsce"](https://pl.wikipedia.org/wiki/Tablice_rejestracyjne_w_Polsce) dla przypadków brzegowych. Dwa kody (powiat nidzicki, powiat lidzbarski), których zabrakło w tabeli źródłowej, zostały potwierdzone bezpośrednio w infoboksach stron tych powiatów na Wikipedii.
 - **Granice powiatów** (`public/data/powiaty-boundaries.json`): [ppatrzyk/polska-geojson](https://github.com/ppatrzyk/polska-geojson) (licencja MIT).
-- **Ciekawostki**: zakres kurowany — sprawdzone, konkretne fakty dla 74 powiatów (w tym wszystkich 18 „stolic" województw oraz innych rozpoznawalnych miejsc), pozostałe 306 powiatów ma jawnie oznaczony placeholder „do uzupełnienia" (`factsVerified: false`) zamiast zmyślonych treści.
+- **Ciekawostki**: sprawdzone, konkretne fakty dla wszystkich 380 powiatów (`factsVerified: true`), zebrane głównie z polskiej Wikipedii (strony powiatów i miast będących ich siedzibami), z krzyżową weryfikacją dla wątpliwych szczegółów. Zgodnie z zasadą projektu „nie zmyślaj" — żaden fakt nie jest wygenerowany bez źródła.
 
 ## Znane ograniczenia
 
 - Działa tylko dla Polski — selektor kraju jest przygotowany pod rozszerzenie, ale nie ma jeszcze logiki dla innych krajów.
-- Większość ciekawostek (306 z 380 powiatów) to placeholdery do ręcznego uzupełnienia w przyszłości.
 - Tryb odwrotny nie zna miast będących siedzibami powiatów ziemskich, jeśli miasto samo nie jest osobnym powiatem grodzkim (np. „Mińsk Mazowiecki" nie trafi „powiatu mińskiego") — dane nie zawierają pola „siedziba", a dopisywanie takiego mapowania na podstawie zgadywania nazw byłoby sprzeczne z zasadą projektu, by nie zmyślać danych.
 - Kilka par powiatów ziemskich ma identyczną nazwę w różnych województwach (np. dwa „powiat brzeski"). Tryb odwrotny nie zgaduje wtedy, o który chodzi — pokazuje obie opcje do wyboru z podpowiedzi.

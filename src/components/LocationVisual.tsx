@@ -1,6 +1,10 @@
-function TownHallGlyph() {
+interface TownHallGlyphProps {
+  className?: string;
+}
+
+function TownHallGlyph({ className = "h-7 w-7 sm:h-9 sm:w-9" }: TownHallGlyphProps) {
   return (
-    <svg viewBox="0 0 36 36" className="h-6 w-6" aria-hidden="true">
+    <svg viewBox="0 0 36 36" className={className} aria-hidden="true">
       <polygon points="4,15 18,5 32,15" fill="#ffffff" />
       <rect x="6" y="15" width="24" height="15" fill="#ffffff" />
       <rect x="9" y="18" width="3" height="9" fill="#0d5c3f" />
@@ -19,9 +23,8 @@ interface LocationVisualProps {
 export default function LocationVisual({ value, onChange }: LocationVisualProps) {
   return (
     <div className="inline-flex h-20 w-full max-w-xs items-stretch overflow-hidden rounded-md border-[3px] border-black bg-white shadow-[0_2px_6px_rgba(0,0,0,0.25)] focus-within:ring-2 focus-within:ring-emerald-600 sm:h-24 sm:max-w-sm">
-      <div className="flex w-9 flex-col items-center justify-between bg-emerald-700 py-2 sm:w-12">
+      <div className="flex w-9 flex-col items-center justify-center bg-emerald-700 py-2 sm:w-12">
         <TownHallGlyph />
-        <span className="text-[9px] font-bold text-white sm:text-[11px]">JST</span>
       </div>
       <input
         type="text"
