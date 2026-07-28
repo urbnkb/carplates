@@ -19,6 +19,29 @@ interface Accent {
   phase: number;
   floatDelay: number;
   floatDuration: number;
+  /** Treats the header text as a solid wall it can't drift into. */
+  blockOnHeader?: boolean;
+}
+
+const WALL_BUFFER = 14;
+
+/** Clamps a movement so the icon's box can't cross into the header's box (like hitting a wall). */
+function clampToWall(iconRect: DOMRect, dx: number, dy: number, wallRect: DOMRect) {
+  const left = iconRect.left + dx;
+  const right = iconRect.right + dx;
+  const top = iconRect.top + dy;
+  const bottom = iconRect.bottom + dy;
+
+  const overlapsX = right > wallRect.left - WALL_BUFFER && left < wallRect.right + WALL_BUFFER;
+  const overlapsY = bottom > wallRect.top - WALL_BUFFER && top < wallRect.bottom + WALL_BUFFER;
+
+  if (overlapsX && overlapsY && dy > 0) {
+    const maxBottom = wallRect.top - WALL_BUFFER;
+    if (bottom > maxBottom) {
+      dy = Math.max(0, maxBottom - iconRect.bottom);
+    }
+  }
+  return dy;
 }
 
 const CAR_PATHS: IconPath[] = [
@@ -76,7 +99,7 @@ const ACCENTS: Accent[] = [
   },
   {
     paths: COMPASS_PATHS,
-    position: "top-44 -left-9",
+    position: "-top-20 left-8",
     color: "border-sky-500 text-sky-600 dark:text-sky-400",
     size: "h-7 w-7",
     baseRotate: -6,
@@ -86,6 +109,7 @@ const ACCENTS: Accent[] = [
     phase: 2.7,
     floatDelay: 1.1,
     floatDuration: 4.8,
+    blockOnHeader: true,
   },
   {
     paths: PIN_PATHS,
@@ -117,12 +141,15 @@ const ACCENTS: Accent[] = [
 
 export default function HeroIcons() {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
+  const outerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const header = document.querySelector<HTMLElement>("[data-hero-header]");
 
     function apply() {
       const y = window.scrollY;
+      const wallRect = header?.getBoundingClientRect();
       refs.current.forEach((el, i) => {
         if (!el) return;
         const cfg = ACCENTS[i];
@@ -130,9 +157,17 @@ export default function HeroIcons() {
           el.style.transform = `rotate(${cfg.baseRotate}deg)`;
           return;
         }
-        const drift = y * cfg.scrollFactor;
+        let drift = y * cfg.scrollFactor;
         const sway = Math.sin(y / 90 + cfg.phase) * cfg.swayAmplitude;
         const tilt = cfg.baseRotate + Math.sin(y / 130 + cfg.phase) * cfg.tiltAmplitude;
+
+        if (cfg.blockOnHeader && wallRect) {
+          const outerEl = outerRefs.current[i];
+          if (outerEl) {
+            drift = clampToWall(outerEl.getBoundingClientRect(), sway, drift, wallRect);
+          }
+        }
+
         el.style.transform = `translate(${sway}px, ${drift}px) rotate(${tilt}deg)`;
       });
     }
@@ -157,6 +192,9 @@ export default function HeroIcons() {
       {ACCENTS.map((accent, i) => (
         <div
           key={i}
+          ref={(el) => {
+            outerRefs.current[i] = el;
+          }}
           className={`pointer-events-none absolute hidden lg:block ${accent.position}`}
         >
           <div

@@ -70,7 +70,7 @@ export default function Home() {
         <div className="relative w-full">
           <HeroIcons />
           <ViewTransition key={mode} name="mode-header" share="auto" enter="auto" default="none">
-            <header className="text-center">
+            <header data-hero-header className="text-center">
               <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-zinc-50">
                 {mode === "plate" ? "Skąd ta tablica?" : "Jakie tablice ma ten powiat?"}
               </h1>
