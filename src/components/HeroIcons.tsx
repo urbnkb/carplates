@@ -1,45 +1,191 @@
-const CAR_PATH =
-  "M4 16.5 5.2 12a2 2 0 0 1 1.9-1.4h9.8a2 2 0 0 1 1.9 1.4l1.2 4.5M4 16.5v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h10v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2M4 16.5h16M7 13.5h.01M17 13.5h.01";
+"use client";
 
-const PIN_PATH =
-  "M12 21s-6.5-5.2-6.5-10.5a6.5 6.5 0 1 1 13 0C18.5 15.8 12 21 12 21Zm0-8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z";
+import { useEffect, useRef } from "react";
 
-interface AccentProps {
-  path: string;
-  className: string;
+interface IconPath {
+  d: string;
+  filled?: boolean;
 }
 
-function Accent({ path, className }: AccentProps) {
-  return (
-    <div
-      className={`pointer-events-none absolute hidden h-10 w-10 items-center justify-center rounded-full border-2 bg-white shadow-sm lg:flex dark:bg-zinc-900 ${className}`}
-    >
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth={1.8}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-5 w-5"
-      >
-        <path d={path} />
-      </svg>
-    </div>
-  );
+interface Accent {
+  paths: IconPath[];
+  position: string;
+  color: string;
+  size: string;
+  baseRotate: number;
+  scrollFactor: number;
+  swayAmplitude: number;
+  tiltAmplitude: number;
+  phase: number;
+  floatDelay: number;
+  floatDuration: number;
 }
+
+const CAR_PATHS: IconPath[] = [
+  {
+    d: "M4 16.5 5.2 12a2 2 0 0 1 1.9-1.4h9.8a2 2 0 0 1 1.9 1.4l1.2 4.5M4 16.5v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h10v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2M4 16.5h16M7 13.5h.01M17 13.5h.01",
+  },
+];
+
+const PIN_PATHS: IconPath[] = [
+  {
+    d: "M12 21s-6.5-5.2-6.5-10.5a6.5 6.5 0 1 1 13 0C18.5 15.8 12 21 12 21Zm0-8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z",
+  },
+];
+
+const FLAG_PATHS: IconPath[] = [
+  { d: "M6 3v18" },
+  { d: "M6 4.2 15 8 6 11.8Z", filled: true },
+];
+
+const SEARCH_PATHS: IconPath[] = [
+  { d: "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm9 17-4.35-4.35" },
+];
+
+const COMPASS_PATHS: IconPath[] = [
+  { d: "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" },
+  { d: "M12 7.2 14 12 12 16.8 10 12Z", filled: true },
+];
+
+const ACCENTS: Accent[] = [
+  {
+    paths: CAR_PATHS,
+    position: "-top-10 -left-14",
+    color: "border-blue-500 text-blue-600 dark:text-blue-400",
+    size: "h-10 w-10",
+    baseRotate: -14,
+    scrollFactor: 0.08,
+    swayAmplitude: 8,
+    tiltAmplitude: 5,
+    phase: 0,
+    floatDelay: 0,
+    floatDuration: 4.2,
+  },
+  {
+    paths: FLAG_PATHS,
+    position: "top-20 -left-24",
+    color: "border-red-500 text-red-600 dark:text-red-400",
+    size: "h-8 w-8",
+    baseRotate: 9,
+    scrollFactor: -0.05,
+    swayAmplitude: 10,
+    tiltAmplitude: 7,
+    phase: 1.4,
+    floatDelay: 0.6,
+    floatDuration: 3.6,
+  },
+  {
+    paths: COMPASS_PATHS,
+    position: "top-44 -left-9",
+    color: "border-sky-500 text-sky-600 dark:text-sky-400",
+    size: "h-7 w-7",
+    baseRotate: -6,
+    scrollFactor: 0.11,
+    swayAmplitude: 6,
+    tiltAmplitude: 9,
+    phase: 2.7,
+    floatDelay: 1.1,
+    floatDuration: 4.8,
+  },
+  {
+    paths: PIN_PATHS,
+    position: "-top-6 -right-16",
+    color: "border-emerald-600 text-emerald-700 dark:text-emerald-400",
+    size: "h-9 w-9",
+    baseRotate: 12,
+    scrollFactor: -0.07,
+    swayAmplitude: 9,
+    tiltAmplitude: 6,
+    phase: 0.8,
+    floatDelay: 1.6,
+    floatDuration: 4,
+  },
+  {
+    paths: SEARCH_PATHS,
+    position: "top-24 -right-8",
+    color: "border-amber-500 text-amber-600 dark:text-amber-400",
+    size: "h-11 w-11",
+    baseRotate: -16,
+    scrollFactor: 0.06,
+    swayAmplitude: 11,
+    tiltAmplitude: 5,
+    phase: 2.1,
+    floatDelay: 0.3,
+    floatDuration: 5.2,
+  },
+];
 
 export default function HeroIcons() {
+  const refs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function apply() {
+      const y = window.scrollY;
+      refs.current.forEach((el, i) => {
+        if (!el) return;
+        const cfg = ACCENTS[i];
+        if (reduceMotion) {
+          el.style.transform = `rotate(${cfg.baseRotate}deg)`;
+          return;
+        }
+        const drift = y * cfg.scrollFactor;
+        const sway = Math.sin(y / 90 + cfg.phase) * cfg.swayAmplitude;
+        const tilt = cfg.baseRotate + Math.sin(y / 130 + cfg.phase) * cfg.tiltAmplitude;
+        el.style.transform = `translate(${sway}px, ${drift}px) rotate(${tilt}deg)`;
+      });
+    }
+
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        apply();
+        ticking = false;
+      });
+    }
+
+    apply();
+    if (!reduceMotion) window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div aria-hidden="true">
-      <Accent
-        path={CAR_PATH}
-        className="-left-16 top-1 -rotate-6 border-blue-500 text-blue-600 dark:text-blue-400"
-      />
-      <Accent
-        path={PIN_PATH}
-        className="-right-16 top-1 rotate-6 border-emerald-600 text-emerald-700 dark:text-emerald-400"
-      />
+      {ACCENTS.map((accent, i) => (
+        <div
+          key={i}
+          className={`pointer-events-none absolute hidden lg:block ${accent.position}`}
+        >
+          <div
+            ref={(el) => {
+              refs.current[i] = el;
+            }}
+            className="animate-icon-float"
+            style={{ animationDelay: `${accent.floatDelay}s`, animationDuration: `${accent.floatDuration}s` }}
+          >
+            <div
+              className={`flex shrink-0 items-center justify-center rounded-full border-2 bg-white shadow-sm dark:bg-zinc-900 ${accent.color} ${accent.size}`}
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.8}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-1/2 w-1/2"
+              >
+                {accent.paths.map((p, j) => (
+                  <path key={j} d={p.d} fill={p.filled ? "currentColor" : "none"} stroke={p.filled ? "none" : "currentColor"} />
+                ))}
+              </svg>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
