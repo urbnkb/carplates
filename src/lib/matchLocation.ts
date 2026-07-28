@@ -11,11 +11,22 @@ function normalize(input: string): string {
   return input
     .toLowerCase()
     .replace(/ł/g, "l")
+    .replace(/-/g, " ")
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .trim()
     .replace(/\s+/g, " ");
 }
+
+/**
+ * Alternatywne, oficjalne lub potoczne formy nazw, których nie da się
+ * uzyskać samą normalizacją — kluczowany po geoId. Na razie tylko
+ * Warszawa: jedyne miasto, którego pełna oficjalna nazwa ("miasto
+ * stołeczne Warszawa") realnie różni się od nazwy w danych.
+ */
+const ALIASES: Record<number, string[]> = {
+  302: ["m.st. Warszawa", "m. st. Warszawa", "miasto stołeczne Warszawa"],
+};
 
 interface IndexEntry {
   normalizedBare: string;
@@ -23,11 +34,27 @@ interface IndexEntry {
   powiat: Powiat;
 }
 
-const index: IndexEntry[] = powiaty.map((powiat) => ({
-  normalizedBare: normalize(bareName(powiat.nazwa)),
-  normalizedFull: normalize(powiat.nazwa),
-  powiat,
-}));
+function buildIndex(): IndexEntry[] {
+  const entries: IndexEntry[] = [];
+  for (const powiat of powiaty) {
+    entries.push({
+      normalizedBare: normalize(bareName(powiat.nazwa)),
+      normalizedFull: normalize(powiat.nazwa),
+      powiat,
+    });
+    for (const alias of ALIASES[powiat.geoId] ?? []) {
+      const normalizedAlias = normalize(alias);
+      entries.push({
+        normalizedBare: normalizedAlias,
+        normalizedFull: normalizedAlias,
+        powiat,
+      });
+    }
+  }
+  return entries;
+}
+
+const index: IndexEntry[] = buildIndex();
 
 const sortedByBareName = [...index].sort((a, b) =>
   bareName(a.powiat.nazwa).localeCompare(bareName(b.powiat.nazwa), "pl"),
@@ -65,13 +92,17 @@ export function matchLocation(input: string): LocationMatch {
 export function getLocationSuggestions(input: string, limit = 5): Powiat[] {
   const query = normalize(input);
   if (!query) return [];
+  const seen = new Set<number>();
   const prefixMatches: Powiat[] = [];
   const substringMatches: Powiat[] = [];
   for (const entry of sortedByBareName) {
+    if (seen.has(entry.powiat.geoId)) continue;
     if (entry.normalizedBare.startsWith(query)) {
       prefixMatches.push(entry.powiat);
+      seen.add(entry.powiat.geoId);
     } else if (entry.normalizedBare.includes(query)) {
       substringMatches.push(entry.powiat);
+      seen.add(entry.powiat.geoId);
     }
   }
   return [...prefixMatches, ...substringMatches].slice(0, limit);
