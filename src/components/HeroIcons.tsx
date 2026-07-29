@@ -73,9 +73,9 @@ const COMPASS_PATHS: IconPath[] = [
 const ACCENTS: Accent[] = [
   {
     paths: CAR_PATHS,
-    position: "-top-10 -left-14",
+    position: "-top-6 -left-3 sm:-top-8 sm:-left-6 lg:-top-10 lg:-left-14",
     color: "border-blue-500 text-blue-600 dark:text-blue-400",
-    size: "h-10 w-10",
+    size: "h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10",
     baseRotate: -14,
     scrollFactor: 0.08,
     swayAmplitude: 8,
@@ -86,9 +86,9 @@ const ACCENTS: Accent[] = [
   },
   {
     paths: FLAG_PATHS,
-    position: "top-20 -left-24",
+    position: "top-12 -left-4 sm:top-16 sm:-left-8 lg:top-20 lg:-left-24",
     color: "border-red-500 text-red-600 dark:text-red-400",
-    size: "h-8 w-8",
+    size: "h-7 w-7 sm:h-8 sm:w-8",
     baseRotate: 9,
     scrollFactor: -0.05,
     swayAmplitude: 10,
@@ -99,9 +99,9 @@ const ACCENTS: Accent[] = [
   },
   {
     paths: COMPASS_PATHS,
-    position: "-top-20 left-8",
+    position: "-top-8 left-1 sm:-top-12 sm:left-3 lg:-top-20 lg:left-8",
     color: "border-sky-500 text-sky-600 dark:text-sky-400",
-    size: "h-7 w-7",
+    size: "h-6 w-6 sm:h-7 sm:w-7",
     baseRotate: -6,
     scrollFactor: 0.11,
     swayAmplitude: 6,
@@ -113,9 +113,9 @@ const ACCENTS: Accent[] = [
   },
   {
     paths: PIN_PATHS,
-    position: "-top-6 -right-16",
+    position: "-top-3 -right-3 sm:-top-4 sm:-right-6 lg:-top-6 lg:-right-16",
     color: "border-emerald-600 text-emerald-700 dark:text-emerald-400",
-    size: "h-9 w-9",
+    size: "h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9",
     baseRotate: 12,
     scrollFactor: -0.07,
     swayAmplitude: 9,
@@ -126,9 +126,9 @@ const ACCENTS: Accent[] = [
   },
   {
     paths: SEARCH_PATHS,
-    position: "top-24 -right-8",
+    position: "top-14 -right-3 sm:top-16 sm:-right-5 lg:top-24 lg:-right-8",
     color: "border-amber-500 text-amber-600 dark:text-amber-400",
-    size: "h-11 w-11",
+    size: "h-8 w-8 sm:h-9 sm:w-9 lg:h-11 lg:w-11",
     baseRotate: -16,
     scrollFactor: 0.06,
     swayAmplitude: 11,
@@ -195,7 +195,7 @@ export default function HeroIcons() {
           ref={(el) => {
             outerRefs.current[i] = el;
           }}
-          className={`pointer-events-none absolute hidden lg:block ${accent.position}`}
+          className={`pointer-events-none absolute block ${accent.position}`}
         >
           <div
             ref={(el) => {

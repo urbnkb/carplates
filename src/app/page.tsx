@@ -61,7 +61,7 @@ export default function Home() {
       : "Nie rozpoznano takiej nazwy — sprawdź pisownię albo wybierz z podpowiedzi poniżej.";
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black">
+    <div className="min-h-screen overflow-x-hidden bg-zinc-50 dark:bg-black">
       <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
         <div className="flex w-full justify-end">
           <ModeToggle mode={mode} onChange={handleModeChange} />
