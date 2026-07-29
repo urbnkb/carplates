@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Skąd ta tablica? — rozpoznawanie powiatu po tablicy rejestracyjnej",
+  title: "Skąd ta rejestracja? — rozpoznawanie powiatu po tablicy rejestracyjnej",
   description:
     "Projekt edukacyjny: wpisz początkowe znaki polskiej tablicy rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd.",
 };

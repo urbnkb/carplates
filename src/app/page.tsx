@@ -72,7 +72,7 @@ export default function Home() {
           <ViewTransition key={mode} name="mode-header" share="auto" enter="auto" default="none">
             <header data-hero-header className="text-center">
               <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-zinc-50">
-                {mode === "plate" ? "Skąd ta tablica?" : "Jakie tablice ma ten powiat?"}
+                {mode === "plate" ? "Skąd ta rejestracja?" : "Jakie tablice ma ten powiat?"}
               </h1>
               <p className="mx-auto mt-4 max-w-sm text-base text-zinc-600 sm:max-w-md sm:text-lg dark:text-zinc-400">
                 {mode === "plate"
