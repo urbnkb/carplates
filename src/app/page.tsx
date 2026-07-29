@@ -119,6 +119,20 @@ export default function Home() {
             <PolandMap highlightedGeoId={highlightedGeoId} />
           </div>
         </ProductWindow>
+
+        <footer className="mt-4 flex w-full max-w-xl flex-col items-center gap-3 rounded-2xl border border-pink-200 bg-pink-50 p-6 text-center dark:border-pink-900/40 dark:bg-pink-950/20">
+          <p className="text-sm text-zinc-700 dark:text-zinc-300">
+            Jeżeli doceniasz moją działalność, wesprzyj mnie ♥
+          </p>
+          <a
+            href="https://suppi.pl/urbnkb"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-pink-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-pink-700"
+          >
+            Wesprzyj na suppi.pl
+          </a>
+        </footer>
       </main>
     </div>
   );
