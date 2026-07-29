@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -10,7 +10,6 @@ import { powiaty } from "@/data/powiaty";
 import { bareName } from "@/lib/format";
 
 const GEO_URL = "/data/powiaty-boundaries.json";
-const TOOLTIP_WIDTH = 224;
 const TOOLTIP_MARGIN = 8;
 
 const powiatById = new Map(powiaty.map((powiat) => [powiat.geoId, powiat]));
@@ -25,16 +24,11 @@ interface HoverState {
   y: number;
 }
 
-/** Keeps the tooltip fully on-screen when its anchor sits near the left/right viewport edge. */
-function clampTooltipX(x: number, viewportWidth: number): number {
-  const half = TOOLTIP_WIDTH / 2;
-  return Math.min(Math.max(x, half + TOOLTIP_MARGIN), viewportWidth - half - TOOLTIP_MARGIN);
-}
-
 export default function PolandMap({ highlightedGeoId }: PolandMapProps) {
   const [hover, setHover] = useState<HoverState | null>(null);
   const [tapped, setTapped] = useState<HoverState | null>(null);
   const mapRef = useRef<HTMLDivElement | null>(null);
+  const tooltipRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!tapped) return;
@@ -53,6 +47,22 @@ export default function PolandMap({ highlightedGeoId }: PolandMapProps) {
 
   const active = tapped ?? hover;
   const activePowiat = active ? powiatById.get(active.geoId) ?? null : null;
+
+  useLayoutEffect(() => {
+    const el = tooltipRef.current;
+    if (!el || !active) return;
+    el.style.transform = "translate(-50%, calc(-100% - 12px))";
+    const rect = el.getBoundingClientRect();
+    let shift = 0;
+    if (rect.left < TOOLTIP_MARGIN) {
+      shift = TOOLTIP_MARGIN - rect.left;
+    } else if (rect.right > window.innerWidth - TOOLTIP_MARGIN) {
+      shift = window.innerWidth - TOOLTIP_MARGIN - rect.right;
+    }
+    if (shift !== 0) {
+      el.style.transform = `translate(calc(-50% + ${shift}px), calc(-100% - 12px))`;
+    }
+  }, [active]);
 
   return (
     <div
@@ -129,8 +139,9 @@ export default function PolandMap({ highlightedGeoId }: PolandMapProps) {
 
       {activePowiat && active && (
         <div
-          className="pointer-events-none fixed z-50 -translate-x-1/2 -translate-y-[calc(100%+12px)] rounded-lg border border-black/10 bg-white px-3 py-2 shadow-lg dark:border-white/10 dark:bg-zinc-800"
-          style={{ left: clampTooltipX(active.x, window.innerWidth), top: active.y }}
+          ref={tooltipRef}
+          className="pointer-events-none fixed z-50 rounded-lg border border-black/10 bg-white px-3 py-2 shadow-lg dark:border-white/10 dark:bg-zinc-800"
+          style={{ left: active.x, top: active.y, transform: "translate(-50%, calc(-100% - 12px))" }}
         >
           <p className="text-center text-sm font-semibold whitespace-nowrap text-zinc-900 dark:text-zinc-50">
             {bareName(activePowiat.nazwa)}
