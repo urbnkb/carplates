@@ -14,7 +14,21 @@ import ProductWindow from "@/components/ProductWindow";
 import { getSuggestions, matchPlate } from "@/lib/matchPlate";
 import { getLocationSuggestions, matchLocation } from "@/lib/matchLocation";
 import { bareName } from "@/lib/format";
+import { serializeJsonLd } from "@/lib/jsonLd";
+import { SITE_URL } from "@/lib/site";
 import type { Powiat } from "@/types/powiat";
+
+const JSON_LD = serializeJsonLd({
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Skąd ta rejestracja?",
+  url: SITE_URL,
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any",
+  description:
+    "Rozpoznawanie powiatu po polskiej tablicy rejestracyjnej oraz sprawdzanie kodów tablic dla wybranego powiatu.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "PLN" },
+});
 
 export default function Home() {
   const [mode, setMode] = useState<Mode>("plate");
@@ -57,6 +71,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-zinc-50 dark:bg-black">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON_LD }} />
       <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
         <div className="flex w-full justify-end">
           <ModeToggle mode={mode} onChange={handleModeChange} />

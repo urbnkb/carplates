@@ -1,4 +1,7 @@
+import Link from "next/link";
 import { capitalize } from "@/lib/format";
+import { powiatSlug } from "@/lib/slug";
+import PowiatFacts from "@/components/PowiatFacts";
 import type { Powiat } from "@/types/powiat";
 
 interface PowiatInfoProps {
@@ -27,27 +30,24 @@ export default function PowiatInfo({ powiat, matchedCode }: PowiatInfoProps) {
         </p>
       </div>
 
-      <ul className="flex flex-col gap-2 border-t border-zinc-100 pt-3 dark:border-zinc-800">
-        {powiat.ciekawostki.map((fact, i) => (
-          <li
-            key={i}
-            className={
-              powiat.factsVerified
-                ? "flex gap-2 text-sm text-zinc-700 dark:text-zinc-300"
-                : "flex gap-2 text-sm italic text-zinc-400 dark:text-zinc-500"
-            }
-          >
-            <span aria-hidden="true">•</span>
-            <span>{fact}</span>
-          </li>
-        ))}
-      </ul>
+      <PowiatFacts powiat={powiat} />
 
-      {!powiat.factsVerified && (
-        <p className="text-xs text-amber-600 dark:text-amber-400">
-          Ciekawostki dla tego powiatu nie zostały jeszcze zweryfikowane.
-        </p>
-      )}
+      <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-zinc-100 pt-3 text-sm dark:border-zinc-800">
+        <Link
+          href={`/powiat/${powiatSlug(powiat)}`}
+          className="text-blue-600 hover:underline dark:text-blue-400"
+        >
+          Zobacz pełną stronę tego powiatu →
+        </Link>
+        {matchedCode && (
+          <Link
+            href={`/tablica/${matchedCode}`}
+            className="text-blue-600 hover:underline dark:text-blue-400"
+          >
+            Zobacz stronę kodu {matchedCode} →
+          </Link>
+        )}
+      </div>
     </div>
   );
 }

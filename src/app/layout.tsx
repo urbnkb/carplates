@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,10 +15,37 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const DESCRIPTION =
+  "Projekt edukacyjny: wpisz początkowe znaki polskiej tablicy rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd.";
+
 export const metadata: Metadata = {
-  title: "Skąd ta rejestracja? — rozpoznawanie powiatu po tablicy rejestracyjnej",
-  description:
-    "Projekt edukacyjny: wpisz początkowe znaki polskiej tablicy rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Skąd ta rejestracja? — rozpoznawanie powiatu po tablicy rejestracyjnej",
+    template: "%s | Skąd ta rejestracja?",
+  },
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "pl_PL",
+    url: "/",
+    siteName: "Skąd ta rejestracja?",
+    title: "Skąd ta rejestracja? — rozpoznawanie powiatu po tablicy rejestracyjnej",
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Skąd ta rejestracja? — rozpoznawanie powiatu po tablicy rejestracyjnej",
+    description: DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
 
 export default function RootLayout({
