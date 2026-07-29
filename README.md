@@ -12,6 +12,7 @@ Zero kluczy API, zero zewnętrznych serwisów mapowych wymagających autoryzacji
 - Rozpoznawanie powiatu metodą longest-prefix-match — dłuższy, bardziej precyzyjny kod (np. `WSI` → powiat siedlecki) zawsze poprawnie przesłania krótszy (np. `WS` → miasto Siedlce), a wpis niepasujący do żadnego realnego kodu (np. `WSP`) pokazuje jawny brak dopasowania zamiast zgadywać.
 - Nazwa powiatu, województwo i trzy ciekawostki o powiecie.
 - Mapa Polski (SVG, renderowana lokalnie) z podświetlonym, rozpoznanym powiatem.
+- Powiat Warszawa (15 kodów tablic) ma dodatkowo mapę 18 dzielnic: po wpisaniu w trybie tablicy kodu należącego do Warszawy mapa Polski przełącza się na mapę dzielnic z podświetleniem tej konkretnej dzielnicy (lub kilku — kody WW i WX są współdzielone przez kilka dzielnic).
 - **Tryb odwrotny** (przełącznik w prawym górnym rogu): wpisujesz nazwę gminy, miasta lub powiatu — na osobnej makiecie nawiązującej do samorządów, a nie do tablicy — i widzisz kod(y) tablic tego powiatu w tej samej wizualnej formie co w trybie tablicy, razem z ciekawostkami i podświetleniem na mapie. Dopasowanie jest dokładne (bez zgadywania) i niewrażliwe na polskie znaki diakrytyczne oraz wielkość liter.
 
 ## Uruchomienie
@@ -35,6 +36,8 @@ Otwórz [http://localhost:3000](http://localhost:3000).
 
 - **Kody tablic → powiat → województwo** (`src/data/powiaty.ts`): transkrybowane programowo z [Wikiźródeł — „Polskie tablice rejestracyjne"](https://pl.wikisource.org/wiki/Polskie_tablice_rejestracyjne), zweryfikowane krzyżowo z listą 380 powiatów z pliku granic oraz z [Wikipedią — „Tablice rejestracyjne w Polsce"](https://pl.wikipedia.org/wiki/Tablice_rejestracyjne_w_Polsce) dla przypadków brzegowych. Dwa kody (powiat nidzicki, powiat lidzbarski), których zabrakło w tabeli źródłowej, zostały potwierdzone bezpośrednio w infoboksach stron tych powiatów na Wikipedii.
 - **Granice powiatów** (`public/data/powiaty-boundaries.json`): [ppatrzyk/polska-geojson](https://github.com/ppatrzyk/polska-geojson) (licencja MIT).
+- **Granice dzielnic Warszawy** (`public/data/warszawa-dzielnice-boundaries.json`): [OpenStreetMap](https://www.openstreetmap.org) (licencja [ODbL](https://opendatacommons.org/licenses/odbl/)), relacje administracyjne `admin_level=9` pobrane przez Overpass API i uproszczone narzędziem [mapshaper](https://github.com/mbloch/mapshaper).
+- **Kod tablicy → dzielnica Warszawy** (`src/data/dzielnice.ts`): tag `vehicle_plate_code` na tych samych relacjach OpenStreetMap, potwierdzony krzyżowo z niezależnymi źródłami motoryzacyjnymi ([wyborkierowcow.pl](https://www.wyborkierowcow.pl/warszawskie-rejestracje-tablice-rejestracyjne-warszawa/), [motoryzacja.interia.pl](https://motoryzacja.interia.pl/porady/news-z-jakiej-dzielnicy-warszawy-jestes-tajemnica-tablicy-rejestr,nId,20356160)) — w przeciwieństwie do reszty danych w projekcie, to mapowanie nie ma potwierdzenia w Wikiźródłach/Wikipedii.
 - **Ciekawostki**: sprawdzone, konkretne fakty dla wszystkich 380 powiatów (`factsVerified: true`), zebrane głównie z polskiej Wikipedii (strony powiatów i miast będących ich siedzibami), z krzyżową weryfikacją dla wątpliwych szczegółów. Zgodnie z zasadą projektu „nie zmyślaj" — żaden fakt nie jest wygenerowany bez źródła.
 
 ## Znane ograniczenia

@@ -8,11 +8,13 @@ import LocationSuggestions from "@/components/LocationSuggestions";
 import PlatePreview from "@/components/PlatePreview";
 import PowiatInfo from "@/components/PowiatInfo";
 import PolandMap from "@/components/PolandMap";
+import WarszawaDzielniceMap from "@/components/WarszawaDzielniceMap";
 import ModeToggle, { type Mode } from "@/components/ModeToggle";
 import HeroIcons from "@/components/HeroIcons";
 import ProductWindow from "@/components/ProductWindow";
 import { getSuggestions, matchPlate } from "@/lib/matchPlate";
 import { getLocationSuggestions, matchLocation } from "@/lib/matchLocation";
+import { getDzielniceForKod } from "@/lib/dzielnice";
 import { bareName } from "@/lib/format";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
@@ -29,6 +31,8 @@ const JSON_LD = serializeJsonLd({
     "Rozpoznawanie powiatu po polskiej tablicy rejestracyjnej oraz sprawdzanie kodów tablic dla wybranego powiatu.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "PLN" },
 });
+
+const WARSZAWA_GEO_ID = 302;
 
 export default function Home() {
   const [mode, setMode] = useState<Mode>("plate");
@@ -68,6 +72,15 @@ export default function Home() {
 
   const highlightedGeoId =
     mode === "plate" ? plateResult?.powiat.geoId ?? null : resolvedPowiat?.geoId ?? null;
+
+  const isWarszawaPlate = mode === "plate" && plateResult?.powiat.geoId === WARSZAWA_GEO_ID;
+  const highlightedDzielniceIds = useMemo(
+    () =>
+      isWarszawaPlate && plateResult
+        ? getDzielniceForKod(plateResult.matchedCode).map((d) => d.geoId)
+        : [],
+    [isWarszawaPlate, plateResult],
+  );
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-zinc-50 dark:bg-black">
@@ -130,9 +143,15 @@ export default function Home() {
             </>
           </ViewTransition>
 
-          <div className="w-full">
-            <PolandMap highlightedGeoId={highlightedGeoId} />
-          </div>
+          <ViewTransition key={isWarszawaPlate ? "warszawa" : "poland"} name="map" share="auto" enter="auto" default="none">
+            <div className="w-full">
+              {isWarszawaPlate ? (
+                <WarszawaDzielniceMap highlightedGeoIds={highlightedDzielniceIds} />
+              ) : (
+                <PolandMap highlightedGeoId={highlightedGeoId} />
+              )}
+            </div>
+          </ViewTransition>
         </ProductWindow>
 
         <footer className="mt-4 flex w-full max-w-xl flex-col items-center gap-3 rounded-2xl border border-pink-200 bg-pink-50 p-6 text-center dark:border-pink-900/40 dark:bg-pink-950/20">
