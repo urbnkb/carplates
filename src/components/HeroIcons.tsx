@@ -99,7 +99,7 @@ const ACCENTS: Accent[] = [
   },
   {
     paths: COMPASS_PATHS,
-    position: "-top-8 left-1 sm:-top-12 sm:left-3 lg:-top-20 lg:left-8",
+    position: "-top-8 left-3 sm:-top-12 sm:left-5 lg:-top-20 lg:left-12",
     color: "border-sky-500 text-sky-600 dark:text-sky-400",
     size: "h-6 w-6 sm:h-7 sm:w-7",
     baseRotate: -6,

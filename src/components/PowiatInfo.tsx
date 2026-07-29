@@ -1,31 +1,14 @@
 import { capitalize } from "@/lib/format";
 import type { Powiat } from "@/types/powiat";
 
-const DEFAULT_PROMPT = "Wpisz początkowe znaki tablicy rejestracyjnej, aby rozpoznać powiat.";
-const DEFAULT_NO_MATCH =
-  "Nie rozpoznano powiatu — sprawdź wpisane znaki albo dopisz kolejną literę.";
-
 interface PowiatInfoProps {
   powiat: Powiat | null;
   matchedCode?: string;
-  hasInput: boolean;
-  promptText?: string;
-  noMatchText?: string;
 }
 
-export default function PowiatInfo({
-  powiat,
-  matchedCode,
-  hasInput,
-  promptText = DEFAULT_PROMPT,
-  noMatchText = DEFAULT_NO_MATCH,
-}: PowiatInfoProps) {
+export default function PowiatInfo({ powiat, matchedCode }: PowiatInfoProps) {
   if (!powiat) {
-    return (
-      <div className="w-full max-w-xl rounded-2xl border border-dashed border-zinc-300 p-6 text-center text-sm text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
-        {hasInput ? noMatchText : promptText}
-      </div>
-    );
+    return null;
   }
 
   return (

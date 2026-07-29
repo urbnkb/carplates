@@ -55,11 +55,6 @@ export default function Home() {
   const highlightedGeoId =
     mode === "plate" ? plateResult?.powiat.geoId ?? null : resolvedPowiat?.geoId ?? null;
 
-  const locationNoMatchText =
-    locationMatch.kind === "ambiguous"
-      ? "Kilka powiatów nosi tę samą nazwę — wybierz właściwy z podpowiedzi poniżej (rozróżnia je województwo)."
-      : "Nie rozpoznano takiej nazwy — sprawdź pisownię albo wybierz z podpowiedzi poniżej.";
-
   return (
     <div className="min-h-screen overflow-x-hidden bg-zinc-50 dark:bg-black">
       <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
@@ -97,7 +92,6 @@ export default function Home() {
                   <PowiatInfo
                     powiat={plateResult?.powiat ?? null}
                     matchedCode={plateResult?.matchedCode}
-                    hasInput={plateValue.length > 0}
                   />
                 </div>
               ) : (
@@ -115,12 +109,7 @@ export default function Home() {
                       ))}
                     </div>
                   )}
-                  <PowiatInfo
-                    powiat={resolvedPowiat}
-                    hasInput={locationValue.length > 0}
-                    promptText="Wpisz nazwę gminy, miasta lub powiatu, aby sprawdzić kody tablic."
-                    noMatchText={locationNoMatchText}
-                  />
+                  <PowiatInfo powiat={resolvedPowiat} />
                 </div>
               )}
             </>
