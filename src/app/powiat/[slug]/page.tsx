@@ -2,10 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { capitalize } from "@/lib/format";
+import { dzielnice } from "@/data/dzielnice";
+import { dzielnicaSlug, dzielniceLabelForKod, WARSZAWA_GEO_ID } from "@/lib/dzielnice";
 import { findPowiatBySlug, getAllPowiatSlugs } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
-import PowiatFacts from "@/components/PowiatFacts";
+import Facts from "@/components/Facts";
 import PlatePreview from "@/components/PlatePreview";
 import ProductWindow from "@/components/ProductWindow";
 import RegionMap from "@/components/RegionMap";
@@ -26,9 +28,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!powiat) return {};
 
   const label = `${capitalize(powiat.nazwa)} (woj. ${powiat.wojewodztwo})`;
+  const dzielniceNote =
+    powiat.geoId === WARSZAWA_GEO_ID ? " Każdy kod odpowiada innej dzielnicy miasta." : "";
   return {
     title: `${label} — kody tablic rejestracyjnych`,
-    description: `${label}: tablice rejestracyjne ${powiat.kody.join(", ")}. Ciekawostki i informacje o powiecie.`,
+    description: `${label}: tablice rejestracyjne ${powiat.kody.join(", ")}.${dzielniceNote} Ciekawostki i informacje o powiecie.`,
     alternates: { canonical: `/powiat/${slug}` },
   };
 }
@@ -37,6 +41,11 @@ export default async function PowiatPage({ params }: PageProps) {
   const { slug } = await params;
   const powiat = findPowiatBySlug(slug);
   if (!powiat) notFound();
+
+  const isWarszawa = powiat.geoId === WARSZAWA_GEO_ID;
+  const dzielniceAlfabetycznie = isWarszawa
+    ? [...dzielnice].sort((a, b) => a.nazwa.localeCompare(b.nazwa, "pl"))
+    : [];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -82,18 +91,44 @@ export default async function PowiatPage({ params }: PageProps) {
               </h2>
               <div className="flex flex-wrap justify-center gap-3">
                 {powiat.kody.map((kod) => (
-                  <Link key={kod} href={`/tablica/${kod}`}>
+                  <Link key={kod} href={`/tablica/${kod}`} className="flex flex-col items-center gap-1">
                     <PlatePreview code={kod} />
+                    {isWarszawa && (
+                      <span className="max-w-32 text-center text-xs text-zinc-500 dark:text-zinc-500">
+                        {dzielniceLabelForKod(kod)}
+                      </span>
+                    )}
                   </Link>
                 ))}
               </div>
             </section>
 
+            {isWarszawa && (
+              <section className="flex w-full flex-col items-center gap-3">
+                <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+                  18 dzielnic Warszawy
+                </h2>
+                <ul className="grid w-full grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
+                  {dzielniceAlfabetycznie.map((d) => (
+                    <li key={d.geoId}>
+                      <Link
+                        href={`/dzielnica/${dzielnicaSlug(d)}`}
+                        className="text-sm text-blue-600 hover:underline dark:text-blue-400"
+                      >
+                        {d.nazwa}
+                      </Link>{" "}
+                      <span className="font-mono text-xs text-zinc-500 dark:text-zinc-500">{d.kod}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             <div className="flex w-full max-w-xl flex-col gap-4 self-center rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-none">
               <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
                 Ciekawostki
               </h2>
-              <PowiatFacts powiat={powiat} />
+              <Facts ciekawostki={powiat.ciekawostki} verified={powiat.factsVerified} />
             </div>
 
             <RegionMap powiat={powiat} />

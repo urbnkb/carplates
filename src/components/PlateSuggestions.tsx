@@ -1,6 +1,6 @@
 "use client";
 
-import { capitalize } from "@/lib/format";
+import { regionLabel } from "@/lib/dzielnice";
 import type { Suggestion } from "@/types/powiat";
 
 interface PlateSuggestionsProps {
@@ -32,7 +32,7 @@ export default function PlateSuggestions({
             }
           >
             <span className="font-mono font-semibold">{code}</span>
-            <span className="opacity-70"> — {capitalize(powiat.nazwa)}</span>
+            <span className="opacity-70"> — {regionLabel(powiat, code)}</span>
           </button>
         );
       })}

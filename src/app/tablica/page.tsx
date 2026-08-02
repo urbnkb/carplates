@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { capitalize } from "@/lib/format";
+import { regionLabel } from "@/lib/dzielnice";
 import { getAllKody } from "@/lib/kody";
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function TablicaIndexPage() {
               <Link href={`/tablica/${kod}`} className="text-sm text-blue-600 hover:underline dark:text-blue-400">
                 {kod}
               </Link>{" "}
-              <span className="text-xs text-zinc-500 dark:text-zinc-500">— {capitalize(powiat.nazwa)}</span>
+              <span className="text-xs text-zinc-500 dark:text-zinc-500">— {regionLabel(powiat, kod)}</span>
             </li>
           ))}
         </ul>

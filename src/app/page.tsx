@@ -13,12 +13,17 @@ import ModeToggle, { type Mode } from "@/components/ModeToggle";
 import HeroIcons from "@/components/HeroIcons";
 import ProductWindow from "@/components/ProductWindow";
 import { getSuggestions, matchPlate } from "@/lib/matchPlate";
-import { getLocationSuggestions, matchLocation } from "@/lib/matchLocation";
+import {
+  getLocationSuggestions,
+  locationTargetKey,
+  matchLocation,
+  targetName,
+  type LocationTarget,
+} from "@/lib/matchLocation";
 import { getDzielniceForKod, WARSZAWA_GEO_ID } from "@/lib/dzielnice";
-import { bareName } from "@/lib/format";
+import { dzielnice } from "@/data/dzielnice";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
-import type { Powiat } from "@/types/powiat";
 
 const JSON_LD = serializeJsonLd({
   "@context": "https://schema.org",
@@ -44,41 +49,59 @@ export default function Home() {
   const plateSuggestions = useMemo(() => getSuggestions(plateValue), [plateValue]);
 
   const [locationValue, setLocationValue] = useState("");
-  const [pinnedGeoId, setPinnedGeoId] = useState<number | null>(null);
+  // Klucz, nie geoId: geoId dzielnic (1–18) kolidują liczbowo z geoId powiatów.
+  const [pinnedKey, setPinnedKey] = useState<string | null>(null);
   const locationMatch = useMemo(() => matchLocation(locationValue), [locationValue]);
   const locationSuggestions = useMemo(
     () => getLocationSuggestions(locationValue),
     [locationValue],
   );
-  const resolvedPowiat: Powiat | null = useMemo(() => {
-    if (locationMatch.kind === "unique") return locationMatch.powiat;
-    if (locationMatch.kind === "ambiguous" && pinnedGeoId != null) {
-      return locationMatch.candidates.find((p) => p.geoId === pinnedGeoId) ?? null;
+  const resolvedTarget: LocationTarget | null = useMemo(() => {
+    if (locationMatch.kind === "unique") return locationMatch.target;
+    if (locationMatch.kind === "ambiguous" && pinnedKey != null) {
+      return locationMatch.candidates.find((c) => locationTargetKey(c) === pinnedKey) ?? null;
     }
     return null;
-  }, [locationMatch, pinnedGeoId]);
+  }, [locationMatch, pinnedKey]);
 
   function handleLocationChange(value: string) {
     setLocationValue(value);
-    setPinnedGeoId(null);
+    setPinnedKey(null);
   }
 
-  function handleLocationSelect(powiat: Powiat) {
-    setLocationValue(bareName(powiat.nazwa));
-    setPinnedGeoId(powiat.geoId);
+  function handleLocationSelect(target: LocationTarget) {
+    setLocationValue(targetName(target));
+    setPinnedKey(locationTargetKey(target));
   }
 
   const highlightedGeoId =
-    mode === "plate" ? plateResult?.powiat.geoId ?? null : resolvedPowiat?.geoId ?? null;
+    mode === "plate" ? plateResult?.powiat.geoId ?? null : resolvedTarget?.powiat.geoId ?? null;
 
   const isWarszawaPlate = mode === "plate" && plateResult?.powiat.geoId === WARSZAWA_GEO_ID;
-  const highlightedDzielniceIds = useMemo(
-    () =>
-      isWarszawaPlate && plateResult
-        ? getDzielniceForKod(plateResult.matchedCode).map((d) => d.geoId)
-        : [],
-    [isWarszawaPlate, plateResult],
-  );
+  const isWarszawaLocation =
+    mode === "location" && resolvedTarget?.powiat.geoId === WARSZAWA_GEO_ID;
+  const showDzielniceMap = isWarszawaPlate || isWarszawaLocation;
+
+  const highlightedDzielniceIds = useMemo(() => {
+    if (isWarszawaPlate && plateResult) {
+      return getDzielniceForKod(plateResult.matchedCode).map((d) => d.geoId);
+    }
+    if (isWarszawaLocation && resolvedTarget) {
+      // Wpisana dzielnica podświetla siebie; wpisana "Warszawa" — całe miasto.
+      return resolvedTarget.dzielnica
+        ? [resolvedTarget.dzielnica.geoId]
+        : dzielnice.map((d) => d.geoId);
+    }
+    return [];
+  }, [isWarszawaPlate, isWarszawaLocation, plateResult, resolvedTarget]);
+
+  // Dzielnica niesie własny kod, więc po jej wskazaniu nie ma sensu pokazywać
+  // wszystkich piętnastu kodów Warszawy.
+  const locationKody = resolvedTarget
+    ? resolvedTarget.dzielnica
+      ? [resolvedTarget.dzielnica.kod]
+      : resolvedTarget.powiat.kody
+    : [];
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-zinc-50 dark:bg-black">
@@ -98,7 +121,7 @@ export default function Home() {
               <p className="mx-auto mt-4 max-w-sm text-base text-zinc-600 sm:max-w-md sm:text-lg dark:text-zinc-400">
                 {mode === "plate"
                   ? "Wpisz początkowe znaki polskiej tablicy rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd."
-                  : "Wpisz nazwę gminy, miasta lub powiatu i sprawdź, jakie kody tablic tam obowiązują."}
+                  : "Wpisz nazwę gminy, miasta, powiatu lub dzielnicy Warszawy i sprawdź, jakie kody tablic tam obowiązują."}
               </p>
             </header>
           </ViewTransition>
@@ -125,25 +148,29 @@ export default function Home() {
                   <LocationVisual value={locationValue} onChange={handleLocationChange} />
                   <LocationSuggestions
                     suggestions={locationSuggestions}
-                    activeGeoId={resolvedPowiat?.geoId}
+                    activeKey={resolvedTarget ? locationTargetKey(resolvedTarget) : null}
                     onSelect={handleLocationSelect}
                   />
-                  {resolvedPowiat && (
+                  {resolvedTarget && (
                     <div className="flex w-full max-w-xl flex-wrap justify-center gap-3">
-                      {resolvedPowiat.kody.map((kod) => (
+                      {locationKody.map((kod) => (
                         <PlatePreview key={kod} code={kod} />
                       ))}
                     </div>
                   )}
-                  <PowiatInfo powiat={resolvedPowiat} />
+                  <PowiatInfo
+                    powiat={resolvedTarget?.powiat ?? null}
+                    matchedCode={resolvedTarget?.dzielnica?.kod}
+                    dzielnica={resolvedTarget?.dzielnica}
+                  />
                 </div>
               )}
             </>
           </ViewTransition>
 
-          <ViewTransition key={isWarszawaPlate ? "warszawa" : "poland"} name="map" share="auto" enter="auto" default="none">
+          <ViewTransition key={showDzielniceMap ? "warszawa" : "poland"} name="map" share="auto" enter="auto" default="none">
             <div className="w-full">
-              {isWarszawaPlate ? (
+              {showDzielniceMap ? (
                 <WarszawaDzielniceMap highlightedGeoIds={highlightedDzielniceIds} />
               ) : (
                 <PolandMap highlightedGeoId={highlightedGeoId} />

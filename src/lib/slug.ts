@@ -1,16 +1,6 @@
 import { powiaty } from "@/data/powiaty";
-import { bareName } from "@/lib/format";
+import { bareName, slugify } from "@/lib/format";
 import type { Powiat } from "@/types/powiat";
-
-function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/ł/g, "l")
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 /**
  * Bazowy slug (sama nazwa) koliduje dla kilku par powiatów o tej samej
