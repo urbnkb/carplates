@@ -1,6 +1,9 @@
 import { dzielnice } from "@/data/dzielnice";
 import type { Dzielnica } from "@/types/dzielnica";
 
+/** geoId m.st. Warszawy — jedynego powiatu z mapą dzielnic zamiast mapy Polski. */
+export const WARSZAWA_GEO_ID = 302;
+
 export const dzielnicaById = new Map(dzielnice.map((d) => [d.geoId, d]));
 
 const byKod = new Map<string, Dzielnica[]>();

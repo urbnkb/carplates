@@ -14,6 +14,8 @@ const TOOLTIP_MARGIN = 8;
 interface WarszawaDzielniceMapProps {
   /** 0, 1, 2 lub 3 elementy — WW/WX podświetlają kilka dzielnic naraz */
   highlightedGeoIds: number[];
+  /** Etykieta dla czytników ekranu — bez niej mapa jest pustym <svg>. */
+  ariaLabel?: string;
 }
 
 interface HoverState {
@@ -22,7 +24,10 @@ interface HoverState {
   y: number;
 }
 
-export default function WarszawaDzielniceMap({ highlightedGeoIds }: WarszawaDzielniceMapProps) {
+export default function WarszawaDzielniceMap({
+  highlightedGeoIds,
+  ariaLabel,
+}: WarszawaDzielniceMapProps) {
   const [hover, setHover] = useState<HoverState | null>(null);
   const [tapped, setTapped] = useState<HoverState | null>(null);
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -73,6 +78,8 @@ export default function WarszawaDzielniceMap({ highlightedGeoIds }: WarszawaDzie
         width={800}
         height={620}
         className="w-full h-auto"
+        role={ariaLabel ? "img" : undefined}
+        aria-label={ariaLabel}
       >
         <Geographies geography={GEO_URL}>
           {({ geographies }) =>

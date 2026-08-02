@@ -16,6 +16,8 @@ const powiatById = new Map(powiaty.map((powiat) => [powiat.geoId, powiat]));
 
 interface PolandMapProps {
   highlightedGeoId: number | null;
+  /** Etykieta dla czytników ekranu — bez niej mapa jest pustym <svg>. */
+  ariaLabel?: string;
 }
 
 interface HoverState {
@@ -24,7 +26,7 @@ interface HoverState {
   y: number;
 }
 
-export default function PolandMap({ highlightedGeoId }: PolandMapProps) {
+export default function PolandMap({ highlightedGeoId, ariaLabel }: PolandMapProps) {
   const [hover, setHover] = useState<HoverState | null>(null);
   const [tapped, setTapped] = useState<HoverState | null>(null);
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -75,6 +77,8 @@ export default function PolandMap({ highlightedGeoId }: PolandMapProps) {
         width={800}
         height={620}
         className="w-full h-auto"
+        role={ariaLabel ? "img" : undefined}
+        aria-label={ariaLabel}
       >
         <Geographies geography={GEO_URL}>
           {({ geographies }) =>

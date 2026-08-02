@@ -9,6 +9,7 @@ import { SITE_URL } from "@/lib/site";
 import PowiatFacts from "@/components/PowiatFacts";
 import PlatePreview from "@/components/PlatePreview";
 import ProductWindow from "@/components/ProductWindow";
+import RegionMap from "@/components/RegionMap";
 
 interface PageProps {
   params: Promise<{ kod: string }>;
@@ -97,6 +98,8 @@ export default async function TablicaPage({ params }: PageProps) {
             </h2>
             <PowiatFacts powiat={powiat} />
           </div>
+
+          <RegionMap powiat={powiat} kod={canonicalKod} />
         </ProductWindow>
       </main>
     </div>
