@@ -7,22 +7,24 @@ interface ModeToggleProps {
   onChange: (mode: Mode) => void;
 }
 
+// Tor jest wklęsły, aktywny segment wypukły — czytelna metafora klawisza,
+// która zastępuje dawne kontrastowe wypełnienie kolorem.
+const ACTIVE = "neu-raised-sm rounded-full bg-surface px-3 py-1.5 text-xs font-semibold sm:text-sm";
+const INACTIVE =
+  "rounded-full px-3 py-1.5 text-xs font-medium text-zinc-600 transition-colors hover:text-zinc-900 sm:text-sm";
+
 export default function ModeToggle({ mode, onChange }: ModeToggleProps) {
   return (
     <div
       role="group"
       aria-label="Tryb wyszukiwania"
-      className="inline-flex rounded-full border border-zinc-300 bg-white p-1 shadow-sm dark:border-zinc-700 dark:bg-zinc-900"
+      className="neu-sunken inline-flex rounded-full bg-surface p-1"
     >
       <button
         type="button"
         aria-pressed={mode === "plate"}
         onClick={() => onChange("plate")}
-        className={
-          mode === "plate"
-            ? "rounded-full bg-blue-600 px-3 py-1.5 text-xs font-semibold text-white sm:text-sm"
-            : "rounded-full px-3 py-1.5 text-xs font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 sm:text-sm"
-        }
+        className={mode === "plate" ? `${ACTIVE} text-accent` : INACTIVE}
       >
         Tablica
       </button>
@@ -30,11 +32,7 @@ export default function ModeToggle({ mode, onChange }: ModeToggleProps) {
         type="button"
         aria-pressed={mode === "location"}
         onClick={() => onChange("location")}
-        className={
-          mode === "location"
-            ? "rounded-full bg-emerald-700 px-3 py-1.5 text-xs font-semibold text-white sm:text-sm"
-            : "rounded-full px-3 py-1.5 text-xs font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 sm:text-sm"
-        }
+        className={mode === "location" ? `${ACTIVE} text-accent-alt` : INACTIVE}
       >
         Powiat
       </button>

@@ -110,35 +110,35 @@ export default async function TablicaPage({ params }: PageProps) {
   const warszawaLink = (
     <Link
       href={`/powiat/${powiatSlug(powiat)}`}
-      className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+      className="font-medium text-accent hover:underline"
     >
       Warszawy
     </Link>
   );
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-zinc-50 dark:bg-black">
+    <div className="min-h-screen overflow-x-hidden bg-surface">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
-        <Link href="/" className="self-start text-sm text-blue-600 hover:underline dark:text-blue-400">
+        <Link href="/" className="self-start text-sm text-accent hover:underline">
           ← Powrót do wyszukiwarki
         </Link>
 
         <header className="flex flex-col items-center gap-6 text-center">
-          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-50">
+          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
             Tablica {canonicalKod}
           </h1>
           <PlatePreview code={canonicalKod} />
-          <p className="mx-auto max-w-md text-base text-zinc-600 sm:text-lg dark:text-zinc-400">
+          <p className="mx-auto max-w-md text-base text-zinc-600 sm:text-lg">
             {single ? (
               <>
                 Pochodzi z {warszawaLink}, z dzielnicy{" "}
                 <Link
                   href={`/dzielnica/${dzielnicaSlug(single)}`}
-                  className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+                  className="font-medium text-accent hover:underline"
                 >
                   {single.nazwa}
                 </Link>{" "}
@@ -152,7 +152,7 @@ export default async function TablicaPage({ params }: PageProps) {
                     {i > 0 && (i === dzielnice.length - 1 ? " i " : ", ")}
                     <Link
                       href={`/dzielnica/${dzielnicaSlug(d)}`}
-                      className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+                      className="font-medium text-accent hover:underline"
                     >
                       {d.nazwa}
                     </Link>
@@ -165,7 +165,7 @@ export default async function TablicaPage({ params }: PageProps) {
                 Pochodzi z powiatu{" "}
                 <Link
                   href={`/powiat/${powiatSlug(powiat)}`}
-                  className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+                  className="font-medium text-accent hover:underline"
                 >
                   {bareName(powiat.nazwa)}
                 </Link>{" "}
@@ -176,8 +176,8 @@ export default async function TablicaPage({ params }: PageProps) {
         </header>
 
         <ProductWindow>
-          <div className="flex w-full max-w-xl flex-col gap-4 self-center rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-none">
-            <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+          <div className="flex w-full max-w-xl flex-col gap-4 self-center neu-sunken rounded-2xl bg-surface p-6">
+            <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
               {single
                 ? `Ciekawostki o dzielnicy ${single.nazwa}`
                 : dzielnice.length > 1

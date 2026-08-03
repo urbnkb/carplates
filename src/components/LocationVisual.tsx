@@ -22,21 +22,25 @@ interface LocationVisualProps {
 
 export default function LocationVisual({ value, onChange }: LocationVisualProps) {
   return (
-    <div className="inline-flex h-20 w-full max-w-xs items-stretch overflow-hidden rounded-md border-[3px] border-black bg-white shadow-[0_2px_6px_rgba(0,0,0,0.25)] focus-within:ring-2 focus-within:ring-emerald-600 sm:h-24 sm:max-w-sm">
-      <div className="flex w-9 flex-col items-center justify-center bg-emerald-700 py-2 sm:w-12">
-        <TownHallGlyph />
+    // Makieta samorządowa, tak jak tablica, zostaje realistyczna — dostaje
+    // tylko neomorficzną wnękę, symetrycznie do PlateVisual.
+    <div className="neu-sunken flex w-full max-w-xs rounded-2xl bg-surface p-3 sm:max-w-sm sm:p-4">
+      <div className="inline-flex h-20 w-full items-stretch overflow-hidden rounded-md border-[3px] border-black bg-white shadow-[0_2px_6px_rgba(0,0,0,0.25)] focus-within:ring-2 focus-within:ring-accent-alt sm:h-24">
+        <div className="flex w-9 flex-col items-center justify-center bg-emerald-700 py-2 sm:w-12">
+          <TownHallGlyph />
+        </div>
+        <input
+          type="text"
+          inputMode="text"
+          autoComplete="off"
+          spellCheck={false}
+          placeholder="Wpisz gminę, miasto, powiat lub dzielnicę"
+          value={value}
+          onChange={(e) => onChange(e.target.value.replace(/[^\p{L}\s-]/gu, "").slice(0, 40))}
+          aria-label="Nazwa gminy, miasta, powiatu lub dzielnicy Warszawy"
+          className="h-full min-w-0 flex-1 bg-transparent px-3 text-center font-sans text-lg font-bold text-black outline-none placeholder:text-zinc-500 placeholder:text-xs placeholder:font-normal sm:text-2xl sm:placeholder:text-sm"
+        />
       </div>
-      <input
-        type="text"
-        inputMode="text"
-        autoComplete="off"
-        spellCheck={false}
-        placeholder="Wpisz gminę, miasto lub powiat"
-        value={value}
-        onChange={(e) => onChange(e.target.value.replace(/[^\p{L}\s-]/gu, "").slice(0, 40))}
-        aria-label="Nazwa gminy, miasta lub powiatu"
-        className="h-full min-w-0 flex-1 bg-transparent px-3 text-center font-sans text-lg font-bold text-black outline-none placeholder:text-zinc-300 placeholder:text-xs placeholder:font-normal sm:text-2xl sm:placeholder:text-sm"
-      />
     </div>
   );
 }

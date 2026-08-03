@@ -69,7 +69,7 @@ export default function PolandMap({ highlightedGeoId, ariaLabel }: PolandMapProp
   return (
     <div
       ref={mapRef}
-      className="w-full overflow-hidden rounded-2xl border border-black/10 bg-sky-50 shadow-sm dark:border-white/10 dark:bg-slate-900 dark:shadow-none"
+      className="neu-sunken w-full overflow-hidden rounded-2xl bg-surface"
     >
       <ComposableMap
         projection="geoMercator"
@@ -115,21 +115,21 @@ export default function PolandMap({ highlightedGeoId, ariaLabel }: PolandMapProp
                   }}
                   style={{
                     default: {
-                      fill: isHighlighted ? "#2563eb" : "#e2e8f0",
-                      stroke: "#94a3b8",
+                      fill: isHighlighted ? "#1d4ed8" : "#f3f6fa",
+                      stroke: "#9fadc0",
                       strokeWidth: 0.4,
                       outline: "none",
                       transition: "fill 200ms ease-in-out",
                     },
                     hover: {
-                      fill: isHighlighted ? "#2563eb" : "#cbd5e1",
-                      stroke: "#94a3b8",
+                      fill: isHighlighted ? "#1d4ed8" : "#e2e8f1",
+                      stroke: "#9fadc0",
                       strokeWidth: 0.4,
                       outline: "none",
                     },
                     pressed: {
-                      fill: isHighlighted ? "#1d4ed8" : "#cbd5e1",
-                      stroke: "#94a3b8",
+                      fill: isHighlighted ? "#1e3a8a" : "#e2e8f1",
+                      stroke: "#9fadc0",
                       strokeWidth: 0.4,
                       outline: "none",
                     },
@@ -144,17 +144,17 @@ export default function PolandMap({ highlightedGeoId, ariaLabel }: PolandMapProp
       {activePowiat && active && (
         <div
           ref={tooltipRef}
-          className="pointer-events-none fixed z-50 rounded-lg border border-black/10 bg-white px-3 py-2 shadow-lg dark:border-white/10 dark:bg-zinc-800"
+          className="neu-raised pointer-events-none fixed z-50 rounded-xl bg-surface px-3 py-2"
           style={{ left: active.x, top: active.y, transform: "translate(-50%, calc(-100% - 12px))" }}
         >
-          <p className="text-center text-sm font-semibold whitespace-nowrap text-zinc-900 dark:text-zinc-50">
+          <p className="text-center text-sm font-semibold whitespace-nowrap text-zinc-900">
             {bareName(activePowiat.nazwa)}
           </p>
           <div className="mt-1.5 flex max-w-56 flex-wrap justify-center gap-1">
             {activePowiat.kody.map((kod) => (
               <span
                 key={kod}
-                className="rounded-full border border-zinc-300 bg-zinc-50 px-2 py-0.5 font-mono text-xs font-semibold text-zinc-700 dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-200"
+                className="neu-sunken-sm rounded-full bg-surface px-2 py-0.5 font-mono text-xs font-semibold text-zinc-700"
               >
                 {kod}
               </span>

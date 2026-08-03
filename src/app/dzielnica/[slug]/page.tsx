@@ -82,21 +82,21 @@ export default async function DzielnicaPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-zinc-50 dark:bg-black">
+    <div className="min-h-screen overflow-x-hidden bg-surface">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
-        <Link href="/" className="self-start text-sm text-blue-600 hover:underline dark:text-blue-400">
+        <Link href="/" className="self-start text-sm text-accent hover:underline">
           ← Powrót do wyszukiwarki
         </Link>
 
         <header className="text-center">
-          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-50">
+          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
             {dzielnica.nazwa}
           </h1>
-          <p className="mx-auto mt-4 max-w-md text-base text-zinc-600 sm:text-lg dark:text-zinc-400">
+          <p className="mx-auto mt-4 max-w-md text-base text-zinc-600 sm:text-lg">
             Dzielnica Warszawy, województwo {warszawaPowiat.wojewodztwo}
           </p>
         </header>
@@ -104,14 +104,14 @@ export default async function DzielnicaPage({ params }: PageProps) {
         <ProductWindow>
           <div className="flex w-full flex-col gap-8">
             <section className="flex w-full flex-col items-center gap-3">
-              <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+              <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
                 Kod tablic rejestracyjnych
               </h2>
               <Link href={`/tablica/${dzielnica.kod}`}>
                 <PlatePreview code={dzielnica.kod} />
               </Link>
               {rodzenstwo.length > 0 && (
-                <p className="max-w-md text-center text-sm text-zinc-600 dark:text-zinc-400">
+                <p className="max-w-md text-center text-sm text-zinc-600">
                   Kod {dzielnica.kod} jest wspólny z{" "}
                   {rodzenstwo.length === 1 ? "dzielnicą" : "dzielnicami"}{" "}
                   {rodzenstwo.map((d, i) => (
@@ -119,7 +119,7 @@ export default async function DzielnicaPage({ params }: PageProps) {
                       {i > 0 && (i === rodzenstwo.length - 1 ? " i " : ", ")}
                       <Link
                         href={`/dzielnica/${dzielnicaSlug(d)}`}
-                        className="font-medium text-blue-600 hover:underline dark:text-blue-400"
+                        className="font-medium text-accent hover:underline"
                       >
                         {d.nazwa}
                       </Link>
@@ -130,8 +130,8 @@ export default async function DzielnicaPage({ params }: PageProps) {
               )}
             </section>
 
-            <div className="flex w-full max-w-xl flex-col gap-4 self-center rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-none">
-              <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+            <div className="flex w-full max-w-xl flex-col gap-4 self-center neu-sunken rounded-2xl bg-surface p-6">
+              <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
                 Ciekawostki o dzielnicy {dzielnica.nazwa}
               </h2>
               <Facts
@@ -150,17 +150,17 @@ export default async function DzielnicaPage({ params }: PageProps) {
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-sm">
               <Link
                 href={`/powiat/${powiatSlug(warszawaPowiat)}`}
-                className="text-blue-600 hover:underline dark:text-blue-400"
+                className="text-accent hover:underline"
               >
                 Wszystkie kody Warszawy →
               </Link>
               <Link
                 href={`/tablica/${dzielnica.kod}`}
-                className="text-blue-600 hover:underline dark:text-blue-400"
+                className="text-accent hover:underline"
               >
                 Zobacz stronę kodu {dzielnica.kod} →
               </Link>
-              <Link href="/dzielnica" className="text-blue-600 hover:underline dark:text-blue-400">
+              <Link href="/dzielnica" className="text-accent hover:underline">
                 Wszystkie dzielnice →
               </Link>
             </div>

@@ -41,11 +41,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Jeden motyw jasny — pasek przeglądarki w kolorze powierzchni (--color-surface).
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
+  themeColor: "#e0e5ec",
 };
 
 export default function RootLayout({
@@ -58,7 +56,7 @@ export default function RootLayout({
       lang="pl"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col font-sans">
         {children}
         <Analytics />
         <SpeedInsights />

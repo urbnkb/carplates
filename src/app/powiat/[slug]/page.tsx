@@ -64,21 +64,21 @@ export default async function PowiatPage({ params }: PageProps) {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-zinc-50 dark:bg-black">
+    <div className="min-h-screen overflow-x-hidden bg-surface">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
-        <Link href="/" className="self-start text-sm text-blue-600 hover:underline dark:text-blue-400">
+        <Link href="/" className="self-start text-sm text-accent hover:underline">
           ← Powrót do wyszukiwarki
         </Link>
 
         <header className="text-center">
-          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl dark:text-zinc-50">
+          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
             {capitalize(powiat.nazwa)}
           </h1>
-          <p className="mx-auto mt-4 max-w-md text-base text-zinc-600 sm:text-lg dark:text-zinc-400">
+          <p className="mx-auto mt-4 max-w-md text-base text-zinc-600 sm:text-lg">
             Województwo {powiat.wojewodztwo}
           </p>
         </header>
@@ -86,7 +86,7 @@ export default async function PowiatPage({ params }: PageProps) {
         <ProductWindow>
           <div className="flex w-full flex-col gap-8">
             <section className="flex w-full flex-col items-center gap-3">
-              <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+              <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
                 Kody tablic rejestracyjnych
               </h2>
               <div className="flex flex-wrap justify-center gap-3">
@@ -94,7 +94,7 @@ export default async function PowiatPage({ params }: PageProps) {
                   <Link key={kod} href={`/tablica/${kod}`} className="flex flex-col items-center gap-1">
                     <PlatePreview code={kod} />
                     {isWarszawa && (
-                      <span className="max-w-32 text-center text-xs text-zinc-500 dark:text-zinc-500">
+                      <span className="max-w-32 text-center text-xs text-zinc-600">
                         {dzielniceLabelForKod(kod)}
                       </span>
                     )}
@@ -105,7 +105,7 @@ export default async function PowiatPage({ params }: PageProps) {
 
             {isWarszawa && (
               <section className="flex w-full flex-col items-center gap-3">
-                <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+                <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
                   18 dzielnic Warszawy
                 </h2>
                 <ul className="grid w-full grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3">
@@ -113,19 +113,19 @@ export default async function PowiatPage({ params }: PageProps) {
                     <li key={d.geoId}>
                       <Link
                         href={`/dzielnica/${dzielnicaSlug(d)}`}
-                        className="text-sm text-blue-600 hover:underline dark:text-blue-400"
+                        className="text-sm text-accent hover:underline"
                       >
                         {d.nazwa}
                       </Link>{" "}
-                      <span className="font-mono text-xs text-zinc-500 dark:text-zinc-500">{d.kod}</span>
+                      <span className="font-mono text-xs text-zinc-600">{d.kod}</span>
                     </li>
                   ))}
                 </ul>
               </section>
             )}
 
-            <div className="flex w-full max-w-xl flex-col gap-4 self-center rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-none">
-              <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+            <div className="flex w-full max-w-xl flex-col gap-4 self-center neu-sunken rounded-2xl bg-surface p-6">
+              <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
                 Ciekawostki
               </h2>
               <Facts ciekawostki={powiat.ciekawostki} verified={powiat.factsVerified} />

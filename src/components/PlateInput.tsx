@@ -13,14 +13,14 @@ export default function PlateInput({ value, onChange }: PlateInputProps) {
       <div className="flex w-full max-w-xs items-center justify-between sm:max-w-sm">
         <label
           htmlFor="country"
-          className="text-sm font-medium text-zinc-600 dark:text-zinc-400"
+          className="text-sm font-medium text-zinc-600"
         >
           Kraj
         </label>
         <select
           id="country"
           defaultValue="PL"
-          className="rounded-md border border-zinc-300 bg-white px-3 py-1.5 text-sm text-zinc-900 shadow-sm dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:shadow-none"
+          className="neu-raised-sm rounded-full bg-surface px-3 py-1.5 text-sm text-zinc-900 outline-none focus:neu-sunken-sm"
         >
           <option value="PL">🇵🇱 Polska</option>
         </select>

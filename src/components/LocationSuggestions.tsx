@@ -28,8 +28,8 @@ export default function LocationSuggestions({
             onClick={() => onSelect(target)}
             className={
               isActive
-                ? "rounded-full border border-emerald-700 bg-emerald-700 px-3 py-1 text-xs font-medium text-white"
-                : "rounded-full border border-zinc-300 bg-white px-3 py-1 text-xs font-medium text-zinc-700 transition-colors hover:border-emerald-400 hover:text-emerald-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-emerald-500 dark:hover:text-emerald-400"
+                ? "neu-sunken-sm rounded-full bg-surface px-3 py-1 text-xs font-semibold text-accent-alt"
+                : "neu-raised-sm rounded-full bg-surface px-3 py-1 text-xs font-medium text-zinc-700 transition-colors hover:text-accent-alt"
             }
           >
             {target.dzielnica ? (

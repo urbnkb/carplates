@@ -27,8 +27,8 @@ export default function PlateSuggestions({
             onClick={() => onSelect(code)}
             className={
               isActive
-                ? "rounded-full border border-blue-600 bg-blue-600 px-3 py-1 text-xs font-medium text-white"
-                : "rounded-full border border-zinc-300 bg-white px-3 py-1 text-xs font-medium text-zinc-700 transition-colors hover:border-blue-400 hover:text-blue-600 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-blue-500 dark:hover:text-blue-400"
+                ? "neu-sunken-sm rounded-full bg-surface px-3 py-1 text-xs font-semibold text-accent"
+                : "neu-raised-sm rounded-full bg-surface px-3 py-1 text-xs font-medium text-zinc-700 transition-colors hover:text-accent"
             }
           >
             <span className="font-mono font-semibold">{code}</span>

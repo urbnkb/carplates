@@ -104,7 +104,7 @@ export default function Home() {
     : [];
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-zinc-50 dark:bg-black">
+    <div className="min-h-screen overflow-x-hidden bg-surface">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON_LD }} />
       <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
         <div className="flex w-full justify-end">
@@ -115,10 +115,10 @@ export default function Home() {
           <HeroIcons />
           <ViewTransition key={mode} name="mode-header" share="auto" enter="auto" default="none">
             <header data-hero-header className="text-center">
-              <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl dark:text-zinc-50">
+              <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl lg:text-6xl">
                 {mode === "plate" ? "Skąd ta rejestracja?" : "Jakie tablice ma ten powiat?"}
               </h1>
-              <p className="mx-auto mt-4 max-w-sm text-base text-zinc-600 sm:max-w-md sm:text-lg dark:text-zinc-400">
+              <p className="mx-auto mt-4 max-w-sm text-base text-zinc-600 sm:max-w-md sm:text-lg">
                 {mode === "plate"
                   ? "Wpisz początkowe znaki polskiej tablicy rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd."
                   : "Wpisz nazwę gminy, miasta, powiatu lub dzielnicy Warszawy i sprawdź, jakie kody tablic tam obowiązują."}
@@ -179,15 +179,15 @@ export default function Home() {
           </ViewTransition>
         </ProductWindow>
 
-        <footer className="mt-4 flex w-full max-w-xl flex-col items-center gap-3 rounded-2xl border border-pink-200 bg-pink-50 p-6 text-center dark:border-pink-900/40 dark:bg-pink-950/20">
-          <p className="text-sm text-zinc-700 dark:text-zinc-300">
+        <footer className="neu-raised mt-4 flex w-full max-w-xl flex-col items-center gap-3 rounded-2xl bg-surface p-6 text-center">
+          <p className="text-sm text-zinc-700">
             Jeżeli doceniasz moją działalność, wesprzyj mnie ♥
           </p>
           <a
             href="https://suppi.pl/urbnkb"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-pink-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-pink-700"
+            className="neu-raised-sm inline-flex items-center gap-2 rounded-full bg-surface px-5 py-2 text-sm font-semibold text-pink-700 transition-shadow active:neu-sunken-sm"
           >
             Wesprzyj na suppi.pl
           </a>

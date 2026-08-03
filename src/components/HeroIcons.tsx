@@ -74,7 +74,7 @@ const ACCENTS: Accent[] = [
   {
     paths: CAR_PATHS,
     position: "-top-6 -left-3 sm:-top-8 sm:-left-6 lg:-top-10 lg:-left-14",
-    color: "border-blue-500 text-blue-600 dark:text-blue-400",
+    color: "text-blue-600",
     size: "h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10",
     baseRotate: -14,
     scrollFactor: 0.08,
@@ -87,7 +87,7 @@ const ACCENTS: Accent[] = [
   {
     paths: FLAG_PATHS,
     position: "top-12 -left-4 sm:top-16 sm:-left-8 lg:top-20 lg:-left-24",
-    color: "border-red-500 text-red-600 dark:text-red-400",
+    color: "text-red-600",
     size: "h-7 w-7 sm:h-8 sm:w-8",
     baseRotate: 9,
     scrollFactor: -0.05,
@@ -100,7 +100,7 @@ const ACCENTS: Accent[] = [
   {
     paths: COMPASS_PATHS,
     position: "-top-8 left-3 sm:-top-12 sm:left-5 lg:-top-20 lg:left-12",
-    color: "border-sky-500 text-sky-600 dark:text-sky-400",
+    color: "text-sky-600",
     size: "h-6 w-6 sm:h-7 sm:w-7",
     baseRotate: -6,
     scrollFactor: 0.11,
@@ -114,7 +114,7 @@ const ACCENTS: Accent[] = [
   {
     paths: PIN_PATHS,
     position: "-top-3 -right-3 sm:-top-4 sm:-right-6 lg:-top-6 lg:-right-16",
-    color: "border-emerald-600 text-emerald-700 dark:text-emerald-400",
+    color: "text-emerald-700",
     size: "h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9",
     baseRotate: 12,
     scrollFactor: -0.07,
@@ -127,7 +127,7 @@ const ACCENTS: Accent[] = [
   {
     paths: SEARCH_PATHS,
     position: "top-14 -right-3 sm:top-16 sm:-right-5 lg:top-24 lg:-right-8",
-    color: "border-amber-500 text-amber-600 dark:text-amber-400",
+    color: "text-amber-600",
     size: "h-8 w-8 sm:h-9 sm:w-9 lg:h-11 lg:w-11",
     baseRotate: -16,
     scrollFactor: 0.06,
@@ -205,7 +205,7 @@ export default function HeroIcons() {
             style={{ animationDelay: `${accent.floatDelay}s`, animationDuration: `${accent.floatDuration}s` }}
           >
             <div
-              className={`flex shrink-0 items-center justify-center rounded-full border-2 bg-white shadow-sm dark:bg-zinc-900 ${accent.color} ${accent.size}`}
+              className={`neu-raised-sm flex shrink-0 items-center justify-center rounded-full bg-surface ${accent.color} ${accent.size}`}
             >
               <svg
                 viewBox="0 0 24 24"

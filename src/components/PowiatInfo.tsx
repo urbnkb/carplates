@@ -32,17 +32,17 @@ export default function PowiatInfo({ powiat, matchedCode, dzielnica }: PowiatInf
   const single = dzielnice.length === 1 ? dzielnice[0] : null;
 
   return (
-    <div className="flex w-full max-w-xl flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 dark:shadow-none">
+    <div className="neu-sunken flex w-full max-w-xl flex-col gap-4 rounded-2xl bg-surface p-6">
       <div>
         {matchedCode && (
-          <p className="text-xs font-semibold uppercase tracking-wide text-blue-600 dark:text-blue-400">
+          <p className="text-xs font-semibold uppercase tracking-wide text-accent">
             Kod {matchedCode}
           </p>
         )}
-        <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+        <h2 className="text-2xl font-bold text-zinc-900">
           {isWarszawa ? orList(dzielnice.map((d) => d.nazwa)) : capitalize(powiat.nazwa)}
         </h2>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+        <p className="text-sm text-zinc-600">
           {isWarszawa
             ? `${dzielnice.length === 1 ? "Dzielnica" : "Dzielnice"} Warszawy · województwo ${powiat.wojewodztwo}`
             : `Województwo ${powiat.wojewodztwo}`}
@@ -59,10 +59,10 @@ export default function PowiatInfo({ powiat, matchedCode, dzielnica }: PowiatInf
         <Facts ciekawostki={powiat.ciekawostki} verified={powiat.factsVerified} />
       )}
 
-      <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-zinc-100 pt-3 text-sm dark:border-zinc-800">
+      <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-white/70 pt-3 text-sm">
         <Link
           href={`/powiat/${powiatSlug(powiat)}`}
-          className="text-blue-600 hover:underline dark:text-blue-400"
+          className="text-accent hover:underline"
         >
           Zobacz pełną stronę tego powiatu →
         </Link>
@@ -70,7 +70,7 @@ export default function PowiatInfo({ powiat, matchedCode, dzielnica }: PowiatInf
           <Link
             key={d.geoId}
             href={`/dzielnica/${dzielnicaSlug(d)}`}
-            className="text-blue-600 hover:underline dark:text-blue-400"
+            className="text-accent hover:underline"
           >
             Zobacz stronę dzielnicy {d.nazwa} →
           </Link>
@@ -78,7 +78,7 @@ export default function PowiatInfo({ powiat, matchedCode, dzielnica }: PowiatInf
         {matchedCode && (
           <Link
             href={`/tablica/${matchedCode}`}
-            className="text-blue-600 hover:underline dark:text-blue-400"
+            className="text-accent hover:underline"
           >
             Zobacz stronę kodu {matchedCode} →
           </Link>

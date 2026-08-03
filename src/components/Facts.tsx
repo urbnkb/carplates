@@ -10,14 +10,14 @@ export default function Facts({ ciekawostki, verified, subject = "tego powiatu" 
 
   return (
     <>
-      <ul className="flex flex-col gap-2 border-t border-zinc-100 pt-3 dark:border-zinc-800">
+      <ul className="flex flex-col gap-2 border-t border-white/70 pt-3">
         {ciekawostki.map((fact, i) => (
           <li
             key={i}
             className={
               verified
-                ? "flex gap-2 text-sm text-zinc-700 dark:text-zinc-300"
-                : "flex gap-2 text-sm italic text-zinc-400 dark:text-zinc-500"
+                ? "flex gap-2 text-sm text-zinc-700"
+                : "flex gap-2 text-sm italic text-zinc-600"
             }
           >
             <span aria-hidden="true">•</span>
@@ -27,7 +27,7 @@ export default function Facts({ ciekawostki, verified, subject = "tego powiatu" 
       </ul>
 
       {!verified && (
-        <p className="text-xs text-amber-600 dark:text-amber-400">
+        <p className="text-xs text-amber-800">
           Ciekawostki dla {subject} nie zostały jeszcze zweryfikowane.
         </p>
       )}

@@ -35,7 +35,7 @@ export default function RegionMap({ powiat, kod, dzielnice, heading }: RegionMap
 
   return (
     <section className="flex w-full flex-col items-center gap-3">
-      <h2 className="text-sm font-semibold tracking-wide text-zinc-500 uppercase dark:text-zinc-400">
+      <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
         {resolvedHeading}
       </h2>
       {shown.length > 0 ? (

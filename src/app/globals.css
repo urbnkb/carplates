@@ -1,28 +1,55 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/**
+ * Neomorfizm: tło i elementy mają ten sam odcień, a cała głębia bierze się
+ * z pary cieni — jasnego z góry-lewej i ciemnego z dołu-prawej. Stąd tylko
+ * jeden kolor powierzchni; obwódki i kontrastowe wypełnienia są zbędne.
+ */
+@theme {
+  --color-surface: #e0e5ec;
+  --color-ink: #27272a;
+  --color-ink-muted: #52525b;
+  --color-accent: #1d4ed8;
+  --color-accent-alt: #065f46;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-.dark {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*
+ * Cienie neomorficzne. Wartości jasna/ciemna są dobrane do --color-surface
+ * (#e0e5ec) — przy zmianie odcienia tła trzeba je przeliczyć razem z nim.
+ */
+@utility neu-raised {
+  box-shadow:
+    6px 6px 12px rgb(163 177 198 / 0.55),
+    -6px -6px 12px rgb(255 255 255 / 0.9);
+}
+
+@utility neu-raised-sm {
+  box-shadow:
+    3px 3px 6px rgb(163 177 198 / 0.5),
+    -3px -3px 6px rgb(255 255 255 / 0.85);
+}
+
+@utility neu-sunken {
+  box-shadow:
+    inset 5px 5px 10px rgb(163 177 198 / 0.55),
+    inset -5px -5px 10px rgb(255 255 255 / 0.9);
+}
+
+@utility neu-sunken-sm {
+  box-shadow:
+    inset 3px 3px 6px rgb(163 177 198 / 0.5),
+    inset -3px -3px 6px rgb(255 255 255 / 0.85);
 }
 
 @media (prefers-reduced-motion: reduce) {
