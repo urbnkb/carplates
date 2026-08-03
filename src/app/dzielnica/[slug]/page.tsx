@@ -101,7 +101,7 @@ export default async function DzielnicaPage({ params }: PageProps) {
           </p>
         </header>
 
-        <ProductWindow>
+        <ProductWindow accent="location">
           <div className="flex w-full flex-col gap-8">
             <section className="flex w-full flex-col items-center gap-3">
               <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
@@ -130,7 +130,7 @@ export default async function DzielnicaPage({ params }: PageProps) {
               )}
             </section>
 
-            <div className="flex w-full max-w-xl flex-col gap-4 self-center neu-sunken rounded-2xl bg-surface p-6">
+            <div className="flex w-full max-w-xl flex-col gap-4 self-center neu-sunken rounded-2xl bg-well p-6">
               <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
                 Ciekawostki o dzielnicy {dzielnica.nazwa}
               </h2>

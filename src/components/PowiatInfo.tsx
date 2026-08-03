@@ -32,7 +32,7 @@ export default function PowiatInfo({ powiat, matchedCode, dzielnica }: PowiatInf
   const single = dzielnice.length === 1 ? dzielnice[0] : null;
 
   return (
-    <div className="neu-sunken flex w-full max-w-xl flex-col gap-4 rounded-2xl bg-surface p-6">
+    <div className="neu-sunken flex w-full max-w-xl flex-col gap-4 rounded-2xl bg-well p-6">
       <div>
         {matchedCode && (
           <p className="text-xs font-semibold uppercase tracking-wide text-accent">

@@ -24,7 +24,7 @@ export default function LocationVisual({ value, onChange }: LocationVisualProps)
   return (
     // Makieta samorządowa, tak jak tablica, zostaje realistyczna — dostaje
     // tylko neomorficzną wnękę, symetrycznie do PlateVisual.
-    <div className="neu-sunken flex w-full max-w-xs rounded-2xl bg-surface p-3 sm:max-w-sm sm:p-4">
+    <div className="neu-sunken flex w-full max-w-xs rounded-2xl bg-well p-3 sm:max-w-sm sm:p-4">
       <div className="inline-flex h-20 w-full items-stretch overflow-hidden rounded-md border-[3px] border-black bg-white shadow-[0_2px_6px_rgba(0,0,0,0.25)] focus-within:ring-2 focus-within:ring-accent-alt sm:h-24">
         <div className="flex w-9 flex-col items-center justify-center bg-emerald-700 py-2 sm:w-12">
           <TownHallGlyph />

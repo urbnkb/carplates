@@ -127,7 +127,7 @@ export default function Home() {
           </ViewTransition>
         </div>
 
-        <ProductWindow>
+        <ProductWindow accent={mode === "plate" ? "plate" : "location"}>
           <ViewTransition key={mode} name="mode-content" share="auto" enter="auto" default="none">
             <>
               {mode === "plate" ? (

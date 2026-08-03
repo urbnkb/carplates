@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 /**
- * Neomorfizm: tło i elementy mają ten sam odcień, a cała głębia bierze się
- * z pary cieni — jasnego z góry-lewej i ciemnego z dołu-prawej. Stąd tylko
- * jeden kolor powierzchni; obwódki i kontrastowe wypełnienia są zbędne.
+ * Neomorfizm w wariancie jasnym: dominantą jest biel, a szarość pełni rolę
+ * cienia i wypełnienia wnęk. Elementy wypukłe są białe i odcinają się od tła
+ * miękkim szarym cieniem; elementy wklęsłe dostają szare tło (--color-well)
+ * i cień wewnętrzny.
  */
 @theme {
-  --color-surface: #e0e5ec;
+  --color-surface: #ffffff;
+  --color-well: #eef1f6;
   --color-ink: #27272a;
   --color-ink-muted: #52525b;
   --color-accent: #1d4ed8;
@@ -25,31 +27,33 @@ body {
 }
 
 /*
- * Cienie neomorficzne. Wartości jasna/ciemna są dobrane do --color-surface
- * (#e0e5ec) — przy zmianie odcienia tła trzeba je przeliczyć razem z nim.
+ * Cienie neomorficzne. Wypukłe niosą głównie cień szary — na białym tle
+ * jasna poświata i tak jest niewidoczna, więc odpowiada tylko za zmiękczenie
+ * górnej krawędzi. Wklęsłe zakładają szare tło (bg-well), na którym biały
+ * refleks ma się od czego odbić.
  */
 @utility neu-raised {
   box-shadow:
-    6px 6px 12px rgb(163 177 198 / 0.55),
-    -6px -6px 12px rgb(255 255 255 / 0.9);
+    8px 8px 20px rgb(148 163 184 / 0.3),
+    -8px -8px 20px rgb(255 255 255 / 0.85);
 }
 
 @utility neu-raised-sm {
   box-shadow:
-    3px 3px 6px rgb(163 177 198 / 0.5),
-    -3px -3px 6px rgb(255 255 255 / 0.85);
+    4px 4px 10px rgb(148 163 184 / 0.28),
+    -4px -4px 10px rgb(255 255 255 / 0.8);
 }
 
 @utility neu-sunken {
   box-shadow:
-    inset 5px 5px 10px rgb(163 177 198 / 0.55),
-    inset -5px -5px 10px rgb(255 255 255 / 0.9);
+    inset 5px 5px 10px rgb(148 163 184 / 0.38),
+    inset -5px -5px 10px rgb(255 255 255 / 0.95);
 }
 
 @utility neu-sunken-sm {
   box-shadow:
-    inset 3px 3px 6px rgb(163 177 198 / 0.5),
-    inset -3px -3px 6px rgb(255 255 255 / 0.85);
+    inset 3px 3px 6px rgb(148 163 184 / 0.35),
+    inset -3px -3px 6px rgb(255 255 255 / 0.9);
 }
 
 @media (prefers-reduced-motion: reduce) {

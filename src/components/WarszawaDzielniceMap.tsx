@@ -70,7 +70,7 @@ export default function WarszawaDzielniceMap({
   return (
     <div
       ref={mapRef}
-      className="neu-sunken w-full overflow-hidden rounded-2xl bg-surface"
+      className="neu-sunken w-full overflow-hidden rounded-2xl bg-well"
     >
       <ComposableMap
         projection="geoMercator"
@@ -116,21 +116,21 @@ export default function WarszawaDzielniceMap({
                   }}
                   style={{
                     default: {
-                      fill: isHighlighted ? "#1d4ed8" : "#f3f6fa",
-                      stroke: "#9fadc0",
+                      fill: isHighlighted ? "#1d4ed8" : "#ffffff",
+                      stroke: "#a5b2c4",
                       strokeWidth: 0.4,
                       outline: "none",
                       transition: "fill 200ms ease-in-out",
                     },
                     hover: {
-                      fill: isHighlighted ? "#1d4ed8" : "#e2e8f1",
-                      stroke: "#9fadc0",
+                      fill: isHighlighted ? "#1d4ed8" : "#dde4ee",
+                      stroke: "#a5b2c4",
                       strokeWidth: 0.4,
                       outline: "none",
                     },
                     pressed: {
-                      fill: isHighlighted ? "#1e3a8a" : "#e2e8f1",
-                      stroke: "#9fadc0",
+                      fill: isHighlighted ? "#1e3a8a" : "#dde4ee",
+                      stroke: "#a5b2c4",
                       strokeWidth: 0.4,
                       outline: "none",
                     },
@@ -152,7 +152,7 @@ export default function WarszawaDzielniceMap({
             {activeDzielnica.nazwa}
           </p>
           <div className="mt-1.5 flex justify-center">
-            <span className="neu-sunken-sm rounded-full bg-surface px-2 py-0.5 font-mono text-xs font-semibold text-zinc-700">
+            <span className="neu-sunken-sm rounded-full bg-well px-2 py-0.5 font-mono text-xs font-semibold text-zinc-700">
               {activeDzielnica.kod}
             </span>
           </div>

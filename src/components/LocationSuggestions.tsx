@@ -28,7 +28,7 @@ export default function LocationSuggestions({
             onClick={() => onSelect(target)}
             className={
               isActive
-                ? "neu-sunken-sm rounded-full bg-surface px-3 py-1 text-xs font-semibold text-accent-alt"
+                ? "neu-sunken-sm rounded-full bg-well px-3 py-1 text-xs font-semibold text-accent-alt"
                 : "neu-raised-sm rounded-full bg-surface px-3 py-1 text-xs font-medium text-zinc-700 transition-colors hover:text-accent-alt"
             }
           >
