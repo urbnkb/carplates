@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 // Jeden motyw jasny — pasek przeglądarki w kolorze powierzchni (--color-surface).
 export const viewport: Viewport = {
-  themeColor: "#e0e5ec",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({

@@ -16,7 +16,7 @@ export default function Image() {
           alignItems: "center",
           justifyContent: "center",
           gap: 28,
-          background: "#e0e5ec",
+          background: "#ffffff",
           fontFamily: "sans-serif",
         }}
       >
@@ -29,7 +29,9 @@ export default function Image() {
             borderRadius: 14,
             border: "6px solid #000000",
             overflow: "hidden",
-            boxShadow: "8px 8px 20px rgba(163,177,198,0.55), -8px -8px 20px rgba(255,255,255,0.9)",
+            // Odpowiednik utility neu-raised z globals.css — trzymamy te same
+            // wartości, żeby grafika OG nie rozjechała się ze stroną.
+            boxShadow: "8px 8px 20px rgba(148,163,184,0.3)",
           }}
         >
           <div
