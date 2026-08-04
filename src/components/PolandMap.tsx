@@ -73,7 +73,9 @@ export default function PolandMap({ highlightedGeoId, ariaLabel }: PolandMapProp
     >
       <ComposableMap
         projection="geoMercator"
-        projectionConfig={{ center: [19, 52.1], scale: 2600 }}
+        // Skala dobrana tak, by kraj wypełniał ~90% wysokości kadru — przy 2600
+        // zajmował tylko 69% i granice powiatów były trudne do odczytania.
+        projectionConfig={{ center: [19, 52.1], scale: 3350 }}
         width={800}
         height={620}
         className="w-full h-auto"
