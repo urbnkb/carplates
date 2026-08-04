@@ -12,7 +12,12 @@ import type { CSSProperties } from "react";
 export const MAP_COLORS = {
   land: "#ffffff",
   landHover: "#d8e1ee",
-  border: "#8fa0b8",
+  /*
+   * Kontrast granicy względem białego powiatu: 2,13:1. To 20% mniej niż
+   * poprzednie #8fa0b8 (2,66:1) — przy pełnopikselowej grubości mocniejszy
+   * kolor zbijał gęste południe kraju w ciemną plamę.
+   */
+  border: "#a5b3c6",
   highlight: "#1d4ed8",
   highlightPressed: "#1e3a8a",
   highlightBorder: "#1e3a8a",
