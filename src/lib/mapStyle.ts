@@ -13,9 +13,9 @@ export const MAP_COLORS = {
   land: "#ffffff",
   landHover: "#d8e1ee",
   /*
-   * Kontrast granicy względem białego powiatu: 2,13:1. To 20% mniej niż
-   * poprzednie #8fa0b8 (2,66:1) — przy pełnopikselowej grubości mocniejszy
-   * kolor zbijał gęste południe kraju w ciemną plamę.
+   * Kontrast granicy względem białego powiatu: 2,15:1. To 20% mniej niż
+   * poprzednie #8fa0b8 (2,69:1) — mocniejszy kolor zbijał gęste południe
+   * kraju w ciemną plamę.
    */
   border: "#a5b3c6",
   highlight: "#1d4ed8",
@@ -86,8 +86,8 @@ export function geographyStyle(isHighlighted: boolean): GeographyStyle {
 
 /**
  * Przestawia podświetlone kształty na koniec listy. SVG rysuje w kolejności
- * dokumentu, więc bez tego sąsiedni powiat zamalowuje podświetlonemu kontur
- * i poświatę — czyli dokładnie to, co miało go wyróżniać.
+ * dokumentu, więc bez tego sąsiedni powiat zamalowuje podświetlonemu grubszy
+ * kontur — czyli dokładnie to, co miało go wyróżniać.
  */
 export function highlightedLast<T>(
   geographies: T[],
