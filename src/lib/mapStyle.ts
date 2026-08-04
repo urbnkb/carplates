@@ -20,7 +20,6 @@ export const MAP_COLORS = {
   border: "#a5b3c6",
   highlight: "#1d4ed8",
   highlightPressed: "#1e3a8a",
-  highlightBorder: "#1e3a8a",
 } as const;
 
 /**
@@ -40,9 +39,6 @@ export const NON_SCALING_STROKE = "non-scaling-stroke";
 const BORDER_WIDTH = 0.8;
 const HIGHLIGHT_BORDER_WIDTH = 2;
 
-/** Poświata wokół podświetlonego kształtu — promień w px CSS, więc też nie skaluje się z viewBoxem. */
-const HIGHLIGHT_GLOW = "drop-shadow(0 0 5px rgb(29 78 216 / 0.55))";
-
 type GeographyStyle = {
   default: CSSProperties;
   hover: CSSProperties;
@@ -51,15 +47,24 @@ type GeographyStyle = {
 
 /**
  * Trójka stylów wymagana przez `<Geography>` z react-simple-maps.
- * Podświetlony kształt dostaje ciemniejszy kontur i poświatę, żeby dało się go
- * znaleźć również wtedy, gdy powiat jest mały (Wałbrzych, Sopot, Świnoujście).
+ *
+ * Podświetlony kształt wyróżnia się wyłącznie wypełnieniem i grubszym konturem.
+ * Kontur celowo jest w tym samym szarym co zwykłe granice: poza wypełnieniem nie
+ * wprowadzamy drugiego koloru. Z tego samego powodu nie ma tu żadnego `filter` —
+ * poświata rozlewała się kilka pikseli poza granicę.
+ *
+ * `paintOrder` nie jest ozdobnikiem. Stroke w SVG jest wyśrodkowany na ścieżce,
+ * więc domyślnie połowa konturu leży *wewnątrz* kształtu i przy grubości 2 px
+ * potrafi zjeść całe wypełnienie małego powiatu — zmierzone na Wałbrzychu:
+ * z 238 niebieskich pikseli zostawały 3. Malowanie wypełnienia po konturze
+ * przywraca pełny kolor wewnątrz granicy.
  */
 export function geographyStyle(isHighlighted: boolean): GeographyStyle {
   const base: CSSProperties = {
-    stroke: isHighlighted ? MAP_COLORS.highlightBorder : MAP_COLORS.border,
+    stroke: MAP_COLORS.border,
     strokeWidth: isHighlighted ? HIGHLIGHT_BORDER_WIDTH : BORDER_WIDTH,
     outline: "none",
-    ...(isHighlighted ? { filter: HIGHLIGHT_GLOW } : {}),
+    ...(isHighlighted ? { paintOrder: "stroke fill" } : {}),
   };
 
   return {
