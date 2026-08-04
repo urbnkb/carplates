@@ -7,6 +7,7 @@ import {
   Geography,
 } from "react-simple-maps";
 import { dzielnicaById } from "@/lib/dzielnice";
+import { geographyStyle, highlightedLast, NON_SCALING_STROKE } from "@/lib/mapStyle";
 
 const GEO_URL = "/data/warszawa-dzielnice-boundaries.json";
 const TOOLTIP_MARGIN = 8;
@@ -70,7 +71,7 @@ export default function WarszawaDzielniceMap({
   return (
     <div
       ref={mapRef}
-      className="neu-sunken w-full overflow-hidden rounded-2xl bg-well"
+      className="neu-sunken w-full overflow-hidden rounded-2xl bg-sea"
     >
       <ComposableMap
         projection="geoMercator"
@@ -83,12 +84,15 @@ export default function WarszawaDzielniceMap({
       >
         <Geographies geography={GEO_URL}>
           {({ geographies }) =>
-            geographies.map((geo) => {
+            highlightedLast(geographies, (geo) =>
+              highlightedGeoIds.includes(geo.properties.id),
+            ).map((geo) => {
               const isHighlighted = highlightedGeoIds.includes(geo.properties.id);
               return (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
+                  vectorEffect={NON_SCALING_STROKE}
                   onPointerEnter={(event) => {
                     if (event.pointerType !== "mouse") return;
                     setHover({ geoId: geo.properties.id, x: event.clientX, y: event.clientY });
@@ -114,27 +118,7 @@ export default function WarszawaDzielniceMap({
                         : { geoId, x: rect.left + rect.width / 2, y: rect.top },
                     );
                   }}
-                  style={{
-                    default: {
-                      fill: isHighlighted ? "#1d4ed8" : "#ffffff",
-                      stroke: "#a5b2c4",
-                      strokeWidth: 0.4,
-                      outline: "none",
-                      transition: "fill 200ms ease-in-out",
-                    },
-                    hover: {
-                      fill: isHighlighted ? "#1d4ed8" : "#dde4ee",
-                      stroke: "#a5b2c4",
-                      strokeWidth: 0.4,
-                      outline: "none",
-                    },
-                    pressed: {
-                      fill: isHighlighted ? "#1e3a8a" : "#dde4ee",
-                      stroke: "#a5b2c4",
-                      strokeWidth: 0.4,
-                      outline: "none",
-                    },
-                  }}
+                  style={geographyStyle(isHighlighted)}
                 />
               );
             })

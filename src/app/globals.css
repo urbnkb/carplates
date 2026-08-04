@@ -10,6 +10,12 @@
   --color-surface: #ffffff;
   --color-well: #f7f9fc;
   --color-edge: #dbe1ea;
+  /*
+   * Tło ramki mapy. Ciemniejsze od wnęk celowo: powiaty są białe, więc dopiero
+   * różnica względem tego koloru rysuje sylwetkę kraju. Przy --color-well
+   * kontrast wynosił 1,03:1 i mapa zlewała się z ramką.
+   */
+  --color-sea: #e6ecf5;
   --color-ink: #27272a;
   --color-accent: #1d4ed8;
   --color-accent-alt: #065f46;

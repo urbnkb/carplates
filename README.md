@@ -39,11 +39,15 @@ Otwórz [http://localhost:3000](http://localhost:3000).
 
 Interfejs jest utrzymany w stylistyce **neomorficznej**, w wariancie jasnym: dominantą jest biel, a szarość pełni rolę cienia i wypełnienia wnęk. Obowiązuje jedna zasada — co wypukłe, jest białe; co wklęsłe (pola wejściowe, karty ciekawostek, tor przełącznika, ramka mapy), dostaje szare tło i cień wewnętrzny.
 
-Fundament siedzi w `src/app/globals.css`: tokeny `--color-surface`, `--color-well`, `--color-edge` i akcenty w bloku `@theme`, plus cztery utility cieni (`neu-raised`, `neu-raised-sm`, `neu-sunken`, `neu-sunken-sm`) zdefiniowane przez `@utility`. Cienie są opisane w jednym miejscu — przy zmianie odcienia powierzchni trzeba przeliczyć je razem z nią, a także zaktualizować `viewport.themeColor` w `src/app/layout.tsx` i kolory w `src/app/opengraph-image.tsx`, które nie korzystają z tokenów.
+Fundament siedzi w `src/app/globals.css`: tokeny `--color-surface`, `--color-well`, `--color-edge`, `--color-sea` i akcenty w bloku `@theme`, plus cztery utility cieni (`neu-raised`, `neu-raised-sm`, `neu-sunken`, `neu-sunken-sm`) zdefiniowane przez `@utility`. Cienie są opisane w jednym miejscu — przy zmianie odcienia powierzchni trzeba przeliczyć je razem z nią, a także zaktualizować `viewport.themeColor` w `src/app/layout.tsx` i kolory w `src/app/opengraph-image.tsx`, które nie korzystają z tokenów.
 
 Główną kartę (`ProductWindow`) obrysowuje szara krawędź o szerokości jednego piksela (`--color-edge`), która tylko domyka kształt; za wrażenie unoszenia się odpowiada cień z `neu-raised`. Gruba kolorowa ramka była testowana i okazała się za ciężka, podobnie jak wcześniejsze 3 px — przy hairline'owych cieniach każdy grubszy pasek zaczyna czytać się jako zwykły border.
 
 Cienie są celowo krótkie: o wrażeniu ciężkości decyduje **promień rozmycia**, nie alfa. Próba odchudzenia samą alfą została przeprowadzona i była na ekranie nie do wychwycenia — cień pozostawał tą samą szeroką chmurą, tylko bledszą. Obecne wartości to przesunięcia 1–2 px i rozmycia 2–6 px; zasięg przyciemnienia przy krawędzi karty wynosi ok. 6 px. Jeżeli cienie mają być mocniejsze lub słabsze, zaczynaj od promienia.
+
+Mapy (`PolandMap`, `WarszawaDzielniceMap`) mają wspólny wygląd w `src/lib/mapStyle.ts` — kolory SVG nie mogą iść przez tokeny Tailwinda, więc siedzą tam, a nie w `globals.css`. Wyjątkiem jest tło ramki: to zwykły element HTML, więc bierze `--color-sea` przez klasę `bg-sea`. Powiaty są białe i to właśnie różnica względem tego tokenu rysuje sylwetkę kraju — przy zmianie jednego przelicz drugi.
+
+Granice powiatów rysowane są z `vector-effect="non-scaling-stroke"` i to nie jest ozdobnik. Bez tego `strokeWidth` jest skalowany razem z viewBoxem (800 jednostek), więc na telefonie o szerokości ~370 px grubość 0,4 schodziła do 0,18 px i cała mapa zlewała się w plamę. Z `non-scaling-stroke` wartość oznacza piksele CSS na każdej szerokości ekranu. Podświetlony kształt dostaje grubszy, ciemny kontur i poświatę oraz jest przestawiany na koniec listy (`highlightedLast`), bo SVG rysuje w kolejności dokumentu i sąsiad zamalowałby mu krawędź.
 
 Rozróżnienie dwóch światów aplikacji — tablicy i powiatu — niesie wypełniony kolorem segment przełącznika trybu (`ModeToggle`): niebieski dla tablic, zielony dla powiatów i dzielnic. Sama karta jest neutralna.
 
