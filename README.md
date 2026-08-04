@@ -41,7 +41,9 @@ Interfejs jest utrzymany w stylistyce **neomorficznej**, w wariancie jasnym: dom
 
 Fundament siedzi w `src/app/globals.css`: tokeny `--color-surface`, `--color-well`, `--color-edge` i akcenty w bloku `@theme`, plus cztery utility cieni (`neu-raised`, `neu-raised-sm`, `neu-sunken`, `neu-sunken-sm`) zdefiniowane przez `@utility`. Cienie są opisane w jednym miejscu — przy zmianie odcienia powierzchni trzeba przeliczyć je razem z nią, a także zaktualizować `viewport.themeColor` w `src/app/layout.tsx` i kolory w `src/app/opengraph-image.tsx`, które nie korzystają z tokenów.
 
-Główną kartę (`ProductWindow`) obrysowuje cienka, 3-pikselowa szara krawędź (`--color-edge`), która tylko domyka kształt. Za wrażenie unoszenia się odpowiada **poświata** — bezkierunkowa warstwa cienia w `neu-raised`. To ona, a nie obwódka, niesie efekt charakterystyczny dla tej stylistyki; gruba kolorowa ramka była testowana i okazała się za ciężka.
+Główną kartę (`ProductWindow`) obrysowuje szara krawędź o szerokości jednego piksela (`--color-edge`), która tylko domyka kształt; za wrażenie unoszenia się odpowiada cień z `neu-raised`. Gruba kolorowa ramka była testowana i okazała się za ciężka, podobnie jak wcześniejsze 3 px — przy hairline'owych cieniach każdy grubszy pasek zaczyna czytać się jako zwykły border.
+
+Cienie są celowo krótkie: o wrażeniu ciężkości decyduje **promień rozmycia**, nie alfa. Próba odchudzenia samą alfą została przeprowadzona i była na ekranie nie do wychwycenia — cień pozostawał tą samą szeroką chmurą, tylko bledszą. Obecne wartości to przesunięcia 1–2 px i rozmycia 2–6 px; zasięg przyciemnienia przy krawędzi karty wynosi ok. 6 px. Jeżeli cienie mają być mocniejsze lub słabsze, zaczynaj od promienia.
 
 Rozróżnienie dwóch światów aplikacji — tablicy i powiatu — niesie wypełniony kolorem segment przełącznika trybu (`ModeToggle`): niebieski dla tablic, zielony dla powiatów i dzielnic. Sama karta jest neutralna.
 
