@@ -8,7 +8,7 @@
  */
 @theme {
   --color-surface: #ffffff;
-  --color-well: #f4f6fa;
+  --color-well: #f7f9fc;
   --color-edge: #dbe1ea;
   --color-ink: #27272a;
   --color-accent: #1d4ed8;
@@ -30,39 +30,40 @@ body {
 }
 
 /*
- * Cienie neomorficzne, w wariancie lekkim. Wypukłe niosą cień szary plus
- * bezkierunkową poświatę — biały refleks na białym tle jest i tak niewidoczny,
- * więc zmiękcza tylko górną krawędź. Wklęsłe zakładają szare tło (bg-well),
- * na którym biały refleks ma się od czego odbić.
+ * Cienie neomorficzne w wariancie hairline. Wypukłe i wklęsłe trzymają parę
+ * kierunkową (szary cień + biały refleks), bo to ona robi neomorfizm, ale
+ * promień rozmycia jest krótki, a przesunięcie minimalne.
  *
- * Wartości są celowo powściągliwe: mocniejsze cienie sprawiały, że karty
- * i wnęki wyglądały ciężko. Przy zmianie odcienia powierzchni trzeba je
- * przeliczyć razem z nią.
+ * O ciężkości strony decyduje przede wszystkim promień rozmycia, nie alfa.
+ * Wcześniejsza próba odchudzenia zmniejszała głównie alfę i była praktycznie
+ * niewidoczna: cień pozostawał tą samą szeroką chmurą, tylko bledszą. Teraz
+ * rozmycia są cięte 2–3-krotnie, a bezkierunkowa poświata 0 0 28px na
+ * `neu-raised` — największe źródło rozmazania — zniknęła w całości.
+ *
+ * Przy zmianie odcienia powierzchni te wartości trzeba przeliczyć razem z nią.
  */
 @utility neu-raised {
   box-shadow:
-    /* Bezkierunkowa poświata — to ona, a nie obwódka, unosi kartę nad tłem. */
-    0 0 28px rgb(148 163 184 / 0.1),
-    6px 6px 16px rgb(148 163 184 / 0.18),
-    -6px -6px 16px rgb(255 255 255 / 0.9);
+    2px 2px 6px rgb(148 163 184 / 0.14),
+    -2px -2px 6px rgb(255 255 255 / 0.9);
 }
 
 @utility neu-raised-sm {
   box-shadow:
-    2px 2px 6px rgb(148 163 184 / 0.16),
-    -2px -2px 6px rgb(255 255 255 / 0.8);
+    1px 1px 3px rgb(148 163 184 / 0.14),
+    -1px -1px 3px rgb(255 255 255 / 0.8);
 }
 
 @utility neu-sunken {
   box-shadow:
-    inset 3px 3px 7px rgb(148 163 184 / 0.2),
-    inset -3px -3px 7px rgb(255 255 255 / 0.9);
+    inset 1px 1px 3px rgb(148 163 184 / 0.16),
+    inset -1px -1px 3px rgb(255 255 255 / 0.9);
 }
 
 @utility neu-sunken-sm {
   box-shadow:
-    inset 2px 2px 4px rgb(148 163 184 / 0.18),
-    inset -2px -2px 4px rgb(255 255 255 / 0.9);
+    inset 1px 1px 2px rgb(148 163 184 / 0.14),
+    inset -1px -1px 2px rgb(255 255 255 / 0.9);
 }
 
 @media (prefers-reduced-motion: reduce) {

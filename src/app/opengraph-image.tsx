@@ -29,9 +29,10 @@ export default function Image() {
             borderRadius: 14,
             border: "6px solid #000000",
             overflow: "hidden",
-            // Odpowiednik utility neu-raised z globals.css — trzymamy te same
-            // wartości, żeby grafika OG nie rozjechała się ze stroną.
-            boxShadow: "8px 8px 20px rgba(148,163,184,0.3)",
+            // Odpowiednik utility neu-raised z globals.css, przeskalowany do
+            // płótna 1200×630. Trzymamy tę samą lekkość, żeby grafika OG nie
+            // rozjechała się ze stroną.
+            boxShadow: "3px 3px 8px rgba(148,163,184,0.18)",
           }}
         >
           <div
