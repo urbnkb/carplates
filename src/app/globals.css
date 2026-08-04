@@ -27,10 +27,10 @@ body {
 }
 
 /*
- * Cienie neomorficzne. Wypukłe niosą głównie cień szary — na białym tle
- * jasna poświata i tak jest niewidoczna, więc odpowiada tylko za zmiękczenie
- * górnej krawędzi. Wklęsłe zakładają szare tło (bg-well), na którym biały
- * refleks ma się od czego odbić.
+ * Cienie neomorficzne. Wypukłe niosą cień szary plus bezkierunkową poświatę —
+ * biały refleks na białym tle jest i tak niewidoczny, więc zmiękcza tylko górną
+ * krawędź. Wklęsłe zakładają szare tło (bg-well), na którym biały refleks ma się
+ * od czego odbić.
  */
 @utility neu-raised {
   box-shadow:

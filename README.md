@@ -39,9 +39,11 @@ Otwórz [http://localhost:3000](http://localhost:3000).
 
 Interfejs jest utrzymany w stylistyce **neomorficznej**, w wariancie jasnym: dominantą jest biel, a szarość pełni rolę cienia i wypełnienia wnęk. Obowiązuje jedna zasada — co wypukłe, jest białe; co wklęsłe (pola wejściowe, karty ciekawostek, tor przełącznika, ramka mapy), dostaje szare tło i cień wewnętrzny.
 
-Fundament siedzi w `src/app/globals.css`: tokeny `--color-surface`, `--color-well` i akcenty w bloku `@theme`, plus cztery utility cieni (`neu-raised`, `neu-raised-sm`, `neu-sunken`, `neu-sunken-sm`) zdefiniowane przez `@utility`. Cienie są opisane w jednym miejscu — przy zmianie odcienia powierzchni trzeba przeliczyć je razem z nią, a także zaktualizować `viewport.themeColor` w `src/app/layout.tsx` i kolory w `src/app/opengraph-image.tsx`, które nie korzystają z tokenów.
+Fundament siedzi w `src/app/globals.css`: tokeny `--color-surface`, `--color-well`, `--color-edge` i akcenty w bloku `@theme`, plus cztery utility cieni (`neu-raised`, `neu-raised-sm`, `neu-sunken`, `neu-sunken-sm`) zdefiniowane przez `@utility`. Cienie są opisane w jednym miejscu — przy zmianie odcienia powierzchni trzeba przeliczyć je razem z nią, a także zaktualizować `viewport.themeColor` w `src/app/layout.tsx` i kolory w `src/app/opengraph-image.tsx`, które nie korzystają z tokenów.
 
-Dwa światy aplikacji rozróżnia kolorowa obwoluta wokół głównej karty (`ProductWindow`, prop `accent`): niebieska dla tablic (`/tablica/[kod]`), zielona dla powiatów i dzielnic (`/powiat/[slug]`, `/dzielnica/[slug]`). Na stronie głównej obwoluta zmienia się razem z trybem wyszukiwania.
+Główną kartę (`ProductWindow`) obrysowuje cienka, 3-pikselowa szara krawędź (`--color-edge`), która tylko domyka kształt. Za wrażenie unoszenia się odpowiada **poświata** — bezkierunkowa warstwa cienia w `neu-raised`. To ona, a nie obwódka, niesie efekt charakterystyczny dla tej stylistyki; gruba kolorowa ramka była testowana i okazała się za ciężka.
+
+Rozróżnienie dwóch światów aplikacji — tablicy i powiatu — niesie wypełniony kolorem segment przełącznika trybu (`ModeToggle`): niebieski dla tablic, zielony dla powiatów i dzielnic. Sama karta jest neutralna.
 
 Serwis ma jeden motyw jasny — nie ma przełącznika trybu ciemnego. Kontrast tekstu jest weryfikowany względem WCAG AA; przy zmianie kolorów trzeba to sprawdzić ponownie, bo część odcieni Tailwinda (`blue-600`, `amber-600`, `zinc-500`) nie przechodzi progu na jasnym tle.
 
