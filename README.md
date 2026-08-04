@@ -35,6 +35,8 @@ Otwórz [http://localhost:3000](http://localhost:3000).
 - [Tailwind CSS v4](https://tailwindcss.com)
 - [react-simple-maps](https://www.react-simple-maps.io) — mapa SVG renderowana lokalnie z pliku granic w `public/data`, bez żadnego zewnętrznego serwisu mapowego
 
+W `package.json` siedzi `overrides` na `d3-color: ^3.1.0`. To nie kosmetyka: `react-simple-maps` ciągnie przez `d3-zoom` starą wersję `d3-color` z podatnością na ReDoS (GHSA-36jr-mh4h-2g58), a paczka trafia do bundla klienta. Bez tego wpisu `npm audit` pokazuje wysoką podatność. Przy aktualizacji `react-simple-maps` sprawdź, czy override jest jeszcze potrzebny.
+
 ## Wygląd
 
 Interfejs jest utrzymany w stylistyce **neomorficznej**, w wariancie jasnym: dominantą jest biel, a szarość pełni rolę cienia i wypełnienia wnęk. Obowiązuje jedna zasada — co wypukłe, jest białe; co wklęsłe (pola wejściowe, karty ciekawostek, tor przełącznika, ramka mapy), dostaje szare tło i cień wewnętrzny.

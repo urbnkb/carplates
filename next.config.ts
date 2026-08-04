@@ -20,10 +20,11 @@ const cspHeader = `
   .replace(/\s{2,}/g, " ")
   .trim();
 
+// `experimental.viewTransition` zniknęło w Next 16.3 — <ViewTransition> z Reacta
+// działa w App Routerze bez żadnej konfiguracji
+// (node_modules/next/dist/docs/01-app/02-guides/view-transitions.md).
+// Flaga została tylko usunięta; przejścia na stronie głównej zostają.
 const nextConfig: NextConfig = {
-  experimental: {
-    viewTransition: true,
-  },
   async headers() {
     return [
       {
