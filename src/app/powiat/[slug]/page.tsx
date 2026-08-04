@@ -83,7 +83,7 @@ export default async function PowiatPage({ params }: PageProps) {
           </p>
         </header>
 
-        <ProductWindow accent="location">
+        <ProductWindow>
           <div className="flex w-full flex-col gap-8">
             <section className="flex w-full flex-col items-center gap-3">
               <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
