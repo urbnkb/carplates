@@ -32,7 +32,12 @@ export const MAP_COLORS = {
  */
 export const NON_SCALING_STROKE = "non-scaling-stroke";
 
-const BORDER_WIDTH = 1;
+/*
+ * W pikselach CSS (patrz NON_SCALING_STROKE). Na ekranie granica wychodzi
+ * mniej więcej dwa razy grubsza, bo sąsiadujące powiaty obrysowują wspólną
+ * krawędź każdy po swojej stronie — 0,8 daje ok. 1,6 px.
+ */
+const BORDER_WIDTH = 0.8;
 const HIGHLIGHT_BORDER_WIDTH = 2;
 
 /** Poświata wokół podświetlonego kształtu — promień w px CSS, więc też nie skaluje się z viewBoxem. */
