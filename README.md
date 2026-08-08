@@ -64,6 +64,12 @@ Serwis ma jeden motyw jasny — nie ma przełącznika trybu ciemnego. Kontrast t
 - **Ciekawostki o dzielnicach Warszawy** (`src/data/dzielnice.ts`): po trzy fakty dla każdej z 18 dzielnic, zebrane z serwisów dzielnicowych m.st. Warszawy (`um.warszawa.pl`), polskiej Wikipedii oraz portali historycznych (m.in. [dzieje.pl](https://dzieje.pl), [metro.waw.pl](https://www.metro.waw.pl)), z krzyżową weryfikacją dat, liczb i nazw obiektów w co najmniej dwóch niezależnych źródłach. W przeciwieństwie do ciekawostek powiatowych, zbieranych z bezpośredniej lektury stron Wikipedii, te powstały na podstawie wyszukiwania — fakty niepotwierdzone krzyżowo zostały pominięte, a nie uzupełnione domysłem. Zgodnie z zasadą projektu „nie zmyślaj" żaden fakt nie jest wygenerowany bez źródła.
 - **Ciekawostki**: sprawdzone, konkretne fakty dla wszystkich 380 powiatów (`factsVerified: true`), zebrane głównie z polskiej Wikipedii (strony powiatów i miast będących ich siedzibami), z krzyżową weryfikacją dla wątpliwych szczegółów. Zgodnie z zasadą projektu „nie zmyślaj" — żaden fakt nie jest wygenerowany bez źródła.
 
+## Linkowanie wewnętrzne
+
+Stopka (`src/components/SiteFooter.tsx`) siedzi w `layout.tsx`, więc jest na każdej stronie, i to nie jest decyzja estetyczna. Prerenderowany HTML strony głównej nie zawierał wcześniej **ani jednego** odnośnika do treści — linki do powiatów pojawiały się dopiero po wpisaniu tablicy, czyli w kodzie, którego Googlebot nie wykonuje. Jedyną drogą wyszukiwarki do 833 podstron była sitemapa, a ta jest tylko listą i nie przekazuje sygnału ważności. Efekt: blisko 300 adresów ze statusem „wykryta — obecnie niezindeksowana" w Search Console.
+
+Trzy linki w stopce wystarczają, bo listy już istnieją: `/powiat` prowadzi do 380 stron, `/tablica` do 425, `/dzielnica` do 18. Googlebot dochodzi do dowolnej podstrony w dwóch skokach, a z każdej podstrony wraca do huba. Jeżeli będziesz przebudowywać layout, sprawdź licznik odnośników w zbudowanym HTML (`grep -o 'href="/[a-z]' .next/server/app/index.html | wc -l`) — powinien być większy od zera.
+
 ## Znane ograniczenia
 
 - Działa tylko dla Polski — selektor kraju jest przygotowany pod rozszerzenie, ale nie ma jeszcze logiki dla innych krajów.
