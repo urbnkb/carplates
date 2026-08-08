@@ -31,6 +31,21 @@ export const MAP_COLORS = {
  */
 export const NON_SCALING_STROKE = "non-scaling-stroke";
 
+/**
+ * react-simple-maps ustawia `tabIndex="0"` na każdym kształcie, przez co mapa
+ * Polski wstawiała **380 przystanków klawisza Tab** — żeby przejść z pola
+ * tablicy do stopki, trzeba było przeklikać wszystkie powiaty po kolei.
+ *
+ * W zamian użytkownik klawiatury nie dostawał nic: dymek z nazwą powiatu
+ * pokazujemy na `onPointerEnter` (tylko mysz) i na kliknięciu, więc sam fokus
+ * przesuwał jedynie podświetlenie, bez żadnej etykiety. Mapa jako całość ma
+ * `role="img"` i `aria-label`, więc czytnik ekranu i tak ją zapowiada.
+ *
+ * `Geography` rozkłada `restProps` po własnych atrybutach, więc ta wartość
+ * nadpisuje domyślną.
+ */
+export const GEOGRAPHY_TAB_INDEX = -1;
+
 /*
  * W pikselach CSS (patrz NON_SCALING_STROKE). Na ekranie granica wychodzi
  * mniej więcej dwa razy grubsza, bo sąsiadujące powiaty obrysowują wspólną

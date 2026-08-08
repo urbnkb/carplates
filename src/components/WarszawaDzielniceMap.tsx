@@ -7,7 +7,12 @@ import {
   Geography,
 } from "react-simple-maps";
 import { dzielnicaById } from "@/lib/dzielnice";
-import { geographyStyle, highlightedLast, NON_SCALING_STROKE } from "@/lib/mapStyle";
+import {
+  GEOGRAPHY_TAB_INDEX,
+  geographyStyle,
+  highlightedLast,
+  NON_SCALING_STROKE,
+} from "@/lib/mapStyle";
 
 const GEO_URL = "/data/warszawa-dzielnice-boundaries.json";
 const TOOLTIP_MARGIN = 8;
@@ -93,6 +98,7 @@ export default function WarszawaDzielniceMap({
                   key={geo.rsmKey}
                   geography={geo}
                   vectorEffect={NON_SCALING_STROKE}
+                  tabIndex={GEOGRAPHY_TAB_INDEX}
                   onPointerEnter={(event) => {
                     if (event.pointerType !== "mouse") return;
                     setHover({ geoId: geo.properties.id, x: event.clientX, y: event.clientY });
