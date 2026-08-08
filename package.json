@@ -32,6 +32,7 @@
       "react": "$react",
       "react-dom": "$react-dom"
     },
-    "d3-color": "^3.1.0"
+    "d3-color": "^3.1.0",
+    "nanoid": "^3.3.17"
   }
 }
