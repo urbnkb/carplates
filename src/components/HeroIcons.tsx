@@ -225,7 +225,7 @@ export default function HeroIcons() {
             style={{ animationDelay: `${accent.floatDelay}s`, animationDuration: `${accent.floatDuration}s` }}
           >
             <div
-              className={`hero-accent neu-raised-sm flex shrink-0 items-center justify-center rounded-full ${accent.color} ${accent.size}`}
+              className={`hero-accent neu-raised-sm shrink-0 rounded-full ${accent.color} ${accent.size}`}
               style={
                 {
                   "--accent-ring-from": accent.ringFrom,
@@ -234,19 +234,21 @@ export default function HeroIcons() {
                 } as CSSProperties
               }
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.8}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="h-1/2 w-1/2"
-              >
-                {accent.paths.map((p, j) => (
-                  <path key={j} d={p.d} fill={p.filled ? "currentColor" : "none"} stroke={p.filled ? "none" : "currentColor"} />
-                ))}
-              </svg>
+              <div className="hero-accent-face flex h-full w-full items-center justify-center rounded-full">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.8}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-1/2 w-1/2"
+                >
+                  {accent.paths.map((p, j) => (
+                    <path key={j} d={p.d} fill={p.filled ? "currentColor" : "none"} stroke={p.filled ? "none" : "currentColor"} />
+                  ))}
+                </svg>
+              </div>
             </div>
           </div>
         </div>
