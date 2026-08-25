@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type CSSProperties } from "react";
 
 interface IconPath {
   d: string;
@@ -11,6 +11,11 @@ interface Accent {
   paths: IconPath[];
   position: string;
   color: string;
+  /** Krańce gradientu na obwolutce; jaśniejszy odcień idzie w lewy górny róg. */
+  ringFrom: string;
+  ringTo: string;
+  /** Tint pod spodem kółka — odcień 50 tej samej barwy. Musi być nieprzezroczysty. */
+  ringTint: string;
   size: string;
   baseRotate: number;
   scrollFactor: number;
@@ -75,6 +80,9 @@ const ACCENTS: Accent[] = [
     paths: CAR_PATHS,
     position: "-top-6 -left-3 sm:-top-8 sm:-left-6 lg:-top-10 lg:-left-14",
     color: "text-blue-600",
+    ringFrom: "#60a5fa",
+    ringTo: "#2563eb",
+    ringTint: "#eff6ff",
     size: "h-8 w-8 sm:h-9 sm:w-9 lg:h-10 lg:w-10",
     baseRotate: -14,
     scrollFactor: 0.08,
@@ -88,6 +96,9 @@ const ACCENTS: Accent[] = [
     paths: FLAG_PATHS,
     position: "top-12 -left-4 sm:top-16 sm:-left-8 lg:top-20 lg:-left-24",
     color: "text-red-600",
+    ringFrom: "#f87171",
+    ringTo: "#dc2626",
+    ringTint: "#fef2f2",
     size: "h-7 w-7 sm:h-8 sm:w-8",
     baseRotate: 9,
     scrollFactor: -0.05,
@@ -101,6 +112,9 @@ const ACCENTS: Accent[] = [
     paths: COMPASS_PATHS,
     position: "-top-8 left-3 sm:-top-12 sm:left-5 lg:-top-20 lg:left-12",
     color: "text-sky-600",
+    ringFrom: "#38bdf8",
+    ringTo: "#0284c7",
+    ringTint: "#f0f9ff",
     size: "h-6 w-6 sm:h-7 sm:w-7",
     baseRotate: -6,
     scrollFactor: 0.11,
@@ -115,6 +129,9 @@ const ACCENTS: Accent[] = [
     paths: PIN_PATHS,
     position: "-top-3 -right-3 sm:-top-4 sm:-right-6 lg:-top-6 lg:-right-16",
     color: "text-emerald-700",
+    ringFrom: "#34d399",
+    ringTo: "#047857",
+    ringTint: "#ecfdf5",
     size: "h-7 w-7 sm:h-8 sm:w-8 lg:h-9 lg:w-9",
     baseRotate: 12,
     scrollFactor: -0.07,
@@ -128,6 +145,9 @@ const ACCENTS: Accent[] = [
     paths: SEARCH_PATHS,
     position: "top-14 -right-3 sm:top-16 sm:-right-5 lg:top-24 lg:-right-8",
     color: "text-amber-600",
+    ringFrom: "#fbbf24",
+    ringTo: "#d97706",
+    ringTint: "#fffbeb",
     size: "h-8 w-8 sm:h-9 sm:w-9 lg:h-11 lg:w-11",
     baseRotate: -16,
     scrollFactor: 0.06,
@@ -205,7 +225,14 @@ export default function HeroIcons() {
             style={{ animationDelay: `${accent.floatDelay}s`, animationDuration: `${accent.floatDuration}s` }}
           >
             <div
-              className={`neu-raised-sm flex shrink-0 items-center justify-center rounded-full bg-surface ${accent.color} ${accent.size}`}
+              className={`hero-accent neu-raised-sm flex shrink-0 items-center justify-center rounded-full ${accent.color} ${accent.size}`}
+              style={
+                {
+                  "--accent-ring-from": accent.ringFrom,
+                  "--accent-ring-to": accent.ringTo,
+                  "--accent-ring-tint": accent.ringTint,
+                } as CSSProperties
+              }
             >
               <svg
                 viewBox="0 0 24 24"
