@@ -211,9 +211,9 @@ export default function HeroIcons() {
       });
     }
 
-    // Sama arytmetyka — ani jednego odczytu layoutu.
-    function apply() {
-      const y = window.scrollY;
+    // Sama arytmetyka — ani jednego odczytu layoutu. Pozycja scrolla przychodzi
+    // argumentem, bo ścieżka dotykowa woła to raz dla y = 0.
+    function apply(y: number) {
       for (let i = 0; i < ACCENTS.length; i++) {
         const el = refs.current[i];
         if (!el) continue;
@@ -227,12 +227,31 @@ export default function HeroIcons() {
       }
     }
 
+    // Na dotyku scroll nie steruje niczym. Na iOS strona przewija się na wątku
+    // kompozytora, a scroll i requestAnimationFrame chodzą na głównym i docierają
+    // z opóźnieniem względem tego, co użytkownik już widzi — ikonki wloką się za
+    // stroną niezależnie od tego, jak tani jest handler. To opóźnienie, nie koszt,
+    // więc jedyne skuteczne wyjście to nie mieć tu JS-u w ogóle. Zostaje unoszenie
+    // z CSS, które chodzi na kompozytorze i o scrollu nic nie wie.
+    //
+    // apply(0), a nie samo rotate: ikonki mają zostać dokładnie tam, gdzie siedzą
+    // dziś na górze strony, z kołysaniem i przechyłem policzonym dla y = 0.
+    //
+    // Warunek jest sumą dwóch pytań, bo samo `pointer: coarse` zostawiłoby na
+    // ścieżce JS urządzenia raportujące `pointer: none` — a te też nie są myszą.
+    // Mysz odpowiada `hover: hover` i `pointer: fine`, więc parallax zostaje tam,
+    // gdzie działał dobrze.
+    if (window.matchMedia("(hover: none), (pointer: coarse)").matches) {
+      apply(0);
+      return;
+    }
+
     let ticking = false;
     function onScroll() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        apply();
+        apply(window.scrollY);
         ticking = false;
       });
     }
@@ -247,9 +266,14 @@ export default function HeroIcons() {
 
     function remeasure() {
       measure();
-      apply();
+      apply(window.scrollY);
     }
 
+    // Transform siada od razu: apply() nie dotyka layoutu, więc nie ma powodu
+    // odkładać go na później, a bez tego ikonki mają jedną klatkę bez transformu
+    // i widocznie podskakują przy wczytaniu. W rAF zostaje sam pomiar ściany,
+    // który layout czyta i musi poczekać, aż strona się ułoży.
+    apply(window.scrollY);
     const frame = requestAnimationFrame(remeasure);
 
     // Poza kadrem nie ma po co liczyć niczego: strona główna jest długa,
@@ -258,7 +282,7 @@ export default function HeroIcons() {
       ? new IntersectionObserver(
           ([entry]) => {
             listen(entry.isIntersecting);
-            if (entry.isIntersecting) apply();
+            if (entry.isIntersecting) apply(window.scrollY);
           },
           { rootMargin: "200px" },
         )
