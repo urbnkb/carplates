@@ -72,6 +72,31 @@ body {
     inset -1px -1px 2px rgb(255 255 255 / 0.9);
 }
 
+/*
+ * Obwolutka latających ikonek w hero. Pierścień ma 2 px i gradient, bo
+ * `border-color` gradientu nie przyjmuje — stąd dwie warstwy tła: wypełnienie
+ * malowane po `padding-box`, kolor obrysu po `border-box`, a sam `border` jest
+ * przezroczysty. To jedyny gradient w serwisie.
+ *
+ * Kolory wstrzykuje komponent przez trzy custom property, więc przepis siedzi
+ * tu w jednym miejscu, a paleta przy akcentach w HeroIcons.
+ *
+ * Wszystkie trzy muszą być nieprzezroczyste. Warstwa `padding-box` leży NAD
+ * `border-box`, więc półprzezroczyste wypełnienie przepuściłoby przez środek
+ * kółka nasycony gradient pierścienia. Z tego samego powodu tint nie jest
+ * liczony przez `color-mix`: Lightning CSS dokłada wtedy fallback bez
+ * `color-mix`, w którym dół kółka zalewa pełny kolor akcentu.
+ *
+ * Cienia to utility nie ustawia — hairline zostaje na `neu-raised-sm`,
+ * z którym się składa.
+ */
+@utility hero-accent {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(160deg, var(--color-surface), var(--accent-ring-tint)) padding-box,
+    linear-gradient(140deg, var(--accent-ring-from), var(--accent-ring-to)) border-box;
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(*),
   ::view-transition-new(*),
