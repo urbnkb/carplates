@@ -30,21 +30,45 @@ interface Accent {
 
 const WALL_BUFFER = 14;
 
-/** Clamps a movement so the icon's box can't cross into the header's box (like hitting a wall). */
-function clampToWall(iconRect: DOMRect, dx: number, dy: number, wallRect: DOMRect) {
-  const left = iconRect.left + dx;
-  const right = iconRect.right + dx;
-  const top = iconRect.top + dy;
-  const bottom = iconRect.bottom + dy;
+/**
+ * Granice ruchu ikonki względem nagłówka, który traktujemy jak ścianę.
+ *
+ * Wszystkie cztery liczby to RÓŻNICE między prostokątem ikonki a prostokątem
+ * nagłówka. Oba elementy leżą w tym samym przewijanym przepływie, więc przy
+ * scrollu przesuwają się identycznie i te różnice się nie zmieniają — dlatego
+ * wolno je zmierzyć raz i używać w każdej klatce.
+ *
+ * To nie jest mikrooptymalizacja. Wcześniej pętla scrolla wołała
+ * `getBoundingClientRect()` na nagłówku i na ikonce, przy czym ten drugi odczyt
+ * następował po zapisaniu transformów wcześniejszych ikonek — czyli układ
+ * zapis → odczyt → zapis, wymuszający synchroniczny reflow w każdej klatce.
+ * Na stronie z mapą o 380 ścieżkach to był główny koszt przewijania na telefonie.
+ */
+interface WallLimits {
+  /** Ikonka zachodzi na ścianę w poziomie, gdy dx mieści się między nimi. */
+  dxMin: number;
+  dxMax: number;
+  /** Analogicznie w pionie; dyMin jest zarazem wartością, do której przycinamy. */
+  dyMin: number;
+  dyMax: number;
+}
 
-  const overlapsX = right > wallRect.left - WALL_BUFFER && left < wallRect.right + WALL_BUFFER;
-  const overlapsY = bottom > wallRect.top - WALL_BUFFER && top < wallRect.bottom + WALL_BUFFER;
+function measureWall(iconRect: DOMRect, wallRect: DOMRect): WallLimits {
+  return {
+    dxMin: wallRect.left - WALL_BUFFER - iconRect.right,
+    dxMax: wallRect.right + WALL_BUFFER - iconRect.left,
+    dyMin: wallRect.top - WALL_BUFFER - iconRect.bottom,
+    dyMax: wallRect.bottom + WALL_BUFFER - iconRect.top,
+  };
+}
+
+/** Przycina przesunięcie w pionie tak, żeby ikonka nie weszła w nagłówek. */
+function clampToWall(limits: WallLimits, dx: number, dy: number) {
+  const overlapsX = dx > limits.dxMin && dx < limits.dxMax;
+  const overlapsY = dy > limits.dyMin && dy < limits.dyMax;
 
   if (overlapsX && overlapsY && dy > 0) {
-    const maxBottom = wallRect.top - WALL_BUFFER;
-    if (bottom > maxBottom) {
-      dy = Math.max(0, maxBottom - iconRect.bottom);
-    }
+    return Math.max(0, limits.dyMin);
   }
   return dy;
 }
@@ -167,29 +191,40 @@ export default function HeroIcons() {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const header = document.querySelector<HTMLElement>("[data-hero-header]");
 
+    if (reduceMotion) {
+      refs.current.forEach((el, i) => {
+        if (el) el.style.transform = `rotate(${ACCENTS[i].baseRotate}deg)`;
+      });
+      return;
+    }
+
+    // Granice ściany per akcent, mierzone poza pętlą scrolla. null = akcent
+    // nie zderza się z nagłówkiem i nie potrzebuje przycinania.
+    const limits: (WallLimits | null)[] = ACCENTS.map(() => null);
+
+    function measure() {
+      if (!header) return;
+      const wallRect = header.getBoundingClientRect();
+      ACCENTS.forEach((cfg, i) => {
+        const outerEl = outerRefs.current[i];
+        limits[i] = cfg.blockOnHeader && outerEl ? measureWall(outerEl.getBoundingClientRect(), wallRect) : null;
+      });
+    }
+
+    // Sama arytmetyka — ani jednego odczytu layoutu.
     function apply() {
       const y = window.scrollY;
-      const wallRect = header?.getBoundingClientRect();
-      refs.current.forEach((el, i) => {
-        if (!el) return;
+      for (let i = 0; i < ACCENTS.length; i++) {
+        const el = refs.current[i];
+        if (!el) continue;
         const cfg = ACCENTS[i];
-        if (reduceMotion) {
-          el.style.transform = `rotate(${cfg.baseRotate}deg)`;
-          return;
-        }
-        let drift = y * cfg.scrollFactor;
         const sway = Math.sin(y / 90 + cfg.phase) * cfg.swayAmplitude;
         const tilt = cfg.baseRotate + Math.sin(y / 130 + cfg.phase) * cfg.tiltAmplitude;
-
-        if (cfg.blockOnHeader && wallRect) {
-          const outerEl = outerRefs.current[i];
-          if (outerEl) {
-            drift = clampToWall(outerEl.getBoundingClientRect(), sway, drift, wallRect);
-          }
-        }
-
+        const lim = limits[i];
+        let drift = y * cfg.scrollFactor;
+        if (lim) drift = clampToWall(lim, sway, drift);
         el.style.transform = `translate(${sway}px, ${drift}px) rotate(${tilt}deg)`;
-      });
+      }
     }
 
     let ticking = false;
@@ -202,9 +237,51 @@ export default function HeroIcons() {
       });
     }
 
-    apply();
-    if (!reduceMotion) window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    let listening = false;
+    function listen(on: boolean) {
+      if (on === listening) return;
+      listening = on;
+      if (on) window.addEventListener("scroll", onScroll, { passive: true });
+      else window.removeEventListener("scroll", onScroll);
+    }
+
+    function remeasure() {
+      measure();
+      apply();
+    }
+
+    const frame = requestAnimationFrame(remeasure);
+
+    // Poza kadrem nie ma po co liczyć niczego: strona główna jest długa,
+    // a bez tego każde przewinięcie przy mapie czy stopce płaciło pełny koszt.
+    const visibility = header
+      ? new IntersectionObserver(
+          ([entry]) => {
+            listen(entry.isIntersecting);
+            if (entry.isIntersecting) apply();
+          },
+          { rootMargin: "200px" },
+        )
+      : null;
+    if (visibility && header) visibility.observe(header);
+    else listen(true);
+
+    // Nagłówek przesuwa się przy podmianie fontu przez next/font i przy zmianie
+    // trybu — ma wtedy inny tekst. Jedno i drugie widać jako zmianę rozmiaru.
+    const headerSize = header ? new ResizeObserver(remeasure) : null;
+    if (headerSize && header) headerSize.observe(header);
+
+    window.addEventListener("resize", remeasure);
+    window.addEventListener("orientationchange", remeasure);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      listen(false);
+      visibility?.disconnect();
+      headerSize?.disconnect();
+      window.removeEventListener("resize", remeasure);
+      window.removeEventListener("orientationchange", remeasure);
+    };
   }, []);
 
   return (
