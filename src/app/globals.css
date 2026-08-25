@@ -123,6 +123,12 @@ body {
 
 .animate-icon-float {
   animation: icon-float 4s ease-in-out infinite;
+  /*
+   * Element dostaje `translate` z tej animacji i `transform` z pętli scrolla
+   * w HeroIcons. Deklaracja tylko potwierdza, że ma żyć na własnej warstwie
+   * kompozytora — bez niej promocja zależy od heurystyki przeglądarki.
+   */
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
