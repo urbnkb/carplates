@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { capitalize } from "@/lib/format";
 import { dzielnice } from "@/data/dzielnice";
 import { dzielnicaSlug, dzielniceLabelForKod, WARSZAWA_GEO_ID } from "@/lib/dzielnice";
+import { pageMetadata } from "@/lib/metadata";
 import { findPowiatBySlug, getAllPowiatSlugs } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
@@ -30,11 +31,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const label = `${capitalize(powiat.nazwa)} (woj. ${powiat.wojewodztwo})`;
   const dzielniceNote =
     powiat.geoId === WARSZAWA_GEO_ID ? " Każdy kod odpowiada innej dzielnicy miasta." : "";
-  return {
+  return pageMetadata({
     title: `${label} — kody tablic rejestracyjnych`,
     description: `${label}: tablice rejestracyjne ${powiat.kody.join(", ")}.${dzielniceNote} Ciekawostki i informacje o powiecie.`,
-    alternates: { canonical: `/powiat/${slug}` },
-  };
+    path: `/powiat/${slug}`,
+  });
 }
 
 export default async function PowiatPage({ params }: PageProps) {

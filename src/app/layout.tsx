@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
 
@@ -19,11 +19,13 @@ const geistMono = Geist_Mono({
 const DESCRIPTION =
   "Projekt edukacyjny: wpisz początkowe znaki polskiej tablicy rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd.";
 
+const TITLE = `${SITE_NAME} — rozpoznawanie powiatu po tablicy rejestracyjnej`;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Skąd ta rejestracja? — rozpoznawanie powiatu po tablicy rejestracyjnej",
-    template: "%s | Skąd ta rejestracja?",
+    default: TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
   description: DESCRIPTION,
   alternates: { canonical: "/" },
@@ -31,13 +33,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pl_PL",
     url: "/",
-    siteName: "Skąd ta rejestracja?",
-    title: "Skąd ta rejestracja? — rozpoznawanie powiatu po tablicy rejestracyjnej",
+    siteName: SITE_NAME,
+    title: TITLE,
     description: DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Skąd ta rejestracja? — rozpoznawanie powiatu po tablicy rejestracyjnej",
+    title: TITLE,
     description: DESCRIPTION,
   },
 };

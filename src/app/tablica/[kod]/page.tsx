@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { andList, bareName, capitalize } from "@/lib/format";
 import { dzielnicaSlug, getDzielniceForKod } from "@/lib/dzielnice";
 import { findPowiatByKod, getAllKody } from "@/lib/kody";
+import { pageMetadata } from "@/lib/metadata";
 import { powiatSlug } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         ? `Tablica rejestracyjna ${canonicalKod} jest wspólna dla dzielnic Warszawy: ${nazwy} (woj. ${powiat.wojewodztwo}).`
         : `Tablica rejestracyjna ${canonicalKod} należy do powiatu ${bareName(powiat.nazwa)} (woj. ${powiat.wojewodztwo}).`;
 
-  return { title, description, alternates: { canonical: `/tablica/${canonicalKod}` } };
+  return pageMetadata({ title, description, path: `/tablica/${canonicalKod}` });
 }
 
 export default async function TablicaPage({ params }: PageProps) {
