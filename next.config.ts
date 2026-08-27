@@ -37,6 +37,16 @@ const nextConfig: NextConfig = {
           { key: "Content-Security-Policy", value: cspHeader },
         ],
       },
+      // Trasa z opengraph-image.tsx jest obrazkiem, a nie stroną, ale Googlebot
+      // trafia na nią z og:image i ocenia jak kandydata na stronę — w Search
+      // Console siedziała jako „zeskanowana, ale jeszcze nie zindeksowana".
+      // Nagłówek zamyka sprawę deklaracją intencji. Świadomie nie ma tu
+      // Disallow w robots.ts: wtedy Googlebot w ogóle nie zobaczyłby noindex,
+      // a Twitterbot respektuje robots.txt, więc karta na X straciłaby obrazek.
+      {
+        source: "/opengraph-image",
+        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
+      },
     ];
   },
 };

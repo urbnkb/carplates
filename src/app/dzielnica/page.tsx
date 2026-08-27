@@ -1,14 +1,14 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import { dzielnice } from "@/data/dzielnice";
 import { dzielnicaSlug } from "@/lib/dzielnice";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Dzielnice Warszawy i ich kody tablic",
   description:
     "18 dzielnic Warszawy wraz z kodami tablic rejestracyjnych (WA–WY). Sprawdź, z której dzielnicy pochodzi rejestracja.",
-  alternates: { canonical: "/dzielnica" },
-};
+  path: "/dzielnica",
+});
 
 export default function DzielnicaIndexPage() {
   const posortowane = [...dzielnice].sort((a, b) => a.nazwa.localeCompare(b.nazwa, "pl"));

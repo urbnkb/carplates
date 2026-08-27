@@ -1,14 +1,14 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import { capitalize } from "@/lib/format";
 import { powiaty } from "@/data/powiaty";
+import { pageMetadata } from "@/lib/metadata";
 import { powiatSlug } from "@/lib/slug";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Wszystkie powiaty i ich kody tablic rejestracyjnych",
   description: "Pełna lista polskich powiatów wraz z przypisanymi kodami tablic rejestracyjnych.",
-  alternates: { canonical: "/powiat" },
-};
+  path: "/powiat",
+});
 
 const sortedPowiaty = [...powiaty].sort((a, b) => a.nazwa.localeCompare(b.nazwa, "pl"));
 

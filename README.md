@@ -82,6 +82,18 @@ Stopka (`src/components/SiteFooter.tsx`) siedzi w `layout.tsx`, więc jest na ka
 
 Trzy linki w stopce wystarczają, bo listy już istnieją: `/powiat` prowadzi do 380 stron, `/tablica` do 425, `/dzielnica` do 18. Googlebot dochodzi do dowolnej podstrony w dwóch skokach, a z każdej podstrony wraca do huba. Jeżeli będziesz przebudowywać layout, sprawdź licznik odnośników w zbudowanym HTML (`grep -o 'href="/[a-z]' .next/server/app/index.html | wc -l`) — powinien być większy od zera.
 
+## Search Console
+
+Dwa wpisy z raportu indeksowania mają w repozytorium ślad, bo obie decyzje łatwo cofnąć przez pomyłkę.
+
+**Grafika Open Graph nie jest stroną.** Trasa `/opengraph-image` jest wskazywana przez `og:image` na każdej podstronie, więc Googlebot na nią trafia, ocenia jak kandydata na stronę i odrzuca — w Search Console wychodziła jako „zeskanowana, ale jeszcze nie zindeksowana". Dostaje więc nagłówek `X-Robots-Tag: noindex` z `next.config.ts`. Świadomie nie ma dla niej `Disallow` w `robots.ts`: zablokowany adres nie zostałby pobrany, więc Google nigdy nie zobaczyłby samego `noindex`, a Twitterbot respektuje robots.txt, więc karta na X straciłaby obrazek. Adres nadal ma się pobierać — ma tylko nie trafiać do indeksu.
+
+**„Strona zawiera przekierowanie" dla wariantów http i www to nie jest usterka.** Kanoniczny jest goły apex (`SITE_URL` w `src/lib/site.ts`), a `http://skadrejestracja.com/`, `http://www.skadrejestracja.com/` i `https://www.skadrejestracja.com/` mają na niego przekierowywać i będą to robić zawsze. Klikanie „weryfikuj poprawkę" dla tego raportu kończy się niepowodzeniem z definicji — w kodzie nie ma tu nic do zrobienia.
+
+Trzecia rzecz wyszła przy okazji i nie widać jej w żadnym raporcie: **scalanie metadanych w Next jest płytkie**. Podstrona, która ustawi własny `title` i `description`, ale nie ustawi bloku `openGraph`, dziedziczy z `layout.tsx` cały blok rodzica — razem z `og:url`. Wszystkie 827 podstron miały więc w podglądzie udostępniania tytuł, opis i adres strony głównej, sprzeczne z ich własnym `canonical`. Stąd `pageMetadata` w `src/lib/metadata.ts`: jedno miejsce, które z tytułu, opisu i ścieżki składa komplet `canonical` + `openGraph` + `twitter`. Blok trzeba podawać w całości (`type`, `locale`, `siteName`, obrazek), bo nadpisuje rodzica — a obrazek jest tu najłatwiejszy do zgubienia: konwencja plikowa `opengraph-image.tsx` dokłada `og:image` tylko do metadanych z layoutu, więc pierwsza wersja tej zmiany zbudowała 827 podstron bez `og:image` (złapane na zbudowanym HTML-u, przed wdrożeniem). Dlatego adres i wymiary siedzą w `src/lib/og.ts`, wspólnym dla helpera i samej trasy obrazka. Sufiks tytułu (`| Skąd ta rejestracja?`) helper dokleja ręcznie, bo `title.template` z layoutu działa tylko na `<title>` i nie dotyczy `openGraph.title`.
+
+Przy zmianie metadanych sprawdzaj to na zbudowanym HTML-u, nie w kodzie — rozjazd widać dopiero po scaleniu: `grep -o '<meta property="og:url"[^>]*>' .next/server/app/powiat/augustowski.html` ma pokazywać adres tej podstrony, a nie strony głównej.
+
 ## Znane ograniczenia
 
 - Działa tylko dla Polski — selektor kraju jest przygotowany pod rozszerzenie, ale nie ma jeszcze logiki dla innych krajów.

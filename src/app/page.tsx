@@ -23,12 +23,12 @@ import {
 import { getDzielniceForKod, WARSZAWA_GEO_ID } from "@/lib/dzielnice";
 import { dzielnice } from "@/data/dzielnice";
 import { serializeJsonLd } from "@/lib/jsonLd";
-import { SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const JSON_LD = serializeJsonLd({
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "Skąd ta rejestracja?",
+  name: SITE_NAME,
   url: SITE_URL,
   applicationCategory: "UtilitiesApplication",
   operatingSystem: "Any",

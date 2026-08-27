@@ -9,6 +9,7 @@ import {
   getDzielniceForKod,
   warszawaPowiat,
 } from "@/lib/dzielnice";
+import { pageMetadata } from "@/lib/metadata";
 import { powiatSlug } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
@@ -45,11 +46,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ? `, wspólnym z ${rodzenstwo.length === 1 ? "dzielnicą" : "dzielnicami"} ${andList(rodzenstwo.map((d) => d.nazwa))}`
       : "";
 
-  return {
+  return pageMetadata({
     title: `${dzielnica.nazwa} (Warszawa) — kod tablic ${dzielnica.kod}`,
     description: `${dzielnica.nazwa} to dzielnica Warszawy z kodem tablic rejestracyjnych ${dzielnica.kod}${wspolny}. Ciekawostki, mapa dzielnicy i pozostałe kody stolicy.`,
-    alternates: { canonical: `/dzielnica/${slug}` },
-  };
+    path: `/dzielnica/${slug}`,
+  });
 }
 
 export default async function DzielnicaPage({ params }: PageProps) {

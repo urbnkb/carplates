@@ -1,8 +1,9 @@
 import { ImageResponse } from "next/og";
+import { OG_IMAGE } from "@/lib/og";
 
-export const alt = "Skąd ta rejestracja? — rozpoznawanie powiatu po tablicy rejestracyjnej";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+export const alt = OG_IMAGE.alt;
+export const size = { width: OG_IMAGE.width, height: OG_IMAGE.height };
+export const contentType = OG_IMAGE.type;
 
 export default function Image() {
   return new ImageResponse(

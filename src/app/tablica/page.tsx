@@ -1,13 +1,13 @@
 import Link from "next/link";
-import type { Metadata } from "next";
 import { regionLabel } from "@/lib/dzielnice";
 import { getAllKody } from "@/lib/kody";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Wszystkie kody tablic rejestracyjnych",
   description: "Pełna lista kodów polskich tablic rejestracyjnych wraz z przypisanymi powiatami.",
-  alternates: { canonical: "/tablica" },
-};
+  path: "/tablica",
+});
 
 export default function TablicaIndexPage() {
   const allKody = getAllKody();
