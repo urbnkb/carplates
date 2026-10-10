@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/powiat`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/tablica`, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/dzielnica`, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${SITE_URL}/o-projekcie`, changeFrequency: "yearly", priority: 0.3 },
     ...getAllDzielnicaSlugs().map((slug) => ({
       url: `${SITE_URL}/dzielnica/${slug}`,
       changeFrequency: "yearly" as const,

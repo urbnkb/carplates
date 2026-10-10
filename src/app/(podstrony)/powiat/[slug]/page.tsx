@@ -7,6 +7,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { findPowiatBySlug, getAllPowiatSlugs } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { DzielniceGrid } from "@/components/DzielniceLinks";
 import { FactsCard } from "@/components/Facts";
 import PlatePreview from "@/components/PlatePreview";
@@ -63,6 +64,12 @@ export default async function PowiatPage({ params }: PageProps) {
 
   return (
     <>
+      <Breadcrumbs
+        trail={[
+          { name: "Powiaty", path: "/powiat" },
+          { name: capitalize(powiat.nazwa), path: `/powiat/${slug}` },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}

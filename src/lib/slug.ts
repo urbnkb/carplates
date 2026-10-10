@@ -14,12 +14,14 @@ for (const powiat of powiaty) {
   baseSlugCounts.set(base, (baseSlugCounts.get(base) ?? 0) + 1);
 }
 
+/** Czy w innym województwie jest powiat o tej samej nazwie (np. dwa "powiat brzeski"). */
+export function hasNamesake(powiat: Powiat): boolean {
+  return (baseSlugCounts.get(slugify(bareName(powiat.nazwa))) ?? 0) > 1;
+}
+
 function computeSlug(powiat: Powiat): string {
   const base = slugify(bareName(powiat.nazwa));
-  if ((baseSlugCounts.get(base) ?? 0) > 1) {
-    return `${base}-${slugify(powiat.wojewodztwo)}`;
-  }
-  return base;
+  return hasNamesake(powiat) ? `${base}-${slugify(powiat.wojewodztwo)}` : base;
 }
 
 const slugToPowiat = new Map<string, Powiat>();

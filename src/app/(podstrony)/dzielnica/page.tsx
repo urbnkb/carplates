@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { DzielniceGrid } from "@/components/DzielniceLinks";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -11,6 +12,7 @@ export const metadata = pageMetadata({
 export default function DzielnicaIndexPage() {
   return (
     <>
+      <Breadcrumbs trail={[{ name: "Dzielnice Warszawy", path: "/dzielnica" }]} />
       <header className="text-center">
         <h1 className="text-3xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
           Dzielnice Warszawy

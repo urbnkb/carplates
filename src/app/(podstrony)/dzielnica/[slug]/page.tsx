@@ -12,6 +12,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { powiatSlug } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { DzielniceLinks } from "@/components/DzielniceLinks";
 import { FactsCard } from "@/components/Facts";
 import PlatePreview from "@/components/PlatePreview";
@@ -84,6 +85,12 @@ export default async function DzielnicaPage({ params }: PageProps) {
 
   return (
     <>
+      <Breadcrumbs
+        trail={[
+          { name: "Dzielnice Warszawy", path: "/dzielnica" },
+          { name: dzielnica.nazwa, path: `/dzielnica/${slug}` },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}

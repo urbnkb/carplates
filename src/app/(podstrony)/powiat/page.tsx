@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { capitalize } from "@/lib/format";
+import { regionLabel } from "@/lib/dzielnice";
 import { powiaty } from "@/data/powiaty";
 import { pageMetadata } from "@/lib/metadata";
 import { powiatSlug } from "@/lib/slug";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata = pageMetadata({
   title: "Wszystkie powiaty i ich kody tablic rejestracyjnych",
@@ -15,6 +16,7 @@ const sortedPowiaty = [...powiaty].sort((a, b) => a.nazwa.localeCompare(b.nazwa,
 export default function PowiatIndexPage() {
   return (
     <>
+      <Breadcrumbs trail={[{ name: "Powiaty", path: "/powiat" }]} />
       <header className="text-center">
         <h1 className="text-3xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
           Wszystkie powiaty
@@ -31,7 +33,7 @@ export default function PowiatIndexPage() {
               href={`/powiat/${powiatSlug(powiat)}`}
               className="text-sm text-accent hover:underline"
             >
-              {capitalize(powiat.nazwa)}
+              {regionLabel(powiat)}
             </Link>{" "}
             <span className="text-xs text-zinc-600">({powiat.kody.join(", ")})</span>
           </li>

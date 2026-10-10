@@ -8,6 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { powiatSlug } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { DzielniceLinks } from "@/components/DzielniceLinks";
 import { FactsCard } from "@/components/Facts";
 import PlatePreview from "@/components/PlatePreview";
@@ -120,6 +121,12 @@ export default async function TablicaPage({ params }: PageProps) {
 
   return (
     <>
+      <Breadcrumbs
+        trail={[
+          { name: "Kody tablic", path: "/tablica" },
+          { name: `Tablica ${canonicalKod}`, path: `/tablica/${canonicalKod}` },
+        ]}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}

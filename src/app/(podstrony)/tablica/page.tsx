@@ -2,6 +2,7 @@ import Link from "next/link";
 import { regionLabel } from "@/lib/dzielnice";
 import { getAllKody } from "@/lib/kody";
 import { pageMetadata } from "@/lib/metadata";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata = pageMetadata({
   title: "Wszystkie kody tablic rejestracyjnych",
@@ -14,6 +15,7 @@ export default function TablicaIndexPage() {
 
   return (
     <>
+      <Breadcrumbs trail={[{ name: "Kody tablic", path: "/tablica" }]} />
       <header className="text-center">
         <h1 className="text-3xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
           Wszystkie kody tablic

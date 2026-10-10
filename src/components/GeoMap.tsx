@@ -148,6 +148,16 @@ export default function GeoMap({ map, highlightedIds, ariaLabel }: GeoMapProps) 
         ))}
       </svg>
 
+      {/* Licencja ODbL wymaga, by źródło było widoczne tam, gdzie dane są używane. */}
+      {map === "warszawa" && (
+        <p className="px-3 pb-2 text-right text-[10px] text-zinc-600">
+          Granice dzielnic ©{" "}
+          <a href="https://www.openstreetmap.org/copyright" className="hover:underline">
+            autorzy OpenStreetMap
+          </a>
+        </p>
+      )}
+
       {activeLabel && active && (
         <div
           ref={tooltipRef}

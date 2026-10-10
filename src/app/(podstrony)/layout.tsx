@@ -1,6 +1,8 @@
-import Link from "next/link";
-
-/** Wspólna obudowa podstron. Grupa `(podstrony)` nie zmienia adresów URL. */
+/**
+ * Wspólna obudowa podstron. Grupa `(podstrony)` nie zmienia adresów URL.
+ * Nawigację w górę daje każda strona sama przez `Breadcrumbs`, bo tylko ona
+ * zna swoją nazwę.
+ */
 export default function PodstronyLayout({
   children,
 }: Readonly<{
@@ -9,9 +11,6 @@ export default function PodstronyLayout({
   return (
     <div className="min-h-screen overflow-x-hidden bg-surface">
       <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
-        <Link href="/" className="self-start text-sm text-accent hover:underline">
-          ← Powrót do wyszukiwarki
-        </Link>
         {children}
       </main>
     </div>
