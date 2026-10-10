@@ -9,7 +9,7 @@
 - Lista 380 powiatów z kodami tablic dla każdego z nich
 - 18 dzielnic Warszawy z przypisanymi kodami tablic (np. WA Białołęka, WE Mokotów)
 
-## Kluczowe strony
+## Strony
 - Wyszukiwarka: https://skadrejestracja.com
 - Kody tablic: https://skadrejestracja.com/tablica
 - Powiaty: https://skadrejestracja.com/powiat

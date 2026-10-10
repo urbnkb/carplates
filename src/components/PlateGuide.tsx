@@ -17,10 +17,10 @@ export default function PlateGuide() {
       <div>
         <h3 className="font-semibold text-zinc-900">Co oznaczają litery na tablicy?</h3>
         <p className="mt-1 text-sm text-zinc-600">
-          Pierwsza litera wskazuje województwo, np. W to mazowieckie, a K małopolskie. Kilka
-          województw ma po dwie litery, np. dolnośląskie D i V. Kolejne jedna lub dwie litery
-          wskazują powiat. Kod dwuliterowy ma zwykle miasto na prawach powiatu, a trzyliterowy
-          powiat ziemski, ale są wyjątki: powiat poznański ma kod PZ, a Sopot GSP.
+          Pierwsza litera oznacza województwo: W to mazowieckie, K małopolskie. Kilka województw
+          ma dwie litery, na przykład dolnośląskie D i V. Następna litera albo dwie wskazują
+          powiat. Kod dwuliterowy ma zwykle miasto na prawach powiatu, a trzyliterowy powiat
+          ziemski. Zdarzają się wyjątki: powiat poznański ma kod PZ, a Sopot GSP.
         </p>
       </div>
 
@@ -42,13 +42,13 @@ export default function PlateGuide() {
       <div>
         <h3 className="font-semibold text-zinc-900">Czy po tablicy można rozpoznać dzielnicę Warszawy?</h3>
         <p className="mt-1 text-sm text-zinc-600">
-          Tak, dla{" "}
+          Tak. Każdy z{" "}
           <Link href="/dzielnica" className={LINK}>
             15 kodów Warszawy
-          </Link>
-          , np. WA to Białołęka, WE Mokotów, a WI Śródmieście. Kody WW i WX są wspólne dla kilku
-          dzielnic: WW dla Rembertowa, Wilanowa i Włoch, a WX dla Wesołej i Żoliborza. Pozostałe
-          kody na W należą do innych powiatów mazowieckich.
+          </Link>{" "}
+          wskazuje dzielnicę: WA to Białołęka, WE Mokotów, WI Śródmieście. Tylko WW i WX dzielą
+          się między kilka dzielnic. WW mają Rembertów, Wilanów i Włochy, a WX Wesoła i Żoliborz.
+          Pozostałe kody na W należą do innych powiatów mazowieckich.
         </p>
       </div>
 
@@ -56,7 +56,7 @@ export default function PlateGuide() {
         <h3 className="font-semibold text-zinc-900">Skąd pochodzą dane?</h3>
         <p className="mt-1 text-sm text-zinc-600">
           Kody tablic pochodzą z Wikiźródeł i Wikipedii, a granice powiatów i dzielnic z otwartych
-          zbiorów danych. Pełna lista źródeł i licencji jest na stronie{" "}
+          zbiorów danych. Pełną listę źródeł i licencji znajdziesz na stronie{" "}
           <Link href="/o-projekcie" className={LINK}>
             O projekcie
           </Link>

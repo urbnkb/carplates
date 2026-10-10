@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   title: "O projekcie i źródła danych",
   description:
-    "Skąd pochodzą kody tablic rejestracyjnych, granice powiatów i dzielnic oraz ciekawostki w serwisie Skąd ta rejestracja? — źródła, licencje i data ostatniej zmiany danych.",
+    "Skąd pochodzą kody tablic rejestracyjnych, granice powiatów i dzielnic oraz ciekawostki w serwisie. Licencje danych i data ich ostatniej zmiany.",
   path: "/o-projekcie",
 });
 
@@ -23,8 +23,8 @@ export default function OProjekciePage() {
           O projekcie
         </h1>
         <p className="mx-auto mt-4 max-w-md text-base text-zinc-600">
-          Projekt edukacyjny: po początkowych znakach polskiej tablicy rejestracyjnej pokazuje
-          powiat, z którego pochodzi pojazd. Autor: urbnkb.
+          To projekt edukacyjny: wpisujesz początkowe znaki polskiej tablicy rejestracyjnej,
+          a strona pokazuje, z jakiego powiatu pochodzi pojazd. Prowadzi go urbnkb.
         </p>
       </header>
 
@@ -32,31 +32,31 @@ export default function OProjekciePage() {
         <h2 className={H2}>Źródła danych</h2>
         <ul className="flex list-disc flex-col gap-3 pl-5">
           <li>
-            <strong>Kody tablic i przypisane im powiaty:</strong>{" "}
+            Kody tablic i powiaty, do których należą, pochodzą z hasła{" "}
             <a href="https://pl.wikisource.org/wiki/Polskie_tablice_rejestracyjne" className={LINK}>
-              Wikiźródła — „Polskie tablice rejestracyjne”
-            </a>
-            , sprawdzone z{" "}
+              „Polskie tablice rejestracyjne”
+            </a>{" "}
+            w Wikiźródłach. Porównano je z artykułem{" "}
             <a href="https://pl.wikipedia.org/wiki/Tablice_rejestracyjne_w_Polsce" className={LINK}>
-              Wikipedią — „Tablice rejestracyjne w Polsce”
-            </a>
-            . Kody powiatu nidzickiego i lidzbarskiego potwierdzono w infoboksach ich stron na
-            Wikipedii.
+              „Tablice rejestracyjne w Polsce”
+            </a>{" "}
+            na Wikipedii. Kodów powiatu nidzickiego i lidzbarskiego brakowało w tabeli źródłowej,
+            więc potwierdzono je w infoboksach stron tych powiatów na Wikipedii.
           </li>
           <li>
-            <strong>Granice powiatów:</strong>{" "}
+            Granice powiatów pochodzą z repozytorium{" "}
             <a href="https://github.com/ppatrzyk/polska-geojson" className={LINK}>
               ppatrzyk/polska-geojson
             </a>{" "}
-            (licencja MIT).
+            na licencji MIT.
           </li>
           <li>
-            <strong>Granice dzielnic Warszawy i ich kody tablic:</strong>{" "}
+            Granice dzielnic Warszawy i ich kody tablic pochodzą z OpenStreetMap (
             <a href="https://www.openstreetmap.org/copyright" className={LINK}>
               © autorzy OpenStreetMap
-            </a>{" "}
-            (licencja ODbL), uproszczone narzędziem mapshaper. Przypisanie kodów do dzielnic
-            potwierdzono w{" "}
+            </a>
+            , licencja ODbL). Granice uproszczono narzędziem mapshaper. Przypisanie kodów do
+            dzielnic potwierdzają serwisy{" "}
             <a
               href="https://www.wyborkierowcow.pl/warszawskie-rejestracje-tablice-rejestracyjne-warszawa/"
               className={LINK}
@@ -70,13 +70,14 @@ export default function OProjekciePage() {
             >
               motoryzacja.interia.pl
             </a>
-            ; w odróżnieniu od reszty danych nie ma go w Wikiźródłach ani na Wikipedii.
+            . W odróżnieniu od kodów pozostałych powiatów nie ma go w Wikiźródłach ani na
+            Wikipedii.
           </li>
           <li>
-            <strong>Ciekawostki:</strong> fakty o 380 powiatach zebrane głównie z polskiej
-            Wikipedii, a o 18 dzielnicach Warszawy — z serwisów dzielnicowych m.st. Warszawy,
-            Wikipedii i portali historycznych, potwierdzone w co najmniej dwóch źródłach. Żaden fakt
-            nie został dopisany bez źródła.
+            Ciekawostki o 380 powiatach pochodzą głównie z polskiej Wikipedii. Te o 18 dzielnicach
+            Warszawy zebrano z serwisów dzielnicowych m.st. Warszawy, Wikipedii i portali
+            historycznych, a każdą potwierdzają co najmniej dwa źródła. Żadna ciekawostka nie
+            powstała bez źródła.
           </li>
         </ul>
       </section>
