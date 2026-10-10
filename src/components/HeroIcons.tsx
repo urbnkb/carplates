@@ -24,53 +24,6 @@ interface Accent {
   phase: number;
   floatDelay: number;
   floatDuration: number;
-  /** Treats the header text as a solid wall it can't drift into. */
-  blockOnHeader?: boolean;
-}
-
-const WALL_BUFFER = 14;
-
-/**
- * Granice ruchu ikonki względem nagłówka, który traktujemy jak ścianę.
- *
- * Wszystkie cztery liczby to RÓŻNICE między prostokątem ikonki a prostokątem
- * nagłówka. Oba elementy leżą w tym samym przewijanym przepływie, więc przy
- * scrollu przesuwają się identycznie i te różnice się nie zmieniają — dlatego
- * wolno je zmierzyć raz i używać w każdej klatce.
- *
- * To nie jest mikrooptymalizacja. Wcześniej pętla scrolla wołała
- * `getBoundingClientRect()` na nagłówku i na ikonce, przy czym ten drugi odczyt
- * następował po zapisaniu transformów wcześniejszych ikonek — czyli układ
- * zapis → odczyt → zapis, wymuszający synchroniczny reflow w każdej klatce.
- * Na stronie z mapą o 380 ścieżkach to był główny koszt przewijania na telefonie.
- */
-interface WallLimits {
-  /** Ikonka zachodzi na ścianę w poziomie, gdy dx mieści się między nimi. */
-  dxMin: number;
-  dxMax: number;
-  /** Analogicznie w pionie; dyMin jest zarazem wartością, do której przycinamy. */
-  dyMin: number;
-  dyMax: number;
-}
-
-function measureWall(iconRect: DOMRect, wallRect: DOMRect): WallLimits {
-  return {
-    dxMin: wallRect.left - WALL_BUFFER - iconRect.right,
-    dxMax: wallRect.right + WALL_BUFFER - iconRect.left,
-    dyMin: wallRect.top - WALL_BUFFER - iconRect.bottom,
-    dyMax: wallRect.bottom + WALL_BUFFER - iconRect.top,
-  };
-}
-
-/** Przycina przesunięcie w pionie tak, żeby ikonka nie weszła w nagłówek. */
-function clampToWall(limits: WallLimits, dx: number, dy: number) {
-  const overlapsX = dx > limits.dxMin && dx < limits.dxMax;
-  const overlapsY = dy > limits.dyMin && dy < limits.dyMax;
-
-  if (overlapsX && overlapsY && dy > 0) {
-    return Math.max(0, limits.dyMin);
-  }
-  return dy;
 }
 
 const CAR_PATHS: IconPath[] = [
@@ -141,13 +94,13 @@ const ACCENTS: Accent[] = [
     ringTint: "#f0f9ff",
     size: "h-6 w-6 sm:h-7 sm:w-7",
     baseRotate: -6,
-    scrollFactor: 0.11,
+    // Ujemny: kompas siedzi nad nagłówkiem, więc dryfuje w górę, od tekstu.
+    scrollFactor: -0.11,
     swayAmplitude: 6,
     tiltAmplitude: 9,
     phase: 2.7,
     floatDelay: 1.1,
     floatDuration: 4.8,
-    blockOnHeader: true,
   },
   {
     paths: PIN_PATHS,
@@ -185,7 +138,6 @@ const ACCENTS: Accent[] = [
 
 export default function HeroIcons() {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
-  const outerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -198,19 +150,6 @@ export default function HeroIcons() {
       return;
     }
 
-    // Granice ściany per akcent, mierzone poza pętlą scrolla. null = akcent
-    // nie zderza się z nagłówkiem i nie potrzebuje przycinania.
-    const limits: (WallLimits | null)[] = ACCENTS.map(() => null);
-
-    function measure() {
-      if (!header) return;
-      const wallRect = header.getBoundingClientRect();
-      ACCENTS.forEach((cfg, i) => {
-        const outerEl = outerRefs.current[i];
-        limits[i] = cfg.blockOnHeader && outerEl ? measureWall(outerEl.getBoundingClientRect(), wallRect) : null;
-      });
-    }
-
     // Sama arytmetyka — ani jednego odczytu layoutu. Pozycja scrolla przychodzi
     // argumentem, bo ścieżka dotykowa woła to raz dla y = 0.
     function apply(y: number) {
@@ -220,9 +159,7 @@ export default function HeroIcons() {
         const cfg = ACCENTS[i];
         const sway = Math.sin(y / 90 + cfg.phase) * cfg.swayAmplitude;
         const tilt = cfg.baseRotate + Math.sin(y / 130 + cfg.phase) * cfg.tiltAmplitude;
-        const lim = limits[i];
-        let drift = y * cfg.scrollFactor;
-        if (lim) drift = clampToWall(lim, sway, drift);
+        const drift = y * cfg.scrollFactor;
         el.style.transform = `translate(${sway}px, ${drift}px) rotate(${tilt}deg)`;
       }
     }
@@ -264,17 +201,9 @@ export default function HeroIcons() {
       else window.removeEventListener("scroll", onScroll);
     }
 
-    function remeasure() {
-      measure();
-      apply(window.scrollY);
-    }
-
-    // Transform siada od razu: apply() nie dotyka layoutu, więc nie ma powodu
-    // odkładać go na później, a bez tego ikonki mają jedną klatkę bez transformu
-    // i widocznie podskakują przy wczytaniu. W rAF zostaje sam pomiar ściany,
-    // który layout czyta i musi poczekać, aż strona się ułoży.
+    // Transform siada od razu — bez tego ikonki mają jedną klatkę bez
+    // transformu i widocznie podskakują przy wczytaniu.
     apply(window.scrollY);
-    const frame = requestAnimationFrame(remeasure);
 
     // Poza kadrem nie ma po co liczyć niczego: strona główna jest długa,
     // a bez tego każde przewinięcie przy mapie czy stopce płaciło pełny koszt.
@@ -290,34 +219,16 @@ export default function HeroIcons() {
     if (visibility && header) visibility.observe(header);
     else listen(true);
 
-    // Nagłówek przesuwa się przy podmianie fontu przez next/font i przy zmianie
-    // trybu — ma wtedy inny tekst. Jedno i drugie widać jako zmianę rozmiaru.
-    const headerSize = header ? new ResizeObserver(remeasure) : null;
-    if (headerSize && header) headerSize.observe(header);
-
-    window.addEventListener("resize", remeasure);
-    window.addEventListener("orientationchange", remeasure);
-
     return () => {
-      cancelAnimationFrame(frame);
       listen(false);
       visibility?.disconnect();
-      headerSize?.disconnect();
-      window.removeEventListener("resize", remeasure);
-      window.removeEventListener("orientationchange", remeasure);
     };
   }, []);
 
   return (
     <div aria-hidden="true">
       {ACCENTS.map((accent, i) => (
-        <div
-          key={i}
-          ref={(el) => {
-            outerRefs.current[i] = el;
-          }}
-          className={`pointer-events-none absolute block ${accent.position}`}
-        >
+        <div key={i} className={`pointer-events-none absolute block ${accent.position}`}>
           <div
             ref={(el) => {
               refs.current[i] = el;

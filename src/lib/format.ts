@@ -23,23 +23,14 @@ export function slugify(text: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
-function joinPl(items: readonly string[], conjunction: string): string {
-  if (items.length <= 1) return items[0] ?? "";
-  return `${items.slice(0, -1).join(", ")} ${conjunction} ${items[items.length - 1]}`;
-}
-
 /**
  * "Mokotów" | "Wesoła lub Żoliborz" | "Rembertów, Wilanów lub Włochy".
  * Dla wyliczeń rozłącznych — pojazd pochodzi z *jednej* z tych dzielnic.
  */
-export function orList(items: readonly string[]): string {
-  return joinPl(items, "lub");
-}
+export const orList = new Intl.ListFormat("pl", { type: "disjunction" });
 
 /**
  * "Mokotów" | "Wesoła i Żoliborz" | "Rembertów, Wilanów i Włochy".
  * Dla wyliczeń łącznych — kod obejmuje *wszystkie* te dzielnice.
  */
-export function andList(items: readonly string[]): string {
-  return joinPl(items, "i");
-}
+export const andList = new Intl.ListFormat("pl", { type: "conjunction" });

@@ -8,7 +8,8 @@ import { pageMetadata } from "@/lib/metadata";
 import { powiatSlug } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
-import Facts from "@/components/Facts";
+import { DzielniceLinks } from "@/components/DzielniceLinks";
+import { FactsCard } from "@/components/Facts";
 import PlatePreview from "@/components/PlatePreview";
 import ProductWindow from "@/components/ProductWindow";
 import RegionMap from "@/components/RegionMap";
@@ -32,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const canonicalKod = kod.toUpperCase();
   const dzielnice = getDzielniceForKod(canonicalKod);
-  const nazwy = andList(dzielnice.map((d) => d.nazwa));
+  const nazwy = andList.format(dzielnice.map((d) => d.nazwa));
 
   // Kody warszawskie dostają dzielnicę wprost w tytule — to jest realne zapytanie
   // wpisywane w wyszukiwarkę ("WH jaka dzielnica"), a wszystkie 15 kodów Warszawy
@@ -103,7 +104,7 @@ export default async function TablicaPage({ params }: PageProps) {
       description: single
         ? `Kod tablicy rejestracyjnej przypisany do dzielnicy ${single.nazwa} w Warszawie.`
         : dzielnice.length > 1
-          ? `Kod tablicy rejestracyjnej wspólny dla dzielnic Warszawy: ${andList(dzielnice.map((d) => d.nazwa))}.`
+          ? `Kod tablicy rejestracyjnej wspólny dla dzielnic Warszawy: ${andList.format(dzielnice.map((d) => d.nazwa))}.`
           : `Kod tablicy rejestracyjnej przypisany do powiatu ${bareName(powiat.nazwa)}.`,
     },
   };
@@ -118,87 +119,64 @@ export default async function TablicaPage({ params }: PageProps) {
   );
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-surface">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
-      <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
-        <Link href="/" className="self-start text-sm text-accent hover:underline">
-          ← Powrót do wyszukiwarki
-        </Link>
+      <header className="flex flex-col items-center gap-6 text-center">
+        <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
+          Tablica {canonicalKod}
+        </h1>
+        <PlatePreview code={canonicalKod} />
+        <p className="mx-auto max-w-md text-base text-zinc-600 sm:text-lg">
+          {single ? (
+            <>
+              Pochodzi z {warszawaLink}, z dzielnicy{" "}
+              <Link
+                href={`/dzielnica/${dzielnicaSlug(single)}`}
+                className="font-medium text-accent hover:underline"
+              >
+                {single.nazwa}
+              </Link>{" "}
+              (woj. {powiat.wojewodztwo}).
+            </>
+          ) : dzielnice.length > 1 ? (
+            <>
+              Pochodzi z {warszawaLink} — kod {canonicalKod} jest wspólny dla dzielnic{" "}
+              <DzielniceLinks items={dzielnice} />, więc sama tablica nie wskazuje, z której z nich
+              pochodzi pojazd.
+            </>
+          ) : (
+            <>
+              Pochodzi z powiatu{" "}
+              <Link
+                href={`/powiat/${powiatSlug(powiat)}`}
+                className="font-medium text-accent hover:underline"
+              >
+                {bareName(powiat.nazwa)}
+              </Link>{" "}
+              (woj. {powiat.wojewodztwo}).
+            </>
+          )}
+        </p>
+      </header>
 
-        <header className="flex flex-col items-center gap-6 text-center">
-          <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
-            Tablica {canonicalKod}
-          </h1>
-          <PlatePreview code={canonicalKod} />
-          <p className="mx-auto max-w-md text-base text-zinc-600 sm:text-lg">
-            {single ? (
-              <>
-                Pochodzi z {warszawaLink}, z dzielnicy{" "}
-                <Link
-                  href={`/dzielnica/${dzielnicaSlug(single)}`}
-                  className="font-medium text-accent hover:underline"
-                >
-                  {single.nazwa}
-                </Link>{" "}
-                (woj. {powiat.wojewodztwo}).
-              </>
-            ) : dzielnice.length > 1 ? (
-              <>
-                Pochodzi z {warszawaLink} — kod {canonicalKod} jest wspólny dla dzielnic{" "}
-                {dzielnice.map((d, i) => (
-                  <span key={d.geoId}>
-                    {i > 0 && (i === dzielnice.length - 1 ? " i " : ", ")}
-                    <Link
-                      href={`/dzielnica/${dzielnicaSlug(d)}`}
-                      className="font-medium text-accent hover:underline"
-                    >
-                      {d.nazwa}
-                    </Link>
-                  </span>
-                ))}
-                , więc sama tablica nie wskazuje, z której z nich pochodzi pojazd.
-              </>
-            ) : (
-              <>
-                Pochodzi z powiatu{" "}
-                <Link
-                  href={`/powiat/${powiatSlug(powiat)}`}
-                  className="font-medium text-accent hover:underline"
-                >
-                  {bareName(powiat.nazwa)}
-                </Link>{" "}
-                (woj. {powiat.wojewodztwo}).
-              </>
-            )}
-          </p>
-        </header>
+      <ProductWindow>
+        <FactsCard
+          title={
+            single
+              ? `Ciekawostki o dzielnicy ${single.nazwa}`
+              : dzielnice.length > 1
+                ? "Ciekawostki o Warszawie"
+                : `Ciekawostki o powiecie ${bareName(powiat.nazwa)}`
+          }
+          powiat={powiat}
+          dzielnica={single}
+        />
 
-        <ProductWindow>
-          <div className="flex w-full max-w-xl flex-col gap-4 self-center neu-sunken rounded-2xl bg-well p-6">
-            <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
-              {single
-                ? `Ciekawostki o dzielnicy ${single.nazwa}`
-                : dzielnice.length > 1
-                  ? "Ciekawostki o Warszawie"
-                  : `Ciekawostki o powiecie ${bareName(powiat.nazwa)}`}
-            </h2>
-            {single ? (
-              <Facts
-                ciekawostki={single.ciekawostki}
-                verified={single.factsVerified}
-                subject="tej dzielnicy"
-              />
-            ) : (
-              <Facts ciekawostki={powiat.ciekawostki} verified={powiat.factsVerified} />
-            )}
-          </div>
-
-          <RegionMap powiat={powiat} kod={canonicalKod} />
-        </ProductWindow>
-      </main>
-    </div>
+        <RegionMap powiat={powiat} kod={canonicalKod} />
+      </ProductWindow>
+    </>
   );
 }

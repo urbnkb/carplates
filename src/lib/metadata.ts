@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { OG_IMAGE } from "@/lib/og";
-import { SITE_NAME } from "@/lib/site";
+import { OG_IMAGE, SITE_NAME } from "@/lib/site";
 
 interface PageMeta {
   title: string;

@@ -1,6 +1,6 @@
 import { dzielnice } from "@/data/dzielnice";
 import { powiaty } from "@/data/powiaty";
-import { bareName } from "@/lib/format";
+import { bareName, slugify } from "@/lib/format";
 import { warszawaPowiat } from "@/lib/dzielnice";
 import type { Dzielnica } from "@/types/dzielnica";
 import type { Powiat } from "@/types/powiat";
@@ -33,25 +33,20 @@ export function targetName(target: LocationTarget): string {
   return target.dzielnica?.nazwa ?? bareName(target.powiat.nazwa);
 }
 
+/** Jak slug, tylko ze spacjami: bez polskich znaków, wielkości liter i interpunkcji. */
 function normalize(input: string): string {
-  return input
-    .toLowerCase()
-    .replace(/ł/g, "l")
-    .replace(/-/g, " ")
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .trim()
-    .replace(/\s+/g, " ");
+  return slugify(input).replace(/-/g, " ");
 }
 
 /**
  * Alternatywne, oficjalne lub potoczne formy nazw, których nie da się
  * uzyskać samą normalizacją — kluczowany po geoId. Na razie tylko
  * Warszawa: jedyne miasto, którego pełna oficjalna nazwa ("miasto
- * stołeczne Warszawa") realnie różni się od nazwy w danych.
+ * stołeczne Warszawa") realnie różni się od nazwy w danych. Kropki
+ * normalizacja zamienia na spacje, więc "m.st." i "m. st." to jeden alias.
  */
 const ALIASES: Record<number, string[]> = {
-  302: ["m.st. Warszawa", "m. st. Warszawa", "miasto stołeczne Warszawa"],
+  302: ["m.st. Warszawa", "miasto stołeczne Warszawa"],
 };
 
 interface IndexEntry {

@@ -37,7 +37,7 @@ export function getDzielniceForKod(kod: string): Dzielnica[] {
  */
 export function dzielniceLabelForKod(kod: string): string | null {
   const found = getDzielniceForKod(kod);
-  return found.length > 0 ? orList(found.map((d) => d.nazwa)) : null;
+  return found.length > 0 ? orList.format(found.map((d) => d.nazwa)) : null;
 }
 
 /**

@@ -73,6 +73,44 @@ body {
 }
 
 /*
+ * Kształty map (GeoMap). Białe powiaty muszą odcinać się od --color-sea — przy
+ * zmianie jednego przelicz drugi.
+ *
+ * Grubość granicy jest w pikselach CSS dzięki vector-effect="non-scaling-stroke"
+ * na ścieżce: bez niego skalowała się z viewBoxem i na telefonie schodziła do
+ * 0,18 px. Sąsiedzi obrysowują wspólną krawędź każdy po swojej stronie, więc
+ * 0,8 daje na ekranie ok. 1,6 px. Kontrast granicy do bieli to 2,15:1 —
+ * mocniejszy kolor zbijał gęste południe kraju w ciemną plamę.
+ *
+ * Podświetlenie to tylko wypełnienie i grubszy kontur w tym samym szarym, bez
+ * `filter` (poświata rozlewała się poza granicę). `paint-order` nie jest
+ * ozdobnikiem: stroke jest wyśrodkowany na ścieżce i przy 2 px zjadał
+ * wypełnienie małego powiatu — na Wałbrzychu z 238 niebieskich pikseli
+ * zostawały 3.
+ */
+.map-shape {
+  fill: #ffffff;
+  stroke: #a5b3c6;
+  stroke-width: 0.8;
+  transition: fill 200ms ease-in-out;
+}
+
+.map-shape:hover,
+.map-shape:active {
+  fill: #d8e1ee;
+}
+
+.map-shape[data-highlighted] {
+  fill: #1d4ed8;
+  stroke-width: 2;
+  paint-order: stroke fill;
+}
+
+.map-shape[data-highlighted]:active {
+  fill: #1e3a8a;
+}
+
+/*
  * Obwolutka latających ikonek w hero: pierścień 2 px z gradientem, w środku
  * kółko schodzące od bieli do tintu. To jedyny gradient w serwisie.
  *

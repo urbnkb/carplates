@@ -17,7 +17,7 @@ export type Wojewodztwo =
   | "zachodniopomorskie";
 
 export interface Powiat {
-  /** id z pliku granic (public/data/powiaty-boundaries.json), używane do podświetlenia na mapie */
+  /** id z pliku granic (scripts/maps/powiaty-boundaries.json), używane do podświetlenia na mapie */
   geoId: number;
   /** pełna nazwa w formie "powiat X", zgodna z properties.nazwa w pliku granic */
   nazwa: string;
@@ -27,14 +27,4 @@ export interface Powiat {
   ciekawostki: [string, string, string];
   /** false = ciekawostki to placeholder "do uzupełnienia", nie zweryfikowane fakty */
   factsVerified: boolean;
-}
-
-export interface MatchResult {
-  powiat: Powiat;
-  matchedCode: string;
-}
-
-export interface Suggestion {
-  code: string;
-  powiat: Powiat;
 }

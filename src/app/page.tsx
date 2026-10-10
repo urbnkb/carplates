@@ -1,14 +1,13 @@
 "use client";
 
 import { useMemo, useState, useTransition, ViewTransition } from "react";
-import PlateInput from "@/components/PlateInput";
+import PlateVisual from "@/components/PlateVisual";
 import PlateSuggestions from "@/components/PlateSuggestions";
 import LocationVisual from "@/components/LocationVisual";
 import LocationSuggestions from "@/components/LocationSuggestions";
 import PlatePreview from "@/components/PlatePreview";
 import PowiatInfo from "@/components/PowiatInfo";
-import PolandMap from "@/components/PolandMap";
-import WarszawaDzielniceMap from "@/components/WarszawaDzielniceMap";
+import GeoMap from "@/components/GeoMap";
 import ModeToggle, { type Mode } from "@/components/ModeToggle";
 import HeroIcons from "@/components/HeroIcons";
 import ProductWindow from "@/components/ProductWindow";
@@ -84,7 +83,7 @@ export default function Home() {
 
   const highlightedDzielniceIds = useMemo(() => {
     if (isWarszawaPlate && plateResult) {
-      return getDzielniceForKod(plateResult.matchedCode).map((d) => d.geoId);
+      return getDzielniceForKod(plateResult.kod).map((d) => d.geoId);
     }
     if (isWarszawaLocation && resolvedTarget) {
       // Wpisana dzielnica podświetla siebie; wpisana "Warszawa" — całe miasto.
@@ -132,15 +131,15 @@ export default function Home() {
             <>
               {mode === "plate" ? (
                 <div className="flex w-full flex-col items-center gap-8">
-                  <PlateInput value={plateValue} onChange={setPlateValue} />
+                  <PlateVisual value={plateValue} onChange={setPlateValue} />
                   <PlateSuggestions
                     suggestions={plateSuggestions}
-                    activeCode={plateResult?.matchedCode}
+                    activeCode={plateResult?.kod}
                     onSelect={setPlateValue}
                   />
                   <PowiatInfo
                     powiat={plateResult?.powiat ?? null}
-                    matchedCode={plateResult?.matchedCode}
+                    matchedCode={plateResult?.kod}
                   />
                 </div>
               ) : (
@@ -171,9 +170,9 @@ export default function Home() {
           <ViewTransition key={showDzielniceMap ? "warszawa" : "poland"} name="map" share="auto" enter="auto" default="none">
             <div className="w-full">
               {showDzielniceMap ? (
-                <WarszawaDzielniceMap highlightedGeoIds={highlightedDzielniceIds} />
+                <GeoMap map="warszawa" highlightedIds={highlightedDzielniceIds} />
               ) : (
-                <PolandMap highlightedGeoId={highlightedGeoId} />
+                <GeoMap map="polska" highlightedIds={highlightedGeoId == null ? [] : [highlightedGeoId]} />
               )}
             </div>
           </ViewTransition>
