@@ -1,17 +1,17 @@
 "use client";
 
 import { useMemo, useState, useTransition, ViewTransition } from "react";
-import PlateInput from "@/components/PlateInput";
+import PlateVisual from "@/components/PlateVisual";
 import PlateSuggestions from "@/components/PlateSuggestions";
 import LocationVisual from "@/components/LocationVisual";
 import LocationSuggestions from "@/components/LocationSuggestions";
 import PlatePreview from "@/components/PlatePreview";
 import PowiatInfo from "@/components/PowiatInfo";
-import PolandMap from "@/components/PolandMap";
-import WarszawaDzielniceMap from "@/components/WarszawaDzielniceMap";
+import GeoMap from "@/components/GeoMap";
 import ModeToggle, { type Mode } from "@/components/ModeToggle";
 import HeroIcons from "@/components/HeroIcons";
 import ProductWindow from "@/components/ProductWindow";
+import PlateGuide from "@/components/PlateGuide";
 import { getSuggestions, matchPlate } from "@/lib/matchPlate";
 import {
   getLocationSuggestions,
@@ -25,16 +25,29 @@ import { dzielnice } from "@/data/dzielnice";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
+// WebSite to sygnał nazwy serwisu dla Google; WebApplication opisuje samo narzędzie.
 const JSON_LD = serializeJsonLd({
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: SITE_NAME,
-  url: SITE_URL,
-  applicationCategory: "UtilitiesApplication",
-  operatingSystem: "Any",
-  description:
-    "Rozpoznawanie powiatu po polskiej tablicy rejestracyjnej oraz sprawdzanie kodów tablic dla wybranego powiatu.",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "PLN" },
+  "@graph": [
+    {
+      "@type": "WebSite",
+      name: SITE_NAME,
+      url: SITE_URL,
+      inLanguage: "pl-PL",
+      description:
+        "Projekt edukacyjny: wpisz początkowe znaki polskiej tablicy rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd.",
+    },
+    {
+      "@type": "WebApplication",
+      name: SITE_NAME,
+      url: SITE_URL,
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Any",
+      description:
+        "Rozpoznawanie powiatu po polskiej tablicy rejestracyjnej oraz sprawdzanie kodów tablic dla wybranego powiatu.",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "PLN" },
+    },
+  ],
 });
 
 export default function Home() {
@@ -84,7 +97,7 @@ export default function Home() {
 
   const highlightedDzielniceIds = useMemo(() => {
     if (isWarszawaPlate && plateResult) {
-      return getDzielniceForKod(plateResult.matchedCode).map((d) => d.geoId);
+      return getDzielniceForKod(plateResult.kod).map((d) => d.geoId);
     }
     if (isWarszawaLocation && resolvedTarget) {
       // Wpisana dzielnica podświetla siebie; wpisana "Warszawa" — całe miasto.
@@ -132,15 +145,15 @@ export default function Home() {
             <>
               {mode === "plate" ? (
                 <div className="flex w-full flex-col items-center gap-8">
-                  <PlateInput value={plateValue} onChange={setPlateValue} />
+                  <PlateVisual value={plateValue} onChange={setPlateValue} />
                   <PlateSuggestions
                     suggestions={plateSuggestions}
-                    activeCode={plateResult?.matchedCode}
+                    activeCode={plateResult?.kod}
                     onSelect={setPlateValue}
                   />
                   <PowiatInfo
                     powiat={plateResult?.powiat ?? null}
-                    matchedCode={plateResult?.matchedCode}
+                    matchedCode={plateResult?.kod}
                   />
                 </div>
               ) : (
@@ -171,13 +184,15 @@ export default function Home() {
           <ViewTransition key={showDzielniceMap ? "warszawa" : "poland"} name="map" share="auto" enter="auto" default="none">
             <div className="w-full">
               {showDzielniceMap ? (
-                <WarszawaDzielniceMap highlightedGeoIds={highlightedDzielniceIds} />
+                <GeoMap map="warszawa" highlightedIds={highlightedDzielniceIds} />
               ) : (
-                <PolandMap highlightedGeoId={highlightedGeoId} />
+                <GeoMap map="polska" highlightedIds={highlightedGeoId == null ? [] : [highlightedGeoId]} />
               )}
             </div>
           </ViewTransition>
         </ProductWindow>
+
+        <PlateGuide />
 
         <footer className="neu-raised mt-4 flex w-full max-w-xl flex-col items-center gap-3 rounded-2xl bg-surface p-6 text-center">
           <p className="text-sm text-zinc-700">

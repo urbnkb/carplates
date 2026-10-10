@@ -35,7 +35,7 @@ export default function LocationVisual({ value, onChange }: LocationVisualProps)
         spellCheck={false}
         placeholder="Wpisz gminę, miasto, powiat lub dzielnicę"
         value={value}
-        onChange={(e) => onChange(e.target.value.replace(/[^\p{L}\s-]/gu, "").slice(0, 40))}
+        onChange={(e) => onChange(e.target.value.replace(/[^\p{L}\s.-]/gu, "").slice(0, 40))}
         aria-label="Nazwa gminy, miasta, powiatu lub dzielnicy Warszawy"
         className="h-full min-w-0 flex-1 bg-transparent px-3 text-center font-sans text-lg font-bold text-black outline-none placeholder:text-zinc-500 placeholder:text-xs placeholder:font-normal sm:text-2xl sm:placeholder:text-sm"
       />

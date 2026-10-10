@@ -1,6 +1,7 @@
 import { dzielnice } from "@/data/dzielnice";
 import { powiaty } from "@/data/powiaty";
 import { capitalize, orList, slugify } from "@/lib/format";
+import { hasNamesake } from "@/lib/slug";
 import type { Dzielnica } from "@/types/dzielnica";
 import type { Powiat } from "@/types/powiat";
 
@@ -37,20 +38,23 @@ export function getDzielniceForKod(kod: string): Dzielnica[] {
  */
 export function dzielniceLabelForKod(kod: string): string | null {
   const found = getDzielniceForKod(kod);
-  return found.length > 0 ? orList(found.map((d) => d.nazwa)) : null;
+  return found.length > 0 ? orList.format(found.map((d) => d.nazwa)) : null;
 }
 
 /**
  * Etykieta regionu dla kodu: dla Warszawy dokleja dzielnicę (lub listę dzielnic,
- * gdy kod jest współdzielony), poza Warszawą zwraca samą nazwę powiatu.
+ * gdy kod jest współdzielony), poza Warszawą zwraca nazwę powiatu — z województwem,
+ * gdy sama nazwa nie wystarcza do rozróżnienia.
  * "Warszawa (Mokotów)" | "Warszawa (Rembertów, Wilanów lub Włochy)" | "Powiat wołomiński"
+ * | "Powiat brzeski (woj. opolskie)"
  */
 export function regionLabel(powiat: Powiat, kod?: string): string {
   if (kod && powiat.geoId === WARSZAWA_GEO_ID) {
     const label = dzielniceLabelForKod(kod);
     if (label) return `Warszawa (${label})`;
   }
-  return capitalize(powiat.nazwa);
+  const name = capitalize(powiat.nazwa);
+  return hasNamesake(powiat) ? `${name} (woj. ${powiat.wojewodztwo})` : name;
 }
 
 const slugToDzielnica = new Map<string, Dzielnica>();

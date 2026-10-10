@@ -40,7 +40,7 @@ export default function PowiatInfo({ powiat, matchedCode, dzielnica }: PowiatInf
           </p>
         )}
         <h2 className="text-2xl font-bold text-zinc-900">
-          {isWarszawa ? orList(dzielnice.map((d) => d.nazwa)) : capitalize(powiat.nazwa)}
+          {isWarszawa ? orList.format(dzielnice.map((d) => d.nazwa)) : capitalize(powiat.nazwa)}
         </h2>
         <p className="text-sm text-zinc-600">
           {isWarszawa
@@ -49,15 +49,7 @@ export default function PowiatInfo({ powiat, matchedCode, dzielnica }: PowiatInf
         </p>
       </div>
 
-      {single ? (
-        <Facts
-          ciekawostki={single.ciekawostki}
-          verified={single.factsVerified}
-          subject="tej dzielnicy"
-        />
-      ) : (
-        <Facts ciekawostki={powiat.ciekawostki} verified={powiat.factsVerified} />
-      )}
+      <Facts powiat={powiat} dzielnica={single} />
 
       <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-white/70 pt-3 text-sm">
         <Link

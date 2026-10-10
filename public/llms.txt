@@ -1,0 +1,22 @@
+# Skąd ta rejestracja?
+
+> Bezpłatny projekt edukacyjny: wpisz początkowe znaki polskiej tablicy
+> rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd.
+
+## Co znajdziesz na stronie
+- Wyszukiwarka powiatu po początkowych znakach tablicy
+- Lista 425 kodów tablic rejestracyjnych z przypisanymi powiatami
+- Lista 380 powiatów z kodami tablic dla każdego z nich
+- 18 dzielnic Warszawy z przypisanymi kodami tablic (np. WA Białołęka, WE Mokotów)
+
+## Kluczowe strony
+- Wyszukiwarka: https://skadrejestracja.com
+- Kody tablic: https://skadrejestracja.com/tablica
+- Powiaty: https://skadrejestracja.com/powiat
+- Dzielnice Warszawy: https://skadrejestracja.com/dzielnica
+- O projekcie, źródła danych i licencje: https://skadrejestracja.com/o-projekcie
+
+## Uwagi
+Kody WW i WX w Warszawie są przypisane do więcej niż jednej dzielnicy:
+WW to Rembertów, Wilanów i Włochy, WX to Wesoła i Żoliborz.
+Pozostałe kody zaczynające się na W należą do innych powiatów mazowieckich.

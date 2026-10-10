@@ -1,5 +1,4 @@
-import PolandMap from "@/components/PolandMap";
-import WarszawaDzielniceMap from "@/components/WarszawaDzielniceMap";
+import GeoMap from "@/components/GeoMap";
 import { getDzielniceForKod, WARSZAWA_GEO_ID } from "@/lib/dzielnice";
 import { andList, capitalize } from "@/lib/format";
 import type { Dzielnica } from "@/types/dzielnica";
@@ -15,36 +14,28 @@ interface RegionMapProps {
    * a podświetlić trzeba dokładnie tę jedną, której dotyczy strona.
    */
   dzielnice?: Dzielnica[];
-  /** Nadpisuje nagłówek sekcji. */
-  heading?: string;
 }
 
-export default function RegionMap({ powiat, kod, dzielnice, heading }: RegionMapProps) {
+export default function RegionMap({ powiat, kod, dzielnice }: RegionMapProps) {
   // Warunkiem mapy dzielnic jest niepusta lista, a nie samo geoId: nieznany kod
   // zdegraduje się do mapy Polski zamiast wyrenderować całkiem szarą Warszawę.
   const shown =
     dzielnice ?? (kod && powiat.geoId === WARSZAWA_GEO_ID ? getDzielniceForKod(kod) : []);
 
-  const resolvedHeading =
-    heading ??
-    (shown.length === 1
+  const heading =
+    shown.length === 1
       ? `Dzielnica ${shown[0].nazwa} na mapie Warszawy`
       : shown.length > 1
-        ? `${andList(shown.map((d) => d.nazwa))} na mapie Warszawy`
-        : `${capitalize(powiat.nazwa)} na mapie Polski`);
+        ? `${andList.format(shown.map((d) => d.nazwa))} na mapie Warszawy`
+        : `${capitalize(powiat.nazwa)} na mapie Polski`;
 
   return (
     <section className="flex w-full flex-col items-center gap-3">
-      <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">
-        {resolvedHeading}
-      </h2>
+      <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">{heading}</h2>
       {shown.length > 0 ? (
-        <WarszawaDzielniceMap
-          highlightedGeoIds={shown.map((d) => d.geoId)}
-          ariaLabel={resolvedHeading}
-        />
+        <GeoMap map="warszawa" highlightedIds={shown.map((d) => d.geoId)} ariaLabel={heading} />
       ) : (
-        <PolandMap highlightedGeoId={powiat.geoId} ariaLabel={resolvedHeading} />
+        <GeoMap map="polska" highlightedIds={[powiat.geoId]} ariaLabel={heading} />
       )}
     </section>
   );

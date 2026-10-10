@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { OG_IMAGE } from "@/lib/og";
+import { OG_IMAGE } from "@/lib/site";
 
 export const alt = OG_IMAGE.alt;
 export const size = { width: OG_IMAGE.width, height: OG_IMAGE.height };
