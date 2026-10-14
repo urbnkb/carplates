@@ -5,16 +5,50 @@
 
 ## Co znajdziesz na stronie
 - Wyszukiwarka powiatu po początkowych znakach tablicy
+- 16 województw z literami tablic, listą kodów i powiatów oraz mapą
 - Lista 425 kodów tablic rejestracyjnych z przypisanymi powiatami
 - Lista 380 powiatów z kodami tablic dla każdego z nich
 - 18 dzielnic Warszawy z przypisanymi kodami tablic (np. WA Białołęka, WE Mokotów)
 
 ## Strony
 - Wyszukiwarka: https://skadrejestracja.com
+- Województwa: https://skadrejestracja.com/wojewodztwo
 - Kody tablic: https://skadrejestracja.com/tablica
 - Powiaty: https://skadrejestracja.com/powiat
 - Dzielnice Warszawy: https://skadrejestracja.com/dzielnica
 - O projekcie, źródła danych i licencje: https://skadrejestracja.com/o-projekcie
+
+## Jak czytać kod tablicy
+Pierwsze dwa albo trzy znaki polskiej tablicy rejestracyjnej to kod powiatu,
+w którym ją wydano. Pierwsza litera kodu oznacza województwo, kolejne powiat.
+Przykład: KR to Kraków, KRA powiat krakowski (oba w małopolskim).
+
+Litery województw:
+- B: podlaskie
+- C: kujawsko-pomorskie
+- D, V: dolnośląskie
+- E: łódzkie
+- F: lubuskie
+- G, X: pomorskie
+- I, S: śląskie
+- K: małopolskie
+- L: lubelskie
+- M, P: wielkopolskie
+- N: warmińsko-mazurskie
+- O: opolskie
+- R, Y: podkarpackie
+- T: świętokrzyskie
+- W: mazowieckie
+- Z: zachodniopomorskie
+
+Dwuliterowy kod ma zwykle miasto na prawach powiatu, a trzyliterowy powiat
+ziemski. Z 425 kodów 92 mają dwie litery, a 333 trzy. Od tej reguły jest
+14 wyjątków:
+- dwie litery mimo powiatu ziemskiego: WG garwoliński, WL legionowski,
+  WM miński, WV wołomiński, WZ warszawski zachodni, OB brzeski (opolskie),
+  OK kędzierzyńsko-kozielski, PP pilski, PZ poznański
+- trzy litery mimo miasta na prawach powiatu: GSP Sopot, ZSW Świnoujście,
+  SJZ Jastrzębie-Zdrój, SPI Piekary Śląskie, SZO Żory
 
 ## Uwagi
 Kody WW i WX w Warszawie są przypisane do więcej niż jednej dzielnicy:

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const HUBY = [
+  { href: "/wojewodztwo", label: "Województwa" },
   { href: "/powiat", label: "Powiaty" },
   { href: "/tablica", label: "Kody tablic" },
   { href: "/dzielnica", label: "Dzielnice Warszawy" },
@@ -14,10 +15,10 @@ const HUBY = [
  * a ta nie przekazuje żadnego sygnału ważności. Stąd status „wykryta — obecnie
  * niezindeksowana" na blisko trzystu adresach.
  *
- * Trzy huby wystarczą, bo listy już istnieją: /powiat prowadzi do 380 stron,
- * /tablica do 425, /dzielnica do 18. Z tą stopką Googlebot dochodzi do dowolnej
- * podstrony w dwóch skokach, a z każdej podstrony wraca do huba. Czwarty link,
- * /o-projekcie, niesie źródła danych i autora.
+ * Cztery huby wystarczą, bo listy już istnieją: /wojewodztwo prowadzi do 16 stron,
+ * /powiat do 380, /tablica do 425, /dzielnica do 18. Z tą stopką Googlebot
+ * dochodzi do dowolnej podstrony w dwóch skokach, a z każdej podstrony wraca do
+ * huba. Piąty link, /o-projekcie, niesie źródła danych i autora.
  */
 export default function SiteFooter() {
   return (
