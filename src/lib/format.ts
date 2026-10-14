@@ -23,6 +23,14 @@ export function slugify(text: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+const pluralRules = new Intl.PluralRules("pl");
+
+/** Liczba z rzeczownikiem w dobrej formie: "1 powiat" | "22 powiaty" | "21 powiatów". */
+export function liczebnik(n: number, formy: { one: string; few: string; many: string }): string {
+  const kategoria = pluralRules.select(n);
+  return `${n} ${kategoria === "one" ? formy.one : kategoria === "few" ? formy.few : formy.many}`;
+}
+
 /**
  * "Mokotów" | "Wesoła lub Żoliborz" | "Rembertów, Wilanów lub Włochy".
  * Dla wyliczeń rozłącznych — pojazd pochodzi z *jednej* z tych dzielnic.

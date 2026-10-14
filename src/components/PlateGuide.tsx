@@ -3,23 +3,13 @@ import { powiaty } from "@/data/powiaty";
 import { getDzielniceForKod, warszawaPowiat } from "@/lib/dzielnice";
 import { andList } from "@/lib/format";
 import { getAllKody } from "@/lib/kody";
+import { wojewodztwa } from "@/lib/wojewodztwa";
 
 const LINK = "font-medium text-accent hover:underline";
 
-// Litery województw liczone z danych, żeby lista nie rozjechała się z kodami powiatów.
-const literyByWoj = new Map<string, Set<string>>();
-for (const { wojewodztwo, kody } of powiaty) {
-  const litery = literyByWoj.get(wojewodztwo) ?? new Set<string>();
-  for (const kod of kody) litery.add(kod[0]);
-  literyByWoj.set(wojewodztwo, litery);
-}
-const literyWojewodztw = [...literyByWoj]
-  .map(([wojewodztwo, litery]) => ({ wojewodztwo, litery: [...litery].sort() }))
-  .sort((a, b) => a.litery[0].localeCompare(b.litery[0]));
-
-const dwieLitery = literyWojewodztw
+const dwieLitery = wojewodztwa
   .filter((w) => w.litery.length > 1)
-  .map((w) => w.wojewodztwo)
+  .map((w) => w.nazwa)
   .sort((a, b) => a.localeCompare(b, "pl"));
 const kody2 = getAllKody().filter(({ kod }) => kod.length === 2).length;
 const kody3 = getAllKody().filter(({ kod }) => kod.length === 3).length;
@@ -49,7 +39,7 @@ function wylicz(pozycje: Fragment[][]): Fragment[] {
 
 const tekst = (fragmenty: Fragment[]) => fragmenty.map((f) => (typeof f === "string" ? f : f.text)).join("");
 
-const listaLiterTekst = literyWojewodztw.map((w) => `${w.litery.join(", ")}: ${w.wojewodztwo}`).join("; ");
+const listaLiterTekst = wojewodztwa.map((w) => `${w.litery.join(", ")}: ${w.nazwa}`).join("; ");
 
 /**
  * Pierwsze zdanie każdej odpowiedzi musi nazywać temat (tablice rejestracyjne),
@@ -70,7 +60,7 @@ const PYTANIA: Pytanie[] = [
   {
     pytanie: "Jaka litera na tablicy rejestracyjnej oznacza województwo?",
     odpowiedz: [
-      `Na polskich tablicach rejestracyjnych jedną literę ma ${literyWojewodztw.length - dwieLitery.length} województw, a dwie: ${andList.format(dwieLitery)}.`,
+      `Na polskich tablicach rejestracyjnych jedną literę ma ${wojewodztwa.length - dwieLitery.length} województw, a dwie: ${andList.format(dwieLitery)}.`,
     ],
     zListaLiter: true,
   },
@@ -170,10 +160,14 @@ export default function PlateGuide() {
           </p>
           {zListaLiter && (
             <dl className="mt-2 gap-x-6 text-sm sm:columns-2">
-              {literyWojewodztw.map(({ wojewodztwo, litery }) => (
-                <div key={wojewodztwo} className="flex break-inside-avoid gap-3 border-b border-edge py-1">
+              {wojewodztwa.map(({ nazwa, slug, litery }) => (
+                <div key={slug} className="flex break-inside-avoid gap-3 border-b border-edge py-1">
                   <dt className="w-10 shrink-0 font-semibold text-zinc-900">{litery.join(", ")}</dt>
-                  <dd className="text-zinc-600">{wojewodztwo}</dd>
+                  <dd>
+                    <Link href={`/wojewodztwo/${slug}`} className="text-accent hover:underline">
+                      {nazwa}
+                    </Link>
+                  </dd>
                 </div>
               ))}
             </dl>

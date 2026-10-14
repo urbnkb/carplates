@@ -8,6 +8,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { powiatSlug } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
+import { wojewodztwoSlug } from "@/lib/wojewodztwa";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { DzielniceLinks } from "@/components/DzielniceLinks";
 import { FactsCard } from "@/components/Facts";
@@ -69,9 +70,11 @@ export default async function TablicaPage({ params }: PageProps) {
   const dzielnice = getDzielniceForKod(canonicalKod);
   const single = dzielnice.length === 1 ? dzielnice[0] : null;
 
+  const wojewodztwoPath = `/wojewodztwo/${wojewodztwoSlug(powiat.wojewodztwo)}`;
   const wojewodztwoPlace = {
     "@type": "AdministrativeArea",
     name: `Województwo ${powiat.wojewodztwo}`,
+    url: `${SITE_URL}${wojewodztwoPath}`,
   };
   // Dla kodu współdzielonego (WW, WX) świadomie nie wskazujemy dzielnicy —
   // sam kod jej nie rozstrzyga, więc `about` zostaje na poziomie miasta.
@@ -110,6 +113,12 @@ export default async function TablicaPage({ params }: PageProps) {
     },
   };
 
+  const wojewodztwoLink = (
+    <Link href={wojewodztwoPath} className="font-medium text-accent hover:underline">
+      woj. {powiat.wojewodztwo}
+    </Link>
+  );
+
   const warszawaLink = (
     <Link
       href={`/powiat/${powiatSlug(powiat)}`}
@@ -146,7 +155,7 @@ export default async function TablicaPage({ params }: PageProps) {
               >
                 {single.nazwa}
               </Link>{" "}
-              (woj. {powiat.wojewodztwo}).
+              ({wojewodztwoLink}).
             </>
           ) : dzielnice.length > 1 ? (
             <>
@@ -163,7 +172,7 @@ export default async function TablicaPage({ params }: PageProps) {
               >
                 {bareName(powiat.nazwa)}
               </Link>{" "}
-              (woj. {powiat.wojewodztwo}).
+              ({wojewodztwoLink}).
             </>
           )}
         </p>

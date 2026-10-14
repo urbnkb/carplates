@@ -7,6 +7,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { findPowiatBySlug, getAllPowiatSlugs } from "@/lib/slug";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_URL } from "@/lib/site";
+import { wojewodztwoSlug } from "@/lib/wojewodztwa";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { DzielniceGrid } from "@/components/DzielniceLinks";
 import { FactsCard } from "@/components/Facts";
@@ -54,6 +55,7 @@ export default async function PowiatPage({ params }: PageProps) {
     containedInPlace: {
       "@type": "AdministrativeArea",
       name: `Województwo ${powiat.wojewodztwo}`,
+      url: `${SITE_URL}/wojewodztwo/${wojewodztwoSlug(powiat.wojewodztwo)}`,
     },
     additionalProperty: powiat.kody.map((kod) => ({
       "@type": "PropertyValue",
@@ -79,7 +81,12 @@ export default async function PowiatPage({ params }: PageProps) {
           {capitalize(powiat.nazwa)}
         </h1>
         <p className="mx-auto mt-4 max-w-md text-base text-zinc-600 sm:text-lg">
-          Województwo {powiat.wojewodztwo}
+          <Link
+            href={`/wojewodztwo/${wojewodztwoSlug(powiat.wojewodztwo)}`}
+            className="font-medium text-accent hover:underline"
+          >
+            Województwo {powiat.wojewodztwo}
+          </Link>
         </p>
       </header>
 

@@ -5,12 +5,14 @@
 
 ## Co znajdziesz na stronie
 - Wyszukiwarka powiatu po początkowych znakach tablicy
+- 16 województw z literami tablic, listą kodów i powiatów oraz mapą
 - Lista 425 kodów tablic rejestracyjnych z przypisanymi powiatami
 - Lista 380 powiatów z kodami tablic dla każdego z nich
 - 18 dzielnic Warszawy z przypisanymi kodami tablic (np. WA Białołęka, WE Mokotów)
 
 ## Strony
 - Wyszukiwarka: https://skadrejestracja.com
+- Województwa: https://skadrejestracja.com/wojewodztwo
 - Kody tablic: https://skadrejestracja.com/tablica
 - Powiaty: https://skadrejestracja.com/powiat
 - Dzielnice Warszawy: https://skadrejestracja.com/dzielnica
