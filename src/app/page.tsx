@@ -11,7 +11,7 @@ import GeoMap from "@/components/GeoMap";
 import ModeToggle, { type Mode } from "@/components/ModeToggle";
 import HeroIcons from "@/components/HeroIcons";
 import ProductWindow from "@/components/ProductWindow";
-import PlateGuide from "@/components/PlateGuide";
+import PlateGuide, { faqJsonLd } from "@/components/PlateGuide";
 import { getSuggestions, matchPlate } from "@/lib/matchPlate";
 import {
   getLocationSuggestions,
@@ -25,7 +25,8 @@ import { dzielnice } from "@/data/dzielnice";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
-// WebSite to sygnał nazwy serwisu dla Google; WebApplication opisuje samo narzędzie.
+// WebSite to sygnał nazwy serwisu dla Google; WebApplication opisuje samo narzędzie,
+// a FAQPage pytania z sekcji pod wyszukiwarką.
 const JSON_LD = serializeJsonLd({
   "@context": "https://schema.org",
   "@graph": [
@@ -47,6 +48,7 @@ const JSON_LD = serializeJsonLd({
         "Rozpoznawanie powiatu po polskiej tablicy rejestracyjnej oraz sprawdzanie kodów tablic dla wybranego powiatu.",
       offers: { "@type": "Offer", price: "0", priceCurrency: "PLN" },
     },
+    faqJsonLd,
   ],
 });
 
