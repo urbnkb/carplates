@@ -1,18 +1,24 @@
 import { dzielnice } from "@/data/dzielnice";
+import miasta from "@/data/miasta.json";
 import { powiaty } from "@/data/powiaty";
 import { bareName, slugify } from "@/lib/format";
 import { warszawaPowiat } from "@/lib/dzielnice";
 import type { Dzielnica } from "@/types/dzielnica";
 import type { Powiat } from "@/types/powiat";
 
+/** Miasta powiatów ziemskich po geoId. Miasta na prawach powiatu są powiatami, więc ich tu nie ma. */
+const miastaPowiatu: Record<string, string[]> = miasta;
+
 /**
- * Cel wyszukiwania: powiat, a dla Warszawy opcjonalnie konkretna dzielnica.
- * Dzielnica jest ustawiona tylko wtedy, gdy zapytanie trafiło w jej nazwę —
- * dzięki temu UI pokazuje jeden kod zamiast wszystkich piętnastu.
+ * Cel wyszukiwania: powiat, a w nim opcjonalnie miasto albo, dla Warszawy,
+ * konkretna dzielnica. Dzielnica jest ustawiona tylko wtedy, gdy zapytanie
+ * trafiło w jej nazwę — dzięki temu UI pokazuje jeden kod zamiast wszystkich
+ * piętnastu. Miasto nie ma własnego kodu, więc pokazujemy kody jego powiatu.
  */
 export interface LocationTarget {
   powiat: Powiat;
   dzielnica?: Dzielnica;
+  miasto?: string;
 }
 
 export type LocationMatch =
@@ -26,11 +32,12 @@ export type LocationMatch =
  * z powiatem o geoId 4.
  */
 export function locationTargetKey(target: LocationTarget): string {
-  return target.dzielnica ? `d${target.dzielnica.geoId}` : `p${target.powiat.geoId}`;
+  if (target.dzielnica) return `d${target.dzielnica.geoId}`;
+  return target.miasto ? `m${target.powiat.geoId}:${target.miasto}` : `p${target.powiat.geoId}`;
 }
 
 export function targetName(target: LocationTarget): string {
-  return target.dzielnica?.nazwa ?? bareName(target.powiat.nazwa);
+  return target.dzielnica?.nazwa ?? target.miasto ?? bareName(target.powiat.nazwa);
 }
 
 /** Jak slug, tylko ze spacjami: bez polskich znaków, wielkości liter i interpunkcji. */
@@ -71,6 +78,14 @@ function buildIndex(): IndexEntry[] {
         target: { powiat },
       });
     }
+    for (const miasto of miastaPowiatu[powiat.geoId] ?? []) {
+      const normalizedMiasto = normalize(miasto);
+      entries.push({
+        normalizedBare: normalizedMiasto,
+        normalizedFull: normalizedMiasto,
+        target: { powiat, miasto },
+      });
+    }
   }
   // Dzielnice Warszawy — jedyny przypadek, w którym nazwa mniejsza od powiatu
   // ma sens jako osobny cel, bo niesie własny kod tablicy.
@@ -92,13 +107,13 @@ const sortedByName = [...index].sort((a, b) =>
 );
 
 /**
- * Dopasowuje wpisaną nazwę do powiatu lub dzielnicy Warszawy metodą dokładnego
- * dopasowania (po normalizacji: bez polskich znaków diakrytycznych, wielkości
- * liter i nadmiarowych spacji) — bez zgadywania i bez dopasowań przybliżonych,
- * zgodnie z zasadą przyjętą w matchPlate. Zwraca "ambiguous" zamiast dowolnie
- * wybierać jeden wynik, gdy nazwa jest niejednoznaczna — w danych jest kilka par
- * powiatów ziemskich o identycznej nazwie w różnych województwach (np. dwa
- * "powiat brzeski": małopolskie i opolskie).
+ * Dopasowuje wpisaną nazwę do powiatu, miasta lub dzielnicy Warszawy metodą
+ * dokładnego dopasowania (po normalizacji: bez polskich znaków diakrytycznych,
+ * wielkości liter i nadmiarowych spacji) — bez zgadywania i bez dopasowań
+ * przybliżonych, zgodnie z zasadą przyjętą w matchPlate. Zwraca "ambiguous"
+ * zamiast dowolnie wybierać jeden wynik, gdy nazwa jest niejednoznaczna — w danych
+ * jest kilka par powiatów ziemskich o identycznej nazwie w różnych województwach
+ * (np. dwa "powiat brzeski": małopolskie i opolskie) i miast (np. dwa Józefowy).
  */
 export function matchLocation(input: string): LocationMatch {
   const query = normalize(input);

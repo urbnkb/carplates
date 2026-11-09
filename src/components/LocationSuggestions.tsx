@@ -37,6 +37,11 @@ export default function LocationSuggestions({
                 <span className="font-semibold">{target.dzielnica.nazwa}</span>
                 <span className="opacity-70"> — Warszawa</span>
               </>
+            ) : target.miasto ? (
+              <>
+                <span className="font-semibold">{target.miasto}</span>
+                <span className="opacity-70"> — {target.powiat.nazwa}</span>
+              </>
             ) : (
               <>
                 <span className="font-semibold">{capitalize(bareName(target.powiat.nazwa))}</span>

@@ -91,6 +91,12 @@ for (const [id, { sasiedzi }] of Object.entries(geo)) {
   for (const s of sasiedzi) if (!geo[s].sasiedzi.includes(+id)) bledy.push(`asymetria: ${id} i ${s}`);
 }
 
+// 1026 miast minus 66 miast na prawach powiatu, które są już powiatami (stan na 1 stycznia 2026).
+const miasta = JSON.parse(readFileSync(new URL("../src/data/miasta.json", import.meta.url)));
+const liczbaMiast = Object.values(miasta).flat().length;
+if (liczbaMiast !== 960) bledy.push(`miasta.json: ${liczbaMiast} miast zamiast 960`);
+for (const id of Object.keys(miasta)) if (!geo[id]) bledy.push(`miasta.json: nieznany powiat ${id}`);
+
 // Główny cel: /tablica/KOD i /powiat/SLUG jednego powiatu mają mówić co innego.
 const slowa = (t) => new Set(t.toLowerCase().split(/[^\p{L}\p{N}]+/u).filter((w) => w.length > 3));
 const jaccard = (a, b) => {

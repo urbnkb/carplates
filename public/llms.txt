@@ -5,6 +5,7 @@
 
 ## Co znajdziesz na stronie
 - Wyszukiwarka powiatu po początkowych znakach tablicy
+- Wyszukiwarka kodów tablic po nazwie jednego z 1026 miast, powiatu lub dzielnicy Warszawy
 - 16 województw z literami tablic, listą kodów i powiatów oraz mapą
 - Lista 425 kodów tablic rejestracyjnych z przypisanymi powiatami
 - Lista 380 powiatów z kodami tablic dla każdego z nich
