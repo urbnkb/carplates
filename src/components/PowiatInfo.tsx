@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { capitalize, orList } from "@/lib/format";
+import { orList, powiatMiejscownik, powiatNazwa } from "@/lib/format";
 import { dzielnicaSlug, getDzielniceForKod } from "@/lib/dzielnice";
 import { powiatSlug } from "@/lib/slug";
 import Facts from "@/components/Facts";
@@ -40,7 +40,7 @@ export default function PowiatInfo({ powiat, matchedCode, dzielnica }: PowiatInf
           </p>
         )}
         <h2 className="text-2xl font-bold text-zinc-900">
-          {isWarszawa ? orList.format(dzielnice.map((d) => d.nazwa)) : capitalize(powiat.nazwa)}
+          {isWarszawa ? orList.format(dzielnice.map((d) => d.nazwa)) : powiatNazwa(powiat)}
         </h2>
         <p className="text-sm text-zinc-600">
           {isWarszawa
@@ -56,7 +56,7 @@ export default function PowiatInfo({ powiat, matchedCode, dzielnica }: PowiatInf
           href={`/powiat/${powiatSlug(powiat)}`}
           className="text-accent hover:underline"
         >
-          Zobacz pełną stronę tego powiatu →
+          Więcej o {powiatMiejscownik(powiat)} →
         </Link>
         {dzielnice.map((d) => (
           <Link

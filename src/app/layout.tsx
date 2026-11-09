@@ -7,14 +7,16 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
 
+// latin-ext niesie ą, ę, ł, ś, ż… Bez niego polskie znaki doczytywały się dopiero
+// po tekście: `subsets` decyduje, co jest wstępnie ładowane.
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
 });
 
 const DESCRIPTION = `Wpisz początkowe znaki polskiej tablicy rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd. Litery województw i ${getAllKody().length} kodów tablic z powiatami.`;

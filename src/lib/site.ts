@@ -1,5 +1,9 @@
 export const SITE_URL = "https://skadrejestracja.com";
 export const SITE_NAME = "Skąd ta rejestracja?";
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+
+// ponytail: data wpisana ręcznie — podbij ją przy każdej zmianie danych lub treści stron.
+export const DATA_UPDATED = { iso: "2026-11-09", label: "9 listopada 2026" } as const;
 
 /**
  * Jedno źródło prawdy o grafice Open Graph. Trasę i wymiary trzeba podać jawnie

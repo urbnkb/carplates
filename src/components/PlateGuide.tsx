@@ -147,7 +147,7 @@ export default function PlateGuide() {
       {PYTANIA.map(({ pytanie, odpowiedz, zListaLiter }) => (
         <div key={pytanie}>
           <h3 className="font-semibold text-zinc-900">{pytanie}</h3>
-          <p className="mt-1 text-sm text-zinc-600">
+          <p className="mt-1 text-[15px] leading-relaxed text-zinc-600">
             {odpowiedz.map((f, i) =>
               typeof f === "string" ? (
                 f

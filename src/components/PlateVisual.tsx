@@ -26,7 +26,10 @@ export default function PlateVisual({ value, onChange }: PlateVisualProps) {
           onChange(e.target.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 8))
         }
         aria-label="Początkowe znaki tablicy rejestracyjnej"
-        className="h-full min-w-0 flex-1 bg-transparent px-2 text-center font-mono text-2xl font-bold tracking-[0.15em] text-black outline-none placeholder:text-zinc-500 placeholder:text-sm placeholder:font-normal placeholder:tracking-normal sm:text-4xl sm:placeholder:text-base"
+        // Podpowiedź skaluje samo pole, a nie ::placeholder: mały tekst w linii
+        // liczonej dla text-4xl siadał poniżej środka tablicy. 16 px nie schodzi
+        // niżej, bo iOS powiększa stronę przy fokusie na mniejszym polu.
+        className="h-full min-w-0 flex-1 bg-transparent px-2 text-center font-mono text-2xl font-bold tracking-[0.15em] text-black outline-none placeholder:text-zinc-500 placeholder-shown:font-sans placeholder-shown:text-base placeholder-shown:font-normal placeholder-shown:tracking-normal sm:text-4xl sm:placeholder-shown:text-base"
       />
     </div>
   );

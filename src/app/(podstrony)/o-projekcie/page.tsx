@@ -1,5 +1,6 @@
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { pageMetadata } from "@/lib/metadata";
+import { DATA_UPDATED } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "O projekcie i źródła danych",
@@ -8,28 +9,22 @@ export const metadata = pageMetadata({
   path: "/o-projekcie",
 });
 
-// ponytail: data wpisana ręcznie (ostatni commit w src/data) — podbij ją przy każdej zmianie danych.
-const DATA_UPDATED = "2 sierpnia 2026";
-
-const LINK = "font-medium text-accent hover:underline";
-const H2 = "text-sm font-semibold tracking-wide text-zinc-600 uppercase";
+const LINK = "link-accent";
 
 export default function OProjekciePage() {
   return (
     <>
       <Breadcrumbs trail={[{ name: "O projekcie", path: "/o-projekcie" }]} />
-      <header className="text-center">
-        <h1 className="text-3xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
-          O projekcie
-        </h1>
-        <p className="mx-auto mt-4 max-w-md text-base text-zinc-600">
+      <header className="flex max-w-2xl flex-col gap-4">
+        <h1 className="page-title">O projekcie</h1>
+        <p className="lead-text">
           To projekt edukacyjny: wpisujesz początkowe znaki polskiej tablicy rejestracyjnej,
           a strona pokazuje, z jakiego powiatu pochodzi pojazd. Prowadzi go urbnkb.
         </p>
       </header>
 
-      <section className="flex w-full max-w-xl flex-col gap-3 text-sm text-zinc-700">
-        <h2 className={H2}>Źródła danych</h2>
+      <section className="body-text flex w-full max-w-2xl flex-col gap-3">
+        <h2 className="section-title">Źródła danych</h2>
         <ul className="flex list-disc flex-col gap-3 pl-5">
           <li>
             Kody tablic i powiaty, do których należą, pochodzą z hasła{" "}
@@ -82,9 +77,9 @@ export default function OProjekciePage() {
         </ul>
       </section>
 
-      <section className="flex w-full max-w-xl flex-col gap-3 text-sm text-zinc-700">
-        <h2 className={H2}>Aktualność</h2>
-        <p>Ostatnia zmiana danych: {DATA_UPDATED}.</p>
+      <section className="body-text flex w-full max-w-2xl flex-col gap-3">
+        <h2 className="section-title">Aktualność</h2>
+        <p>Ostatnia zmiana danych: {DATA_UPDATED.label}.</p>
       </section>
     </>
   );

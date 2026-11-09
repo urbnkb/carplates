@@ -1,6 +1,6 @@
 import { dzielnice } from "@/data/dzielnice";
 import { powiaty } from "@/data/powiaty";
-import { capitalize, orList, slugify } from "@/lib/format";
+import { orList, powiatNazwa, slugify } from "@/lib/format";
 import { hasNamesake } from "@/lib/slug";
 import type { Dzielnica } from "@/types/dzielnica";
 import type { Powiat } from "@/types/powiat";
@@ -53,7 +53,7 @@ export function regionLabel(powiat: Powiat, kod?: string): string {
     const label = dzielniceLabelForKod(kod);
     if (label) return `Warszawa (${label})`;
   }
-  const name = capitalize(powiat.nazwa);
+  const name = powiatNazwa(powiat);
   return hasNamesake(powiat) ? `${name} (woj. ${powiat.wojewodztwo})` : name;
 }
 

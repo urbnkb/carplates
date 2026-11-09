@@ -20,7 +20,7 @@ export const powiaty: Powiat[] = [
     kody: ["DL"],
     ciekawostki: [
       "W 1241 r. w pobliskiej bitwie pod Legnicą wojska polsko-europejskie starły się z Mongołami.",
-      "Do 1993 r. w mieście i okolicy stacjonowały wojska radzieckie (tzw. \"Mała Moskwa\").",
+      "Do 1993 r. w mieście i okolicy stacjonowały wojska radzieckie (tzw. „Mała Moskwa”).",
       "Legnica jest ośrodkiem przemysłu miedziowego zagłębia legnicko-głogowskiego."
     ],
     factsVerified: true,
@@ -43,9 +43,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "dolnośląskie",
     kody: ["DW", "DX", "VW"],
     ciekawostki: [
-      "Miasto stu mostów — ponad sto mostów i kładek łączy dwanaście wyspa na Odrze.",
+      "Miasto stu mostów — ponad sto mostów i kładek łączy dwanaście wysp na Odrze.",
       "Ostrów Tumski to najstarsza część miasta, pierwotnie odrębna wyspa na Odrze.",
-      "Co roku po mieście \"spaceruje\" ponad 600 małych brązowych krasnali — symbol wrocławskiej Pomarańczowej Alternatywy."
+      "Co roku po mieście „spaceruje” ponad 600 małych brązowych krasnali — symbol wrocławskiej Pomarańczowej Alternatywy."
     ],
     factsVerified: true,
   },
@@ -57,7 +57,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Bolesławiec założył w 1190 r. książę Bolesław Wysoki.",
       "Wiadukt kolejowy nad doliną Bobru w Bolesławcu, wzniesiony w latach 1844–1846 i mający 490 m długości, jest najdłuższym wiaduktem kolejowym w Polsce.",
-      "Urodzony w Nowogrodźcu kompozytor Józef Ignacy Schnabel, zwany \"śląskim Haydnem\", skomponował 219 utworów i był kapelmistrzem katedralnym we Wrocławiu."
+      "Urodzony w Nowogrodźcu kompozytor Józef Ignacy Schnabel, zwany „śląskim Haydnem”, skomponował 219 utworów i był kapelmistrzem katedralnym we Wrocławiu."
     ],
     factsVerified: true,
   },
@@ -69,7 +69,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Średniowieczny ratusz w Dzierżoniowie wzniesiono w XIII w. jako dom handlowy, a od 1337 r. jest siedzibą władz miejskich.",
       "Najwyższym szczytem powiatu jest Wielka Sowa (1015 m n.p.m.) w Górach Sowich.",
-      "Powiat ma jeden z najwyższych wskaźników urbanizacji w Polsce - 78,1% mieszkańców żyje w miastach (dane za 2024 r.)."
+      "Powiat ma jeden z najwyższych wskaźników urbanizacji w Polsce – 78,1% mieszkańców żyje w miastach (dane za 2024 r.)."
     ],
     factsVerified: true,
   },
@@ -104,7 +104,7 @@ export const powiaty: Powiat[] = [
     kody: ["DJA"],
     ciekawostki: [
       "Kościół Pokoju w Jaworze, wzniesiony w latach 1654–1655 wyłącznie z drewna, gliny i słomy (bez kamienia i metalu, zgodnie z warunkami pokoju westfalskiego), wpisano na listę UNESCO w 2001 r. razem z kościołem w Świdnicy.",
-      "Zamek w Bolkowie ma charakterystyczny kamienny \"dziób\" skierowany w stronę drogi dojazdowej - jedyny taki przykład fortyfikacji w Polsce.",
+      "Zamek w Bolkowie ma charakterystyczny kamienny „dziób” skierowany w stronę drogi dojazdowej – jedyny taki przykład fortyfikacji w Polsce.",
       "W 1468 r. kupcy z Wrocławia i Świdnicy zdobyli zamek w Bolkowie i stracili stacjonującego tam rycerza-rozbójnika Jana z Czarnej."
     ],
     factsVerified: true,
@@ -115,7 +115,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "dolnośląskie",
     kody: ["DJE"],
     ciekawostki: [
-      "Od 1 stycznia 2021 r. powiat oficjalnie nosi nazwę \"karkonoski\" (marketingowa zmiana nazwy dawnego powiatu jeleniogórskiego).",
+      "Od 1 stycznia 2021 r. powiat oficjalnie nosi nazwę „karkonoski” (marketingowa zmiana nazwy dawnego powiatu jeleniogórskiego).",
       "Obejmuje polską część Karkonoszy ze Śnieżką (1603 m n.p.m.) — najwyższym szczytem Sudetów.",
       "Na jego terenie leżą znane miejscowości turystyczne Karpacz i Szklarska Poręba."
     ],
@@ -127,8 +127,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "dolnośląskie",
     kody: ["DKA"],
     ciekawostki: [
-      "23 czerwca 1760 r. pod Kamienną Górą, podczas wojny siedmioletniej, wojska pruskie starły się z austriackimi w bitwie nazwanej później \"Pruskimi Termopilami\".",
-      "Od XVI w. w Kamiennej Górze rozwijało się tkactwo lnu i handel płótnem na dużą skalę, kontynuowane po wojnie przez Zakłady Przemysłu Lniarskiego \"Len\".",
+      "23 czerwca 1760 r. pod Kamienną Górą, podczas wojny siedmioletniej, wojska pruskie starły się z austriackimi w bitwie nazwanej później „Pruskimi Termopilami”.",
+      "Od XVI w. w Kamiennej Górze rozwijało się tkactwo lnu i handel płótnem na dużą skalę, kontynuowane po wojnie przez Zakłady Przemysłu Lniarskiego „Len”.",
       "Powiat kamiennogórski zajmuje najmniejszą powierzchnię spośród wszystkich powiatów województwa dolnośląskiego (ok. 396 km²)."
     ],
     factsVerified: true,
@@ -163,9 +163,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "dolnośląskie",
     kody: ["DLB"],
     ciekawostki: [
-      "Mury obronne Lubania zbudowano w 1318 r. z bazaltu; otaczała je fosa, a miasto broniły cztery bramy w podwójnym pierścieniu murów.",
+      "Mury obronne Lubania zbudowano w 1318 r. z bazaltu; otaczała je fosa, a miasta broniły cztery bramy w podwójnym pierścieniu murów.",
       "Licząca 45 m wysokości i osiem kondygnacji Wieża Bracka w Lubaniu powstała również w 1318 r. i broniła głównej bramy miejskiej.",
-      "Podczas wojen husyckich Lubań został zdobyty dwukrotnie - w 1427 i 1431 r."
+      "Podczas wojen husyckich Lubań został zdobyty dwukrotnie – w 1427 i 1431 r."
     ],
     factsVerified: true,
   },
@@ -189,7 +189,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Od końca XII w. w rejonie Lwówka Śląskiego wydobywano złoto, co przyczyniło się do nadania miastu praw miejskich w 1217 r.",
       "Na początku XIV w. Lwówek Śląski liczył ok. 11 tys. mieszkańców, będąc jednym z największych miast ówczesnego Dolnego Śląska.",
-      "W miejskiej księdze Lwówka z I połowy XIII w. odnaleziono tzw. \"złote prawo lwóweckie\" - jedną z najstarszych śląskich ustaw górniczych."
+      "W miejskiej księdze Lwówka z I połowy XIII w. odnaleziono tzw. „złote prawo lwóweckie” – jedną z najstarszych śląskich ustaw górniczych."
     ],
     factsVerified: true,
   },
@@ -235,7 +235,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "dolnośląskie",
     kody: ["DPL"],
     ciekawostki: [
-      "Polkowice po raz pierwszy wymieniono jako miasto w dokumencie z 1276 r.; w czasach napoleońskich odwiedził je sam Napoleon, dwukrotnie - w 1807 i 1812 r.",
+      "Polkowice po raz pierwszy wymieniono jako miasto w dokumencie z 1276 r.; w czasach napoleońskich odwiedził je sam Napoleon, dwukrotnie – w 1807 i 1812 r.",
       "W 1957 r. Jan Wyżykowski odkrył w rejonie Polkowic i Sieroszowic złoża rud miedzi (tzw. pole Sieroszowice), a Kopalnia Polkowice ruszyła z produkcją w 1968 r.",
       "Powstałe w 1996 r. z połączenia dwóch kopalń Zakłady Górnicze Polkowice-Sieroszowice to dziś jedna z trzech działających kopalń miedzi KGHM w Polsce."
     ],
@@ -248,8 +248,8 @@ export const powiaty: Powiat[] = [
     kody: ["DST"],
     ciekawostki: [
       "Wydobywany od XIX w. na skalę przemysłową granit strzeliński posłużył m.in. do budowy Pałacu Kultury i Nauki w Warszawie oraz pomnika warszawskiej Nike.",
-      "W okolicach Strzelina odsłaniają się skały metamorficzne - gnejsy, łupki łyszczykowe, kwarcyty i marmury.",
-      "Powiat strzeliński jest silnie rolniczy - grunty rolne zajmują aż 84,6% jego powierzchni."
+      "W okolicach Strzelina odsłaniają się skały metamorficzne – gnejsy, łupki łyszczykowe, kwarcyty i marmury.",
+      "Powiat strzeliński jest silnie rolniczy – grunty rolne zajmują aż 84,6% jego powierzchni."
     ],
     factsVerified: true,
   },
@@ -259,7 +259,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "dolnośląskie",
     kody: ["DTR"],
     ciekawostki: [
-      "Klasztor cysterek w Trzebnicy założył w 1202 r. książę Henryk Brodaty pod wpływem żony, św. Jadwigi Śląskiej - to siedziba pierwszego żeńskiego zakonu w Polsce.",
+      "Klasztor cysterek w Trzebnicy założył w 1202 r. książę Henryk Brodaty pod wpływem żony, św. Jadwigi Śląskiej – to siedziba pierwszego żeńskiego zakonu w Polsce.",
       "Wzniesiona w latach 1208–1219 romańska bazylika w Trzebnicy jest jedną z pierwszych ceglanych świątyń w Polsce, a gotycka kaplica św. Jadwigi z lat 1268–1269 była pierwszą budowlą w Polsce wzniesioną w całości w stylu gotyckim.",
       "W trzebnickiej bazylice, pełniącej funkcję mauzoleum śląskich Piastów, pochowano 22 przedstawicieli tej dynastii."
     ],
@@ -272,7 +272,7 @@ export const powiaty: Powiat[] = [
     kody: ["DBA"],
     ciekawostki: [
       "Zamek Książ, którego budowę rozpoczął w latach 1288–1292 książę Bolko I Surowy, jest trzecim co do wielkości zamkiem w Polsce, po Malborku i Wawelu.",
-      "W czasie II wojny światowej pod zamkiem Książ i w Górach Sowich Niemcy prowadzili tajny \"Projekt Riese\" - budowę podziemnych obiektów siłami więźniów obozu Gross-Rosen.",
+      "W czasie II wojny światowej pod zamkiem Książ i w Górach Sowich Niemcy prowadzili tajny „Projekt Riese” – budowę podziemnych obiektów siłami więźniów obozu Gross-Rosen.",
       "Grunty rolne i leśne razem zajmują ponad 92% powierzchni powiatu wałbrzyskiego (49,6% rolne, 42,9% leśne)."
     ],
     factsVerified: true,
@@ -283,7 +283,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "dolnośląskie",
     kody: ["DWL"],
     ciekawostki: [
-      "Opactwo cystersów w Lubiążu, z fasadą o długości 223 m - najdłuższą barokową fasadą w Europie - uznawane jest za największe opactwo cysterskie na świecie.",
+      "Opactwo cystersów w Lubiążu, z fasadą o długości 223 m – najdłuższą barokową fasadą w Europie – uznawane jest za największe opactwo cysterskie na świecie.",
       "Siedziba starostwa powiatowego w Wołowie mieści się w miejscowym zamku.",
       "Lasy zajmują 36,1% powierzchni powiatu wołowskiego, a grunty rolne 57,3% (dane za 2025 r.)."
     ],
@@ -309,7 +309,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Zgorzelec i niemiecki Görlitz to historycznie jedno miasto, rozdzielone w 1945 r. wzdłuż Nysy Łużyckiej na mocy ustaleń poczdamskich.",
       "Most Staromiejski łączący Zgorzelec z Görlitz, wysadzony przez wycofujące się wojska niemieckie w maju 1945 r., odbudowano i otwarto ponownie dopiero 20 października 2004 r.",
-      "Gospodarka powiatu opiera się w dużej mierze na wydobyciu węgla brunatnego w kopalni \"Turów\" w Bogatyni."
+      "Gospodarka powiatu opiera się w dużej mierze na wydobyciu węgla brunatnego w kopalni „Turów” w Bogatyni."
     ],
     factsVerified: true,
   },
@@ -319,7 +319,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "dolnośląskie",
     kody: ["DZA"],
     ciekawostki: [
-      "Krzywa Wieża w Ząbkowicach Śląskich, nazywana \"śląską Pizą\", ma 34 m wysokości i 2,14 m odchylenia od pionu; przechyliła się 24 sierpnia 1598 r.",
+      "Krzywa Wieża w Ząbkowicach Śląskich, nazywana „śląską Pizą”, ma 34 m wysokości i 2,14 m odchylenia od pionu; przechyliła się 24 sierpnia 1598 r.",
       "Ziemia ząbkowicka stała się odrębnym księstwem ziębickim w 1322 r. pod władzą Bolka II i pozostawała pod panowaniem czeskim od 1336 do 1740 r.",
       "Karol I Podiebradowicz przeniósł na początku XVI w. siedzibę księstwa do Ząbkowic, gdzie wzniósł pierwszy na Śląsku renesansowy zamek."
     ],
@@ -333,7 +333,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Złotoryja otrzymała prawa miejskie w 1211 r. od księcia Henryka Brodatego, co czyni ją najstarszym lokowanym miastem w Polsce.",
       "W okresie największego rozkwitu górnictwa złota (1180–1240) w rejonie Złotoryi wydobywano rocznie od 24 do 48 kg złota ze złotonośnych piasków rzek Bóbr i Kaczawa.",
-      "Nazwa miasta wywodzi się od miejsc płukania złota nad Kaczawą, a w źródłach łacińskich i niemieckich określano je jako Aurum lub Goldberg (\"złota góra\")."
+      "Nazwa miasta wywodzi się od miejsc płukania złota nad Kaczawą, a w źródłach łacińskich i niemieckich określano je jako Aurum lub Goldberg („złota góra”)."
     ],
     factsVerified: true,
   },
@@ -344,8 +344,8 @@ export const powiaty: Powiat[] = [
     kody: ["DSR"],
     ciekawostki: [
       "Prawo średzkie, wywodzące się z lokacji Środy Śląskiej na prawie niemieckim, stało się wzorcowym prawodawstwem dla wielu innych śląskich osad.",
-      "W Środzie Śląskiej w latach 1985 i 1988 odnaleziono tzw. skarb średzki - m.in. gotycką koronę ślubną oraz ok. 7441 srebrnych i 40 złotych monet, prawdopodobnie zastawione niegdyś przez króla Czech Karola IV Luksemburskiego.",
-      "Powiat średzki ma jeden z najniższych wskaźników urbanizacji w województwie - zaledwie 19,5% mieszkańców żyje w miastach (dane za 2024 r.)."
+      "W Środzie Śląskiej w latach 1985 i 1988 odnaleziono tzw. skarb średzki – m.in. gotycką koronę ślubną oraz ok. 7441 srebrnych i 40 złotych monet, prawdopodobnie zastawione niegdyś przez króla Czech Karola IV Luksemburskiego.",
+      "Powiat średzki ma jeden z najniższych wskaźników urbanizacji w województwie – zaledwie 19,5% mieszkańców żyje w miastach (dane za 2024 r.)."
     ],
     factsVerified: true,
   },
@@ -369,7 +369,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Kanał Bydgoski, otwarty w 1774 r., połączył dorzecza Wisły i Odry.",
       "Nad Brdą w centrum miasta stoją charakterystyczne Spichrze nad Brdą.",
-      "Miasto jest siedzibą jednej z dwóch stolic województwa kujawsko-pomorskiego (obok Torunia)."
+      "Miasto jest jedną z dwóch stolic województwa kujawsko-pomorskiego (obok Torunia)."
     ],
     factsVerified: true,
   },
@@ -381,7 +381,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Miasto znane jest z zachowanego ciągu gotyckich spichrzów widocznych od strony Wisły.",
       "Grudziądz leży na wysokiej skarpie wiślanej, jednej z najbardziej charakterystycznych w Polsce.",
-      "W okresie międzywojennym mieściła się tu Centrum Wyszkolenia Kawalerii."
+      "W okresie międzywojennym mieściło się tu Centrum Wyszkolenia Kawalerii."
     ],
     factsVerified: true,
   },
@@ -417,7 +417,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Miasto Aleksandrów Kujawski, siedziba powiatu, powstało w 1834 r. jako osada kolejowa Aleksandrowo, a pełne prawa miejskie otrzymało w 1919 r.",
       "Na stacji kolejowej w Aleksandrowie Kujawskim, wybudowanej w 1862 r., doszło w 1879 r. do spotkania cara Rosji Aleksandra II z cesarzem Niemiec Wilhelmem I.",
-      "W granicach powiatu leży Ciechocinek - uzdrowisko z drewnianymi tężniami solankowymi wzniesionymi w latach 1824-1828."
+      "W granicach powiatu leży Ciechocinek – uzdrowisko z drewnianymi tężniami solankowymi wzniesionymi w latach 1824–1828."
     ],
     factsVerified: true,
   },
@@ -439,9 +439,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "kujawsko-pomorskie",
     kody: ["CBY", "CBC"],
     ciekawostki: [
-      "Zalew Koronowski, powstały w latach 1950-1962 na rzece Brdzie, ma długość ok. 42 km.",
-      "Koronowo otrzymało prawa miejskie w 1368 r., a Solec Kujawski - w 1325 r.",
-      "Lasy pokrywają 42% powierzchni powiatu bydgoskiego - to drugi najwyższy wskaźnik lesistości w województwie, po powiecie tucholskim."
+      "Zalew Koronowski, powstały w latach 1950–1962 na rzece Brdzie, ma długość ok. 42 km.",
+      "Koronowo otrzymało prawa miejskie w 1368 r., a Solec Kujawski – w 1325 r.",
+      "Lasy pokrywają 42% powierzchni powiatu bydgoskiego – to drugi najwyższy wskaźnik lesistości w województwie, po powiecie tucholskim."
     ],
     factsVerified: true,
   },
@@ -464,8 +464,8 @@ export const powiaty: Powiat[] = [
     kody: ["CGD"],
     ciekawostki: [
       "Miasto Golub-Dobrzyń powstało w 1951 r. z połączenia dwóch miast, Golubia i Dobrzynia, leżących po przeciwnych brzegach Drwęcy.",
-      "Nad Golubiem góruje zamek krzyżacki z XIV w., przebudowany w stylu renesansowym w XVI-XVII w.",
-      "W latach 1231-1454 rzeka Drwęca stanowiła granicę między ziemiami polskimi a państwem zakonu krzyżackiego."
+      "Nad Golubiem góruje zamek krzyżacki z XIV w., przebudowany w stylu renesansowym w XVI–XVII w.",
+      "W latach 1231–1454 rzeka Drwęca stanowiła granicę między ziemiami polskimi a państwem zakonu krzyżackiego."
     ],
     factsVerified: true,
   },
@@ -487,7 +487,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "kujawsko-pomorskie",
     kody: ["CIN"],
     ciekawostki: [
-      "W Kruszwicy nad Gopłem stoi \"Mysia Wieża\", z którą wiąże się legenda o królu Popielu.",
+      "W Kruszwicy nad Gopłem stoi „Mysia Wieża”, z którą wiąże się legenda o królu Popielu.",
       "Inowrocław jest jednym z najstarszych polskich uzdrowisk solankowych.",
       "Region słynie z wydobycia soli kamiennej sięgającego XIX wieku."
     ],
@@ -535,8 +535,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "kujawsko-pomorskie",
     kody: ["CRA"],
     ciekawostki: [
-      "Od 1510 r. Radziejów był miejscem sejmików generalnych ziemi kujawskiej, pełniąc funkcję politycznego centrum regionu w XVI-XVIII w.",
-      "Król Władysław Jagiełło odwiedził Radziejów trzynaście razy w latach 1399-1428.",
+      "Od 1510 r. Radziejów był miejscem sejmików generalnych ziemi kujawskiej, pełniąc funkcję politycznego centrum regionu w XVI–XVIII w.",
+      "Król Władysław Jagiełło odwiedził Radziejów trzynaście razy w latach 1399–1428.",
       "Miasto utraciło prawa miejskie w 1867 r. po represjach popowstaniowych i odzyskało je dopiero w 1919 r."
     ],
     factsVerified: true,
@@ -560,7 +560,7 @@ export const powiaty: Powiat[] = [
     kody: ["CSE"],
     ciekawostki: [
       "Więcbork, obecnie w powiecie sępoleńskim, był w okresie międzywojennym siedzibą kompleksu rezydencjalnego prezydenta RP Ignacego Mościckiego.",
-      "Rokokowy kościół Wniebowzięcia NMP w Więcborku wzniesiono w latach 1772-1778 staraniem rodu Potulickich.",
+      "Rokokowy kościół Wniebowzięcia NMP w Więcborku wzniesiono w latach 1772–1778 staraniem rodu Potulickich.",
       "Powiat leży w historycznym regionie Krajny, w obrębie Krajeńskiego Parku Krajobrazowego."
     ],
     factsVerified: true,
@@ -571,8 +571,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "kujawsko-pomorskie",
     kody: ["CTR"],
     ciekawostki: [
-      "W Chełmży, w granicach powiatu, stoi bazylika konkatedralna Świętej Trójcy z XIII-XV w.",
-      "Na terenie powiatu zachowały się ruiny zamków krzyżackich w Małej Nieszawce (XIII w.) oraz zamek w Bierzgłowie (XIII-XIV w.).",
+      "W Chełmży, w granicach powiatu, stoi bazylika konkatedralna Świętej Trójcy z XIII–XV w.",
+      "Na terenie powiatu zachowały się ruiny zamku krzyżackiego w Małej Nieszawce (XIII w.) oraz zamek w Bierzgłowie (XIII–XIV w.).",
       "Przez powiat płyną dwie duże rzeki, Wisła i Drwęca, a jego teren przecina autostrada A1."
     ],
     factsVerified: true,
@@ -595,7 +595,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "kujawsko-pomorskie",
     kody: ["CWA"],
     ciekawostki: [
-      "W Wąbrzeźnie w 1898 r. otwarto pierwszą w Polsce zelektryfikowaną linię kolejową.",
+      "W Wąbrzeźnie w 1898 r. otwarto pierwszą na dzisiejszych ziemiach polskich zelektryfikowaną linię kolejową.",
       "W Wąbrzeźnie urodził się Walther Nernst, laureat Nagrody Nobla w dziedzinie chemii.",
       "Miasto leży nad trzema jeziorami: Zamkowym, Frydek i Sicieńskim."
     ],
@@ -619,7 +619,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "kujawsko-pomorskie",
     kody: ["CSW"],
     ciekawostki: [
-      "Krzyżacki zamek w Świeciu, wzniesiony w latach 1344-1350, ma charakterystyczną krzywą wieżę odchyloną od pionu o ponad metr.",
+      "Krzyżacki zamek w Świeciu, wzniesiony w latach 1344–1350, ma charakterystyczną krzywą wieżę odchyloną od pionu o ponad metr.",
       "Działające od 1961 r. Zakłady Mondi Świecie należą do największych producentów celulozy i papieru w Europie.",
       "Powiat świecki, o powierzchni 1474,25 km², jest największym powiatem województwa kujawsko-pomorskiego."
     ],
@@ -679,8 +679,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "lubelskie",
     kody: ["LZ"],
     ciekawostki: [
-      "Zespół staromiejski Zamościa, zaprojektowany przez Bernarda Morando jako \"miasto idealne\", jest wpisany na listę UNESCO.",
-      "Miasto bywa nazywane \"Padwą Północy\" ze względu na renesansową architekturę.",
+      "Zespół staromiejski Zamościa, zaprojektowany przez Bernarda Morando jako „miasto idealne”, jest wpisany na listę UNESCO.",
+      "Miasto bywa nazywane „Padwą Północy” ze względu na renesansową architekturę.",
       "Zamość zostało założone w 1580 r. przez kanclerza Jana Zamoyskiego."
     ],
     factsVerified: true,
@@ -885,7 +885,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Powiat obejmuje część Roztocza — pagórkowatego regionu na pograniczu lubelsko-podkarpackim.",
       "W jego granicach leży Roztoczański Park Narodowy.",
-      "Region słyni z licznych drewnianych cerkwi i kościołów o unikalnej architekturze."
+      "Region słynie z licznych drewnianych cerkwi i kościołów o unikalnej architekturze."
     ],
     factsVerified: true,
   },
@@ -945,7 +945,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Zielona Góra to jeden z niewielu ośrodków winiarskich w Polsce — od lat organizowane jest tu winobranie.",
       "Miasto jest siedzibą władz województwa lubuskiego (obok Gorzowa Wielkopolskiego).",
-      "W okolicy znajdują się jedne z najbardziej wysuniętych na północ w Europie winnice."
+      "W okolicy znajdują się jedne z najbardziej wysuniętych na północ winnic w Europie."
     ],
     factsVerified: true,
   },
@@ -957,7 +957,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Twierdzę Kostrzyn zaczęto wznosić w 1537 r. za czasów margrabiego Jana Hohenzollerna, gdy Kostrzyn nad Odrą był stolicą Brandenburgii-Kostrzyn.",
       "W walkach o miasto w 1945 r. zniszczeniu uległo ok. 95% zabudowy Kostrzyna nad Odrą, przez co uznaje się je za najbardziej zniszczone miasto w powojennej Polsce.",
-      "W latach 2004-2019 w Kostrzynie nad Odrą odbywał się Przystanek Woodstock (od 2018 Pol'and'Rock Festival), jeden z największych festiwali muzycznych w Europie."
+      "W latach 2004–2019 w Kostrzynie nad Odrą odbywał się Przystanek Woodstock (od 2018 Pol'and'Rock Festival), jeden z największych festiwali muzycznych w Europie."
     ],
     factsVerified: true,
   },
@@ -979,7 +979,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "lubuskie",
     kody: ["FMI"],
     ciekawostki: [
-      "Międzyrzecki Rejon Umocniony (MRU), budowany przez Niemców od lat 30. XX w., ma sieć podziemnych korytarzy o łącznej długości ok. 32-35 km.",
+      "Międzyrzecki Rejon Umocniony (MRU), budowany przez Niemców od lat 30. XX w., ma sieć podziemnych korytarzy o łącznej długości ok. 32–35 km.",
       "W podziemiach MRU zimuje ok. 30 tys. nietoperzy należących do 12 gatunków, co czyni rezerwat Nietoperek jednym z największych zimowisk nietoperzy w Europie.",
       "Kasztelania międzyrzecka, poprzedniczka powiatu, była po raz pierwszy wzmiankowana już w 1230 r."
     ],
@@ -1003,7 +1003,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "lubuskie",
     kody: ["FSD"],
     ciekawostki: [
-      "Strzelce Krajeńskie zachowały średniowieczne mury obronne z 37-38 basztami, wzniesione w latach 1272-1290.",
+      "Strzelce Krajeńskie zachowały średniowieczne mury obronne z 37–38 basztami, wzniesione w latach 1272–1290.",
       "7 czerwca 1433 r., podczas wojen husyckich, miasto zdobyto po dwudniowym oblężeniu, wdzierając się do środka przez podziemne tunele.",
       "Do dziś zachowały się gotycka Brama Młyńska oraz Baszta Więzienna, zwana też Basztą Czarownic."
     ],
@@ -1016,7 +1016,7 @@ export const powiaty: Powiat[] = [
     kody: ["FSU"],
     ciekawostki: [
       "Sulęcin otrzymał prawa miejskie już w 1244 r.",
-      "W 1322 r. miasto i okoliczne ziemie przeszły pod władanie zakonu joannitów (kawalerów maltańskich), którzy rządzili nim aż do sekularyzacji w 1810 r.",
+      "W 1322 r. miasto i okoliczne ziemie przeszły pod władanie zakonu joannitów (kawalerów maltańskich), którzy rządzili nimi aż do sekularyzacji w 1810 r.",
       "Powiat sulęciński jest powiatem o najmniejszej liczbie mieszkańców w województwie lubuskim."
     ],
     factsVerified: true,
@@ -1029,7 +1029,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Do 1945 r. Słubice były prawobrzeżną dzielnicą Frankfurtu nad Odrą (Dammvorstadt); po wojnie stały się samodzielnym polskim miastem.",
       "Cmentarz żydowski w Słubicach, wzmiankowany od 1399 r., uchodzi za najstarszy wciąż istniejący cmentarz żydowski w Europie Środkowo-Wschodniej.",
-      "W 1992 r. otwarto Collegium Polonicum - wspólną placówkę dydaktyczno-naukową Uniwersytetu im. Adama Mickiewicza w Poznaniu i Uniwersytetu Europejskiego Viadrina we Frankfurcie nad Odrą."
+      "W 1992 r. otwarto Collegium Polonicum – wspólną placówkę dydaktyczno-naukową Uniwersytetu im. Adama Mickiewicza w Poznaniu i Uniwersytetu Europejskiego Viadrina we Frankfurcie nad Odrą."
     ],
     factsVerified: true,
   },
@@ -1063,7 +1063,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "lubuskie",
     kody: ["FSW"],
     ciekawostki: [
-      "W Świebodzinie w 2010 r. odsłonięto Pomnik Chrystusa Króla o wysokości 33 m (bez korony), który w latach 2010-2011 był najwyższym posągiem Chrystusa na świecie.",
+      "W Świebodzinie w 2010 r. odsłonięto Pomnik Chrystusa Króla o wysokości 33 m (bez korony), który w latach 2010–2011 był najwyższym posągiem Chrystusa na świecie.",
       "Miasto po raz pierwszy wzmiankowano w 1302 r., a prawa miejskie potwierdzono mu w 1469 r.",
       "W dawnym zamku joannickim z XVI w. w Świebodzinie mieści się dziś szpital."
     ],
@@ -1075,9 +1075,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "lubuskie",
     kody: ["FZG"],
     ciekawostki: [
-      "W nocy z 24 na 25 marca 1944 r. z obozu jenieckiego Stalag Luft III w Żaganiu 76 alianckich lotników uciekło przez wykopany tunel - wydarzenie znane jako Wielka Ucieczka.",
-      "Barokowy pałac książąt żagańskich wzniesiono w latach 1631-1633 i 1670-1686 z inicjatywy księcia Albrechta von Wallensteina.",
-      "W latach 1627-1628 w Żaganiu mieszkał i prowadził obserwacje astronomiczne i meteorologiczne Jan Kepler."
+      "W nocy z 24 na 25 marca 1944 r. z obozu jenieckiego Stalag Luft III w Żaganiu 76 alianckich lotników uciekło przez wykopany tunel – wydarzenie znane jako Wielka Ucieczka.",
+      "Barokowy pałac książąt żagańskich wzniesiono w latach 1631–1633 i 1670–1686 z inicjatywy księcia Albrechta von Wallensteina.",
+      "W latach 1627–1628 w Żaganiu mieszkał i prowadził obserwacje astronomiczne i meteorologiczne Jan Kepler."
     ],
     factsVerified: true,
   },
@@ -1089,7 +1089,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Żary po raz pierwszy wzmiankowano w 1007 r. w kronice biskupa Thietmara, a prawa miejskie miasto otrzymało w 1260 r.",
       "Na początku XX w. aż 55% całego niemieckiego eksportu płótna do Stanów Zjednoczonych pochodziło z żarskich fabryk włókienniczych.",
-      "Barokowy pałac Promnitzów w Żarach, zaprojektowany przez Giovanniego Simonettiego, wzniesiono w latach 1710-1728."
+      "Barokowy pałac Promnitzów w Żarach, zaprojektowany przez Giovanniego Simonettiego, wzniesiono w latach 1710–1728."
     ],
     factsVerified: true,
   },
@@ -1124,7 +1124,7 @@ export const powiaty: Powiat[] = [
     kody: ["WR"],
     ciekawostki: [
       "W 1976 r. w Radomiu doszło do masowych protestów robotniczych przeciwko podwyżkom cen żywności.",
-      "Miasto było historycznie ważnym ośrodkiem sejmikowym — w 1505 r. uchwalono tu konstytucję \"Nihil novi\".",
+      "Miasto było historycznie ważnym ośrodkiem sejmikowym — w 1505 r. uchwalono tu konstytucję „Nihil novi”.",
       "Radom jest znany z tradycji przemysłu skórzano-obuwniczego."
     ],
     factsVerified: true,
@@ -1316,7 +1316,7 @@ export const powiaty: Powiat[] = [
     kody: ["WOR"],
     ciekawostki: [
       "Ostrów Mazowiecka otrzymała prawa miejskie w 1434 r. na prawie chełmińskim, nadane przez księcia Bolesława IV.",
-      "11 listopada 1939 r. Niemcy rozstrzelali 364 żydowskich mieszkańców miasta — jedna z pierwszych masowych egzekucji Żydów w okupowanej Polsce.",
+      "11 listopada 1939 r. Niemcy rozstrzelali 364 żydowskich mieszkańców miasta — to jedna z pierwszych masowych egzekucji Żydów w okupowanej Polsce.",
       "Miasto nosiło nazwę „Ostrów” i dopiero w 1926 r. przyjęło obecną nazwę Ostrów Mazowiecka."
     ],
     factsVerified: true,
@@ -1341,7 +1341,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Otwock rozwinął się jako uzdrowisko — w 1893 r. powstało tu pierwsze w Polsce stałe sanatorium nizinne dla chorych na płuca.",
       "Charakterystyczna dla miasta drewniana zabudowa willowa w stylu „świdermajer” powstawała m.in. według projektów malarza Michała Elwiro Andriollego.",
-      "W 1936 r. odcinek kolei z Otwocka do Warszawy stał się pierwszą zelektryfikowaną linią kolejową w Polsce."
+      "W 1936 r. odcinek kolei z Otwocka do Warszawy stał się częścią pierwszej linii zelektryfikowanej przez PKP."
     ],
     factsVerified: true,
   },
@@ -1521,7 +1521,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Wołomin otrzymał prawa miejskie w 1919 r. na mocy dekretu Józefa Piłsudskiego.",
       "W Wołominie przez 117 lat działała huta szkła założona w 1905 r. przez Salomona Kohna, zamknięta w listopadzie 2022 r.",
-      "W sierpniu 1920 r. w pobliskim Radzyminie, leżącym w powiecie wołomińskim, rozegrała się decydująca bitwa Bitwy Warszawskiej, nazywana Cudem nad Wisłą."
+      "W sierpniu 1920 r. w pobliskim Radzyminie, leżącym w powiecie wołomińskim, rozegrało się decydujące starcie Bitwy Warszawskiej, nazywanej Cudem nad Wisłą."
     ],
     factsVerified: true,
   },
@@ -1591,7 +1591,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "mazowieckie",
     kody: ["WZY"],
     ciekawostki: [
-      "Żyrardów to jedno z niewielu polskich miast, którego nazwa pochodzi od nazwiska osoby — francuskiego wynalazcy Filipa de Girarda, twórcy maszyn do mechanicznego przędzenia lnu.",
+      "Żyrardów to jedno z niewielu polskich miast, których nazwa pochodzi od nazwiska osoby — francuskiego wynalazcy Filipa de Girarda, twórcy maszyn do mechanicznego przędzenia lnu.",
       "XIX-wieczna Osada Fabryczna w Żyrardowie, uznana w 2012 r. za Pomnik Historii, jest jedynym w Europie tak dobrze zachowanym kompleksem fabrycznym z tamtej epoki.",
       "Przed I wojną światową żyrardowska fabryka lniarska była największym zakładem wyrobów lnianych w Europie."
     ],
@@ -1628,7 +1628,7 @@ export const powiaty: Powiat[] = [
     kody: ["KT"],
     ciekawostki: [
       "Stare Miasto w Tarnowie zachowało średniowieczny układ urbanistyczny z rynkiem i ratuszem.",
-      "Miasto bywa nazywane \"perłą polskiego renesansu\" ze względu na katedrę i kamienice.",
+      "Miasto bywa nazywane „perłą polskiego renesansu” ze względu na katedrę i kamienice.",
       "W Tarnowie urodził się i wychował gen. Józef Bem, bohater Polski i Węgier."
     ],
     factsVerified: true,
@@ -1652,7 +1652,7 @@ export const powiaty: Powiat[] = [
     kody: ["KBR"],
     ciekawostki: [
       "W Brzesku w 1845 r. Jan Ewangelista Goetz założył browar Okocim, do dziś jeden z największych w Polsce.",
-      "Neobarokowy Pałac Goetza w Brzesku wzniesiono w latach 1898-1900 według projektu wiedeńskiej pracowni Fellner i Helmer.",
+      "Neobarokowy Pałac Goetza w Brzesku wzniesiono w latach 1898–1900 według projektu wiedeńskiej pracowni Fellner i Helmer.",
       "Brzesko lokowano w 1289 r., lecz miasto utraciło prawa miejskie w 1317 r. i odzyskało je dopiero ok. 1385 r."
     ],
     factsVerified: true,
@@ -1664,7 +1664,7 @@ export const powiaty: Powiat[] = [
     kody: ["KCH"],
     ciekawostki: [
       "W Chrzanowie w 1920 r. powstał Fablok, pierwsza fabryka lokomotyw w Polsce.",
-      "Kopalnia rud cynku i ołowiu 'Matylda' w rejonie Chrzanowa działała od 1852 do 1973 r.",
+      "Kopalnia rud cynku i ołowiu „Matylda” w rejonie Chrzanowa działała od 1852 do 1973 r.",
       "Chrzanów otrzymał prawa miejskie ok. 1350 r., a w XIX w. mieszkańcy pochodzenia żydowskiego stanowili blisko połowę jego ludności."
     ],
     factsVerified: true,
@@ -1676,7 +1676,7 @@ export const powiaty: Powiat[] = [
     kody: ["KDA"],
     ciekawostki: [
       "Dąbrowę Tarnowską lokowano na prawie niemieckim w 1422 r., a prawa miejskie uzyskała ok. 1693 r.",
-      "Barokowy pałac Lubomirskich w Dąbrowie Tarnowskiej, wzniesiony w latach 1683-1693, spłonął w 1846 r. i pozostał w ruinie.",
+      "Barokowy pałac Lubomirskich w Dąbrowie Tarnowskiej, wzniesiony w latach 1683–1693, spłonął w 1846 r. i pozostał w ruinie.",
       "W lipcu 1942 r. Niemcy utworzyli w Dąbrowie Tarnowskiej getto dla ok. 3200 Żydów, wywiezionych następnie do obozu zagłady w Bełżcu."
     ],
     factsVerified: true,
@@ -1689,7 +1689,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "W 1854 r. w Gorlicach zapalono jedną z pierwszych na świecie ulicznych lamp naftowych, zasilaną ropą wydobytą przez Ignacego Łukasiewicza.",
       "2 maja 1915 r. pod Gorlicami wojska niemiecko-austro-węgierskie przełamały front rosyjski w jednej z decydujących bitew I wojny światowej.",
-      "Region gorlicki uznawany jest za kolebkę przemysłu naftowego - w 1883 r. w Gliniku Mariampolskim powstała rafineria nafty."
+      "Region gorlicki uznawany jest za kolebkę przemysłu naftowego – w 1883 r. w Gliniku Mariampolskim powstała rafineria nafty."
     ],
     factsVerified: true,
   },
@@ -1725,7 +1725,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "W 1162 r. krzyżowiec Jaksa Gryfita sprowadził do Miechowa zakon Bożogrobców z Jerozolimy, fundując tam bazylikę i klasztor.",
       "Wieża bazyliki kolegiackiej Grobu Bożego w Miechowie zwieńczona jest hełmem w kształcie kuli symbolizującej Ziemię.",
-      "Wyżyna Miechowska, na której leży powiat, bywa nazywana 'krainą storczyków' ze względu na bogactwo tych roślin."
+      "Wyżyna Miechowska, na której leży powiat, bywa nazywana „krainą storczyków” ze względu na bogactwo tych roślin."
     ],
     factsVerified: true,
   },
@@ -1761,7 +1761,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Nowy Targ, historyczna stolica Podhala, otrzymał prawa miejskie 22 czerwca 1346 r. od Kazimierza Wielkiego.",
       "Przywilej na cotygodniowy czwartkowy targ w Nowym Targu, nadany w 1487 r., jest kontynuowany do dziś.",
-      "Józef Kuraś ps. 'Ogień', dowódca powojennej partyzantki niepodległościowej na Podhalu, działał na terenie powiatu nowotarskiego."
+      "Józef Kuraś ps. „Ogień”, dowódca powojennej partyzantki niepodległościowej na Podhalu, działał na terenie powiatu nowotarskiego."
     ],
     factsVerified: true,
   },
@@ -1795,8 +1795,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "małopolskie",
     kody: ["KPR"],
     ciekawostki: [
-      "Proszowice otrzymały prawa miejskie w 1358 r. na prawie magdeburskim, a w latach 1496-1793 odbywały się tam sejmiki województwa krakowskiego.",
-      "Powiat proszowicki jest jednym z najbardziej rolniczych w Polsce - użytki rolne zajmują 88,8% jego powierzchni, a lasy zaledwie 1,6%.",
+      "Proszowice otrzymały prawa miejskie w 1358 r. na prawie magdeburskim, a w latach 1496–1793 odbywały się tam sejmiki województwa krakowskiego.",
+      "Powiat proszowicki jest jednym z najbardziej rolniczych w Polsce – użytki rolne zajmują 88,8% jego powierzchni, a lasy zaledwie 1,6%.",
       "We wrześniu 1939 r. pod Proszowicami toczyły się ciężkie walki 55 Dywizji Piechoty z Wehrmachtem, w wyniku których spłonęła jedna trzecia miasta."
     ],
     factsVerified: true,
@@ -1807,7 +1807,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "małopolskie",
     kody: ["KSU"],
     ciekawostki: [
-      "Renesansowy zamek w Suchej Beskidzkiej, siedzibie powiatu, nazywany jest 'Małym Wawelem'.",
+      "Renesansowy zamek w Suchej Beskidzkiej, siedzibie powiatu, nazywany jest „Małym Wawelem”.",
       "Babia Góra, najwyższy szczyt Beskidów Zachodnich (1725 m n.p.m.), leży na granicy powiatu suskiego z nowotarskim.",
       "Osadę w Suchej Beskidzkiej lokowano na mocy przywileju księcia oświęcimskiego Jana II w 1405 r., choć prawa miejskie uzyskała dopiero w 1896 r."
     ],
@@ -1819,7 +1819,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "małopolskie",
     kody: ["KTA"],
     ciekawostki: [
-      "W gminie Zakliczyn, w powiecie tarnowskim, uprawia się fasolę 'Piękny Jaś', wpisaną na Listę Produktów Tradycyjnych.",
+      "W gminie Zakliczyn, w powiecie tarnowskim, uprawia się fasolę „Piękny Jaś”, wpisaną na Listę Produktów Tradycyjnych.",
       "Rynek w Zakliczynie, o wymiarach ok. 100 na 170 m, należy do największych w województwie małopolskim.",
       "Powiat tarnowski ziemski, mimo ponad 200 tys. mieszkańców, ma urbanizację na poziomie zaledwie 8,28%, będąc jednym z najbardziej zaludnionych powiatów wiejskich w Polsce."
     ],
@@ -2011,7 +2011,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podkarpackie",
     kody: ["RK"],
     ciekawostki: [
-      "Krosno bywa nazywane \"miastem szkła\" — działa tu jedna z najstarszych hut szkła w Polsce.",
+      "Krosno bywa nazywane „miastem szkła” — działa tu jedna z najstarszych hut szkła w Polsce.",
       "W pobliskiej Bóbrce Ignacy Łukasiewicz uruchomił w 1854 r. jedną z pierwszych na świecie kopalni ropy naftowej.",
       "Miasto ma zachowany renesansowy rynek z podcieniowymi kamienicami."
     ],
@@ -2035,8 +2035,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podkarpackie",
     kody: ["RZ"],
     ciekawostki: [
-      "Rzeszów i okolice są ośrodkiem tzw. \"Doliny Lotniczej\" — skupiska firm przemysłu lotniczego.",
-      "Miasto bywa nazywane \"stolicą innowacji\" Polski Wschodniej ze względu na dynamiczny rozwój gospodarczy.",
+      "Rzeszów i okolice są ośrodkiem tzw. „Doliny Lotniczej” — skupiska firm przemysłu lotniczego.",
+      "Miasto bywa nazywane „stolicą innowacji” Polski Wschodniej ze względu na dynamiczny rozwój gospodarczy.",
       "Pod rynkiem Rzeszowa biegnie trasa turystyczna średniowiecznych piwnic i korytarzy."
     ],
     factsVerified: true,
@@ -2084,7 +2084,7 @@ export const powiaty: Powiat[] = [
     kody: ["RDE"],
     ciekawostki: [
       "W 1939 r. uruchomiono w Dębicy Fabrykę Gum Jezdnych, powstałą w ramach Centralnego Okręgu Przemysłowego – dziś jest to największa fabryka opon koncernu Goodyear w Europie.",
-      "W czasie II wojny światowej na terenie powiatu Niemcy utworzyli poligon SS Truppenübungsplatz Heidelager, od 1943 r. noszący nazwę 'Dębica', gdzie zginęło kilkanaście tysięcy więźniów, w tym Żydów i jeńców sowieckich.",
+      "W czasie II wojny światowej na terenie powiatu Niemcy utworzyli poligon SS Truppenübungsplatz Heidelager, od 1943 r. noszący nazwę „Dębica”, gdzie zginęło kilkanaście tysięcy więźniów, w tym Żydów i jeńców sowieckich.",
       "Przez powiat przebiega autostrada A4 oraz linia kolejowa nr 91 Kraków–Medyka."
     ],
     factsVerified: true,
@@ -2095,7 +2095,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podkarpackie",
     kody: ["RJA"],
     ciekawostki: [
-      "W XVI-XVII w. w Jarosławiu odbywały się jarmarki uznawane za jedne z największych w ówczesnej Europie, ściągające nawet do 30 tys. kupców, w tym z Turcji, Persji i Moskwy.",
+      "W XVI–XVII w. w Jarosławiu odbywały się jarmarki uznawane za jedne z największych w ówczesnej Europie, ściągające nawet do 30 tys. kupców, w tym z Turcji, Persji i Moskwy.",
       "Cerkiew Narodzenia Przenajświętszej Bogurodzicy w Chotyńcu jest wpisana na listę światowego dziedzictwa UNESCO.",
       "Powiat powstał w 1999 r. w ramach reformy administracyjnej i leży niemal w całości we wschodniej części Kotliny Sandomierskiej, na historycznej ziemi przemyskiej Rusi Czerwonej."
     ],
@@ -2155,7 +2155,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podkarpackie",
     kody: ["RLE"],
     ciekawostki: [
-      "Barokowe organy w bazylice oo. Bernardynów w Leżajsku, zbudowane w latach 1688-1694 przez Jana Głowińskiego, uchodzą za jeden z najcenniejszych tego typu instrumentów w Europie.",
+      "Barokowe organy w bazylice oo. Bernardynów w Leżajsku, zbudowane w latach 1688–1694 przez Jana Głowińskiego, uchodzą za jeden z najcenniejszych tego typu instrumentów w Europie.",
       "Leżajsk otrzymał prawa miejskie od Władysława Jagiełły w 1397 r.",
       "Miasto ma tradycje piwowarskie sięgające przywileju Zygmunta Starego z 1525 r.; dziś działa tu Browar Leżajsk."
     ],
@@ -2191,9 +2191,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podkarpackie",
     kody: ["RNI"],
     ciekawostki: [
-      "Ulanów, dawniej nazywany 'galicyjskim Gdańskiem', był od XVI do XX w. stolicą polskiego flisactwa spławiającego drewno Sanem i Wisłą do Gdańska.",
+      "Ulanów, dawniej nazywany „galicyjskim Gdańskiem”, był od XVI do XX w. stolicą polskiego flisactwa spławiającego drewno Sanem i Wisłą do Gdańska.",
       "Tradycje flisackie z Ulanowa zostały w grudniu 2022 r. wpisane na listę niematerialnego dziedzictwa kulturowego UNESCO.",
-      "Współczesny powiat niżański powstał w 1999 r., a w latach 1973-1975 funkcjonował na tym terenie powiat stalowowolski."
+      "Współczesny powiat niżański powstał w 1999 r., a w latach 1973–1975 funkcjonował na tym terenie powiat stalowowolski."
     ],
     factsVerified: true,
   },
@@ -2203,7 +2203,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podkarpackie",
     kody: ["RPR"],
     ciekawostki: [
-      "Renesansowy zamek w Krasiczynie, wzniesiony w latach 1580-1631 przez ród Krasickich, ma cztery charakterystyczne baszty: Boską, Papieską, Królewską i Szlachecką.",
+      "Renesansowy zamek w Krasiczynie, wzniesiony w latach 1580–1631 przez ród Krasickich, ma cztery charakterystyczne baszty: Boską, Papieską, Królewską i Szlachecką.",
       "W zamku w Krasiczynie urodził się kardynał Adam Stefan Sapieha, wychowawca późniejszego papieża Jana Pawła II.",
       "Powiat przemyski graniczy z rejonami jaworowskim i samborskim obwodu lwowskiego na Ukrainie i z powierzchnią 1213,73 km² jest drugim co do wielkości powiatem w województwie."
     ],
@@ -2251,7 +2251,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podkarpackie",
     kody: ["RSA"],
     ciekawostki: [
-      "Muzeum Budownictwa Ludowego w Sanoku, założone w 1958 r., jest jednym z największych skansenów w Polsce, gromadzącym ponad 100 drewnianych obiektów z XVII-XX w.",
+      "Muzeum Budownictwa Ludowego w Sanoku, założone w 1958 r., jest jednym z największych skansenów w Polsce, gromadzącym ponad 100 drewnianych obiektów z XVII–XX w.",
       "W Sanoku urodził się malarz Zdzisław Beksiński; miejscowe muzeum posiada największą kolekcję jego prac, liczącą ok. 600 dzieł.",
       "Fabryka Autosan, założona w Sanoku, była w latach 60. XX w. największym producentem autobusów w Polsce."
     ],
@@ -2264,8 +2264,8 @@ export const powiaty: Powiat[] = [
     kody: ["RST"],
     ciekawostki: [
       "Miasto Stalowa Wola zostało zbudowane od podstaw od marca 1937 r. w ramach Centralnego Okręgu Przemysłowego, wokół Zakładów Południowych (dzisiejszej Huty Stalowa Wola).",
-      "Nazwę 'Stalowa Wola' nadano nowo powstającemu miastu w styczniu 1939 r.",
-      "Powiat stalowowolski istniał krótko już w latach 1973-1975 jako przemianowany powiat niżański, a obecny kształt uzyskał w 1999 r."
+      "Nazwę „Stalowa Wola” nadano nowo powstającemu miastu w styczniu 1939 r.",
+      "Powiat stalowowolski istniał krótko już w latach 1973–1975 jako przemianowany powiat niżański, a obecny kształt uzyskał w 1999 r."
     ],
     factsVerified: true,
   },
@@ -2275,7 +2275,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podkarpackie",
     kody: ["RSR"],
     ciekawostki: [
-      "Legenda wiąże początki Strzyżowa z IX-wieczną strażnicą 'Strzeżno' plemienia Wiślan u zbiegu rzek Stobnicy i Wisłoka.",
+      "Legenda wiąże początki Strzyżowa z IX-wieczną strażnicą „Strzeżno” plemienia Wiślan u zbiegu rzek Stobnicy i Wisłoka.",
       "Pierwsza lokacja miasta miała miejsce między 1373 a 1397 r., a Strzyżów w swojej historii nawiedziło dziewięć pożarów, ostatni w 1895 r.",
       "W czasie II wojny światowej Niemcy wydrążyli pod Żarnowską Górą 465-metrowy tunel kolejowy, dziś jeden z cenniejszych obiektów militarnych regionu."
     ],
@@ -2287,8 +2287,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podkarpackie",
     kody: ["RTA"],
     ciekawostki: [
-      "Renesansowy zamek w Baranowie Sandomierskim, zwany 'Małym Wawelem', wzniesiono w latach 1591-1606 według projektu Santiego Gucciego dla rodu Leszczyńskich.",
-      "W Nowej Dębie w latach 1937-1939, w ramach Centralnego Okręgu Przemysłowego, powstała Wytwórnia Amunicji nr 3, a sąsiedni poligon wojskowy jest dziś drugim co do wielkości poligonem w Polsce.",
+      "Renesansowy zamek w Baranowie Sandomierskim, zwany „Małym Wawelem”, wzniesiono w latach 1591–1606 według projektu Santiego Gucciego dla rodu Leszczyńskich.",
+      "W Nowej Dębie w latach 1937–1939, w ramach Centralnego Okręgu Przemysłowego, powstała Wytwórnia Amunicji nr 3, a sąsiedni poligon wojskowy jest dziś drugim co do wielkości poligonem w Polsce.",
       "Powiat tarnobrzeski powstał w 1999 r. i obejmuje 4 gminy, podczas gdy samo miasto Tarnobrzeg, będące jego siedzibą, jest osobnym miastem na prawach powiatu."
     ],
     factsVerified: true,
@@ -2311,7 +2311,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podlaskie",
     kody: ["BI"],
     ciekawostki: [
-      "Białystok rozwinął się wokół pałacu rodu Branickich, zwanego \"Wersalem Podlasia\".",
+      "Białystok rozwinął się wokół pałacu rodu Branickich, zwanego „Wersalem Podlasia”.",
       "W mieście urodził się Ludwik Zamenhof, twórca języka esperanto.",
       "Białystok jest największym miastem historycznego regionu Podlasia, blisko granicy z Białorusią."
     ],
@@ -2336,7 +2336,7 @@ export const powiaty: Powiat[] = [
     kody: ["BAU"],
     ciekawostki: [
       "Miasto Augustów założył w 1557 r. król Zygmunt II August, nadając mu prawa magdeburskie i herb z inicjałami S.A.",
-      "Przez powiat biegnie cała polska część Kanału Augustowskiego (ok. 82 km, budowanego w latach 1824-1839) z systemem kilkunastu śluz łączących dorzecza Biebrzy i Niemna.",
+      "Przez powiat biegnie cała polska część Kanału Augustowskiego (ok. 82 km, budowanego w latach 1824–1839) z systemem kilkunastu śluz łączących dorzecza Biebrzy i Niemna.",
       "W lipcu 1945 r. w Puszczy Augustowskiej wojska sowieckie i NKWD przeprowadziły tzw. obławę augustowską, po której ok. 600 zatrzymanych zaginęło bez śladu."
     ],
     factsVerified: true,
@@ -2348,8 +2348,8 @@ export const powiaty: Powiat[] = [
     kody: ["BIA"],
     ciekawostki: [
       "Powiat białostocki jest największym powiatem w Polsce pod względem powierzchni (blisko 2985 km²).",
-      "W Tykocinie, w granicach powiatu, stoi Wielka Synagoga z 1642 r. - jedna z największych i najlepiej zachowanych barokowych synagog w Polsce.",
-      "W Supraślu działa prawosławny Monaster Zwiastowania Przenajświętszej Bogurodzicy - jeden z zaledwie pięciu męskich klasztorów prawosławnych w Polsce."
+      "W Tykocinie, w granicach powiatu, stoi Wielka Synagoga z 1642 r. – jedna z największych i najlepiej zachowanych barokowych synagog w Polsce.",
+      "W Supraślu działa prawosławny Monaster Zwiastowania Przenajświętszej Bogurodzicy – jeden z zaledwie pięciu męskich klasztorów prawosławnych w Polsce."
     ],
     factsVerified: true,
   },
@@ -2373,7 +2373,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Grajewo otrzymało prawa miejskie w 1540 r. od Zygmunta I Starego, utraciło je w 1870 r. za udział mieszkańców w powstaniu styczniowym i odzyskało dopiero w 1919 r.",
       "W Grajewie ma siedzibę Spółdzielnia Mleczarska Mlekpol, powstała w 1980 r. i będąca dziś jedną z największych spółdzielni mleczarskich w Polsce.",
-      "Znaczną część powiatu zajmuje Biebrzański Park Narodowy - największy park narodowy w Polsce."
+      "Znaczną część powiatu zajmuje Biebrzański Park Narodowy – największy park narodowy w Polsce."
     ],
     factsVerified: true,
   },
@@ -2395,8 +2395,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podlaskie",
     kody: ["BKL"],
     ciekawostki: [
-      "Miasto Kolno przeniesiono na obecne miejsce nad rzeką Łabną w latach 1434-1443 z inicjatywy Bolesława IV Warszawskiego, wnuka Janusza I.",
-      "Nazwa Kolna pochodzi od słowa \"koło\" i po raz pierwszy pojawia się w źródłach historycznych w 1422 r. jako \"Colno\".",
+      "Miasto Kolno przeniesiono na obecne miejsce nad rzeką Łabną w latach 1434–1443 z inicjatywy Bolesława IV Warszawskiego, wnuka Janusza I.",
+      "Nazwa Kolna pochodzi od słowa „koło” i po raz pierwszy pojawia się w źródłach historycznych w 1422 r. jako „Colno”.",
       "Miasto Stawiski w powiecie kolneńskim uzyskało prawa miejskie ok. 1688 r. dzięki staraniom Fortunata Zamoyskiego i słynęło z wyrobu kożuchów, sukna i kapeluszy."
     ],
     factsVerified: true,
@@ -2408,8 +2408,8 @@ export const powiaty: Powiat[] = [
     kody: ["BMN"],
     ciekawostki: [
       "W Knyszynie 7 lipca 1572 r. zmarł król Zygmunt II August, ostatni król z dynastii Jagiellonów.",
-      "6 sierpnia 1915 r. pod twierdzą Osowiec doszło do tzw. ataku umarłych - kontrataku garstki poparzonych chlorem rosyjskich żołnierzy, który załamał niemiecką ofensywę.",
-      "Powiat moniecki powstał 1 kwietnia 1954 r. z terenów wydzielonych z powiatu białostockiego, po zniesieniu w 1975 r. reaktywowano go w 1999 r."
+      "6 sierpnia 1915 r. pod twierdzą Osowiec doszło do tzw. ataku umarłych – kontrataku garstki poparzonych chlorem rosyjskich żołnierzy, który załamał niemiecką ofensywę.",
+      "Powiat moniecki powstał 1 kwietnia 1954 r. z terenów wydzielonych z powiatu białostockiego, a po zniesieniu w 1975 r. reaktywowano go w 1999 r."
     ],
     factsVerified: true,
   },
@@ -2420,7 +2420,7 @@ export const powiaty: Powiat[] = [
     kody: ["BSE"],
     ciekawostki: [
       "Powiat sejneński jest najmniej zaludnionym powiatem w Polsce (niespełna 20 tys. mieszkańców).",
-      "Sprowadzeni z Wilna w 1602 r. dominikanie wznieśli w Sejnach w latach 1610-1619 kościół, dziś bazylikę mniejszą i sanktuarium Matki Boskiej Sejneńskiej.",
+      "Sprowadzeni z Wilna w 1602 r. dominikanie wznieśli w Sejnach w latach 1610–1619 kościół, dziś bazylikę mniejszą i sanktuarium Matki Boskiej Sejneńskiej.",
       "Na przełomie XIX i XX w. Sejny stały się ośrodkiem odrodzenia narodowego Litwinów, a mniejszość litewska jest tu obecna do dziś (m.in. gmina Puńsk)."
     ],
     factsVerified: true,
@@ -2432,7 +2432,7 @@ export const powiaty: Powiat[] = [
     kody: ["BSI"],
     ciekawostki: [
       "Drohiczyn, miasto w powiecie siemiatyckim, był od czasów Zygmunta I Starego stolicą dawnego województwa podlaskiego i jest dziś jednym z najmniejszych miast w Polsce będących siedzibą diecezji.",
-      "W latach 1656-1660 Drohiczyn był kolejno niszczony przez Tatarów, wojska Jerzego II Rakoczego i moskiewskie wojska Iwana Chowańskiego, z 380 domów ocalało wówczas tylko 80.",
+      "W latach 1656–1660 Drohiczyn był kolejno niszczony przez Tatarów, wojska Jerzego II Rakoczego i moskiewskie wojska Iwana Chowańskiego; z 380 domów ocalało wówczas tylko 80.",
       "Powiat siemiatycki graniczy z Białorusią, a jego południową granicę wyznacza rzeka Bug."
     ],
     factsVerified: true,
@@ -2445,7 +2445,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "W 1679 r. król Jan III Sobieski nadał Tatarom lipkowskim ziemie w okolicach Kruszynian i Bohonik w nagrodę za służbę wojskową; wzniesiony wówczas drewniany meczet w Kruszynianach jest najstarszym meczetem w Polsce.",
       "Powiat sokólski obejmuje tzw. Szwajcarię Sokólską nad rzeką Łosośną, gdzie deniwelacje terenu sięgają nawet 50 m na 1 km.",
-      "Po III rozbiorze Polski (1795) tereny powiatu weszły w skład pruskich Prus Nowowschodnich, a w 1807 r. na mocy traktatu w Tylży przekazano je Rosji."
+      "Po III rozbiorze Polski (1795) tereny powiatu weszły w skład Prus Nowowschodnich, a w 1807 r. na mocy traktatu w Tylży przekazano je Rosji."
     ],
     factsVerified: true,
   },
@@ -2455,9 +2455,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podlaskie",
     kody: ["BSU"],
     ciekawostki: [
-      "Powiat suwalski jest jedynym powiatem w Polsce niemającym w swych granicach żadnego miasta - jego siedziba, Suwałki, stanowi osobny powiat grodzki.",
+      "Powiat suwalski jest jedynym powiatem w Polsce niemającym w swych granicach żadnego miasta – jego siedziba, Suwałki, stanowi osobny powiat grodzki.",
       "Suwalski Park Krajobrazowy, obejmujący centralną część powiatu, jest najstarszym parkiem krajobrazowym w Polsce.",
-      "Okolice Wiżajn uznawane są za jeden z tzw. biegunów zimna Polski - notowano tu mrozy sięgające nawet -38°C."
+      "Okolice Wiżajn uznawane są za jeden z tzw. biegunów zimna Polski – notowano tu mrozy sięgające nawet -38°C."
     ],
     factsVerified: true,
   },
@@ -2469,7 +2469,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Wysokie (dziś Wysokie Mazowieckie) otrzymało prawa miejskie w 1492 r. od Kazimierza Jagiellończyka, a w 1503 r. Aleksander Jagiellończyk nadał miastu prawo magdeburskie.",
       "W Wysokiem Mazowieckiem ma siedzibę Spółdzielnia Mleczarska Mlekovita, działająca od 1928 r. i będąca dziś największą grupą mleczarską w Europie Środkowo-Wschodniej.",
-      "Powiat jest pozbawiony złóż surowców mineralnych - jedynym eksploatowanym surowcem jest żwir."
+      "Powiat jest pozbawiony złóż surowców mineralnych – jedynym eksploatowanym surowcem jest żwir."
     ],
     factsVerified: true,
   },
@@ -2479,8 +2479,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "podlaskie",
     kody: ["BZA"],
     ciekawostki: [
-      "Nazwa Zambrowa pochodzi od staropolskiego słowa \"ząbr\" (żubr) - stąd czarna głowa żubra w herbie miasta.",
-      "Zambrów otrzymał prawa miejskie chełmińskie ok. 1430-1437 r., utracił je w 1870 r. po represjach carskich i odzyskał w 1919 r.",
+      "Nazwa Zambrowa pochodzi od staropolskiego słowa „ząbr” (żubr) – stąd czarna głowa żubra w herbie miasta.",
+      "Zambrów otrzymał prawa miejskie chełmińskie ok. 1430–1437 r., utracił je w 1870 r. po represjach carskich i odzyskał w 1919 r.",
       "W koszarach, gdzie od 1926 r. stacjonował 71 Pułk Piechoty, 11 września 1939 r. stoczono krwawą bitwę obronną, w której zginęło ok. 400 polskich żołnierzy."
     ],
     factsVerified: true,
@@ -2515,7 +2515,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "pomorskie",
     kody: ["GD"],
     ciekawostki: [
-      "W Stoczni Gdańskiej w sierpniu 1980 r. podpisano Porozumienia Sierpniowe, które doprowadziły do powstania \"Solidarności\".",
+      "W Stoczni Gdańskiej w sierpniu 1980 r. podpisano Porozumienia Sierpniowe, które doprowadziły do powstania „Solidarności”.",
       "Gdańsk był przez wieki jednym z największych portów handlowych na Bałtyku, członkiem Hanzy.",
       "Na Westerplatte 1 września 1939 r. padły pierwsze strzały II wojny światowej w Europie."
     ],
@@ -2527,9 +2527,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "pomorskie",
     kody: ["GA"],
     ciekawostki: [
-      "Gdynia zbudowano niemal od podstaw w dwudziestoleciu międzywojennym jako nowoczesny polski port morski.",
+      "Gdynię zbudowano niemal od podstaw w dwudziestoleciu międzywojennym jako nowoczesny polski port morski.",
       "Miasto jest przykładem modernistycznej architektury lat 20. i 30. XX w.",
-      "Do dziś w porcie cumuje zabytkowy żaglowiec-muzeum \"Dar Pomorza\"."
+      "Do dziś w porcie cumuje zabytkowy żaglowiec-muzeum „Dar Pomorza”."
     ],
     factsVerified: true,
   },
@@ -2553,7 +2553,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "W mieście zachował się zamek Książąt Pomorskich, obecnie siedziba muzeum.",
       "Słupsk leży nad rzeką Słupią, niedaleko wybrzeża Bałtyku.",
-      "W pobliskim Ustce znajduje się jeden z popularniejszych kurortów nadmorskich regionu."
+      "W pobliskiej Ustce znajduje się jeden z popularniejszych kurortów nadmorskich regionu."
     ],
     factsVerified: true,
   },
@@ -2755,7 +2755,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "warmińsko-mazurskie",
     kody: ["NE"],
     ciekawostki: [
-      "Kanał Elbląski, zbudowany w XIX w., wykorzystuje unikalny system pochylni — statki pokonują różnice poziomów \"na sucho\", jadąc po szynach.",
+      "Kanał Elbląski, zbudowany w XIX w., wykorzystuje unikalny system pochylni — statki pokonują różnice poziomów „na sucho”, jadąc po szynach.",
       "Elbląg leży u ujścia Nogatu do Zalewu Wiślanego.",
       "Stare Miasto zostało niemal całkowicie zniszczone w 1945 r. i odbudowane od podstaw w nowej, współczesnej formie."
     ],
@@ -2791,7 +2791,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "warmińsko-mazurskie",
     kody: ["NBR"],
     ciekawostki: [
-      "We Fromborku Mikołaj Kopernik spędził większość życia i napisał tu \"De revolutionibus orbium coelestium\".",
+      "We Fromborku Mikołaj Kopernik spędził większość życia i napisał „De revolutionibus orbium coelestium”.",
       "Kopernik jest pochowany w katedrze fromborskiej.",
       "Braniewo było jednym z pierwszych miast Warmii lokowanych przez zakon krzyżacki."
     ],
@@ -2864,7 +2864,7 @@ export const powiaty: Powiat[] = [
     kody: ["NIL"],
     ciekawostki: [
       "Nad Iławą leży Jezioro Jeziorak – najdłuższe jezioro w Polsce, na którym znajduje się Wielka Żuława, największa wyspa śródlądowa w kraju.",
-      "W Iławie odbywa się Old Jazz Meeting \"Złota Tarka\", uznawany za najstarszy festiwal jazzu tradycyjnego w Europie.",
+      "W Iławie odbywa się Old Jazz Meeting „Złota Tarka”, uznawany za najstarszy festiwal jazzu tradycyjnego w Europie.",
       "Miasto otrzymało prawa miejskie w 1305 r. z nadania krzyżackiego komtura Sieghonda von Schwarzburga."
     ],
     factsVerified: true,
@@ -2875,7 +2875,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "warmińsko-mazurskie",
     kody: ["NKE"],
     ciekawostki: [
-      "W pobliskiej Gierłoży w gminie Kętrzyn mieściła się Wilczy Szaniec – główna kwatera Adolfa Hitlera na froncie wschodnim, gdzie 20 lipca 1944 r. dokonano nieudanego zamachu na jego życie.",
+      "W pobliskiej Gierłoży w gminie Kętrzyn mieścił się Wilczy Szaniec – główna kwatera Adolfa Hitlera na froncie wschodnim, gdzie 20 lipca 1944 r. dokonano nieudanego zamachu na jego życie.",
       "Miasto zmieniło nazwę z Rastembork na Kętrzyn w 1946 r., na cześć historyka Wojciecha Kętrzyńskiego.",
       "W kętrzyńskim gimnazjum w latach 1875–1879 uczył się Wilhelm Wien, późniejszy laureat Nagrody Nobla z fizyki."
     ],
@@ -2949,7 +2949,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Powiat olsztyński jest największym powiatem województwa warmińsko-mazurskiego pod względem powierzchni (2838 km²) i jednym z największych powiatów ziemskich w Polsce.",
       "W Gietrzwałdzie w 1877 r. miały miejsce jedyne oficjalnie uznane przez Kościół katolicki w Polsce objawienia maryjne.",
-      "W Barczewie w 1877 r. urodził się Feliks Nowowiejski, kompozytor muzyki do pieśni \"Rota\"."
+      "W Barczewie w 1877 r. urodził się Feliks Nowowiejski, kompozytor muzyki do pieśni „Rota”."
     ],
     factsVerified: true,
   },
@@ -3092,7 +3092,7 @@ export const powiaty: Powiat[] = [
     kody: ["PGS"],
     ciekawostki: [
       "Gostyń otrzymał prawa miejskie w 1278 r. od księcia Przemysła II.",
-      "Barokowa bazylika na Świętej Górze została wzniesiona w latach 1675-1698 według projektu włoskiego architekta Baldassare Longheny.",
+      "Barokowa bazylika na Świętej Górze została wzniesiona w latach 1675–1698 według projektu włoskiego architekta Baldassare Longheny.",
       "21 października 1939 r. Niemcy rozstrzelali 30 mieszkańców miasta w ramach akcji Tannenberg."
     ],
     factsVerified: true,
@@ -3105,7 +3105,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Pierwsza wzmianka o warzeniu piwa w Grodzisku Wielkopolskim pochodzi z 1601 r. — od miasta wzięła nazwę regionalna odmiana piwa, tzw. grodziskie.",
       "Grodzisk Wielkopolski otrzymał prawa miejskie w 1303 r.",
-      "W drugiej połowie XVI w. miasto było ośrodkiem protestanckim ze słynną szkołą i jedną z pierwszych w Wielkopolsce drukarni (1572-1573)."
+      "W drugiej połowie XVI w. miasto było ośrodkiem protestanckim ze słynną szkołą i jedną z pierwszych w Wielkopolsce drukarni (1572–1573)."
     ],
     factsVerified: true,
   },
@@ -3116,8 +3116,8 @@ export const powiaty: Powiat[] = [
     kody: ["PJA"],
     ciekawostki: [
       "Festiwal muzyczny w Jarocinie, organizowany od 1970 r., stał się w czasach PRL największym rockowym wydarzeniem w Europie Wschodniej.",
-      "Neogotycki pałac Radolińskich w Jarocinie powstał w latach 1836-1850.",
-      "Dworzec kolejowy w Jarocinie z lat 1870-1875 jest ostatnim zachowanym dużym pruskim dworcem węzłowym w Wielkopolsce."
+      "Neogotycki pałac Radolińskich w Jarocinie powstał w latach 1836–1850.",
+      "Dworzec kolejowy w Jarocinie z lat 1870–1875 jest ostatnim zachowanym dużym pruskim dworcem węzłowym w Wielkopolsce."
     ],
     factsVerified: true,
   },
@@ -3151,7 +3151,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "wielkopolskie",
     kody: ["PKN"],
     ciekawostki: [
-      "Na terenie powiatu konińskiego, w Licheniu Starym, znajduje się bazylika Matki Bożej Licheńskiej — największa świątynia w Polsce, wzniesiona w latach 1994-2004.",
+      "Na terenie powiatu konińskiego, w Licheniu Starym, znajduje się bazylika Matki Bożej Licheńskiej — największa świątynia w Polsce, wzniesiona w latach 1994–2004.",
       "Region jest oparty na wydobyciu węgla brunatnego, zasilającym Zespół Elektrowni Pątnów-Adamów-Konin.",
       "Odkrywka Tomisławice na terenie powiatu jest jedyną w Polsce odkrywką węgla brunatnego otwartą po wejściu kraju do Unii Europejskiej."
     ],
@@ -3199,7 +3199,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "wielkopolskie",
     kody: ["PLE"],
     ciekawostki: [
-      "Barokowy zamek w Rydzynie, wzniesiony w latach 1682-1695 przez Leszczyńskich, a potem rozbudowany przez ród Sułkowskich, spłonął podpalony przez wojska sowieckie w 1945 r. i został odbudowany w latach 1975-1989.",
+      "Barokowy zamek w Rydzynie, wzniesiony w latach 1682–1695 przez Leszczyńskich, a potem rozbudowany przez ród Sułkowskich, spłonął podpalony przez wojska sowieckie w 1945 r. i został odbudowany w latach 1975–1989.",
       "Urodzony w Rydzynie Józef Sułkowski był adiutantem Napoleona Bonaparte i zginął w Kairze w 1798 r.",
       "W gminie Osieczna zachowały się tzw. wiatraki osieckie — unikatowy zabytek architektury technicznej."
     ],
@@ -3212,8 +3212,8 @@ export const powiaty: Powiat[] = [
     kody: ["PMI"],
     ciekawostki: [
       "Powiat międzychodzki jest najmniej ludnym powiatem w województwie wielkopolskim.",
-      "W XVII-XVIII w. Międzychód był ośrodkiem sukiennictwa — produkcją sukna zajmowało się wówczas ok. 70% mieszkańców.",
-      "Na terenie powiatu znajduje się ok. 100 jezior, w tym tereny Puszczy Noteckiej."
+      "W XVII–XVIII w. Międzychód był ośrodkiem sukiennictwa — produkcją sukna zajmowało się wówczas ok. 70% mieszkańców.",
+      "Na terenie powiatu znajduje się ok. 100 jezior oraz tereny Puszczy Noteckiej."
     ],
     factsVerified: true,
   },
@@ -3236,7 +3236,7 @@ export const powiaty: Powiat[] = [
     kody: ["POB"],
     ciekawostki: [
       "Oborniki otrzymały prawa miejskie przed 1292 r. i jako miasto królewskie były wielokrotnie odwiedzane przez Władysława Jagiełłę.",
-      "Miasto i zamek w Obornikach zostały zniszczone podczas potopu szwedzkiego w latach 1655-1660.",
+      "Miasto i zamek w Obornikach zostały zniszczone podczas potopu szwedzkiego w latach 1655–1660.",
       "W XIX w. okolice Obornik odwiedzali Adam Mickiewicz i Józef Ignacy Kraszewski."
     ],
     factsVerified: true,
@@ -3248,7 +3248,7 @@ export const powiaty: Powiat[] = [
     kody: ["POS"],
     ciekawostki: [
       "W listopadzie 1918 r. w Ostrowie Wielkopolskim doszło do bezkrwawego przewrotu znanego jako Republika Ostrowska, w wyniku którego władzę w mieście przejęli Polacy.",
-      "W pobliskim Antoninie stoi drewniany pałacyk myśliwski Radziwiłłów zaprojektowany w latach 1822-1824 przez Karla Friedricha Schinkla.",
+      "W pobliskim Antoninie stoi drewniany pałacyk myśliwski Radziwiłłów zaprojektowany w latach 1822–1824 przez Karla Friedricha Schinkla.",
       "Ostrów Wielkopolski jest jednym z głównych ośrodków Kalisko-Ostrowskiego Okręgu Przemysłowego, znanym m.in. z produkcji wagonów kolejowych."
     ],
     factsVerified: true,
@@ -3297,7 +3297,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Powiat poznański, liczący 445 121 mieszkańców (koniec 2023 r.), jest najludniejszym powiatem ziemskim w Polsce.",
       "Zamek w Kórniku otacza największe w Polsce arboretum.",
-      "W parku pałacowym w Rogalinie rosną wiekowe dęby Lech, Czech i Rus - dąb Rus ma ok. 915 cm obwodu i uchodzi za jeden z najstarszych dębów w Polsce."
+      "W parku pałacowym w Rogalinie rosną wiekowe dęby Lech, Czech i Rus – dąb Rus ma ok. 915 cm obwodu i uchodzi za jeden z najstarszych dębów w Polsce."
     ],
     factsVerified: true,
   },
@@ -3308,7 +3308,7 @@ export const powiaty: Powiat[] = [
     kody: ["PRA"],
     ciekawostki: [
       "Powiat rawicki jest najmniejszym pod względem powierzchni powiatem województwa wielkopolskiego.",
-      "Więzienie w Rawiczu było w latach 1945-1956 jednym z największych zakładów karnych dla więźniów politycznych w PRL, przetrzymano w nim ponad 19 tys. osób.",
+      "Więzienie w Rawiczu było w latach 1945–1956 jednym z największych zakładów karnych dla więźniów politycznych w PRL, przetrzymano w nim ponad 19 tys. osób.",
       "W Rawiczu urodziła się Anita Włodarczyk, wielokrotna mistrzyni olimpijska i rekordzistka świata w rzucie młotem."
     ],
     factsVerified: true,
@@ -3331,7 +3331,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "wielkopolskie",
     kody: ["PSL"],
     ciekawostki: [
-      "W powiecie słupeckim leży Jezioro Powidzkie - największe jezioro województwa wielkopolskiego.",
+      "W powiecie słupeckim leży Jezioro Powidzkie – największe jezioro województwa wielkopolskiego.",
       "W 1314 r. Władysław Łokietek nadał Słupcy przywilej menniczy.",
       "Na terenie powiatu, w Lądzie nad Wartą, działało dawne opactwo cystersów."
     ],
@@ -3356,7 +3356,7 @@ export const powiaty: Powiat[] = [
     kody: ["PWL"],
     ciekawostki: [
       "Parowozownia w Wolsztynie to jedyne w Europie miejsce, gdzie normalnotorowe parowozy obsługują regularne przewozy pasażerskie.",
-      "W Wolsztynie w latach 1872-1880 pracował jako lekarz powiatowy Robert Koch, późniejszy noblista, który badał tu m.in. bakterie wąglika.",
+      "W Wolsztynie w latach 1872–1880 pracował jako lekarz powiatowy Robert Koch, późniejszy noblista, który badał tu m.in. bakterie wąglika.",
       "W Wolsztynie w 1776 r. urodził się Józef Hoene-Wroński, filozof i matematyk."
     ],
     factsVerified: true,
@@ -3393,7 +3393,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Powiat złotowski jest najbardziej wysuniętym na północ powiatem województwa wielkopolskiego.",
       "Złotów otrzymał prawa miejskie w 1370 r. z nadania Kazimierza Wielkiego dla jego wnuka Kazimierza Słupskiego.",
-      "Klasycystyczny kościół ewangelicki w Złotowie (1829-1830) zaprojektował Karl Friedrich Schinkel."
+      "Klasycystyczny kościół ewangelicki w Złotowie (1829–1830) zaprojektował Karl Friedrich Schinkel."
     ],
     factsVerified: true,
   },
@@ -3403,7 +3403,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "wielkopolskie",
     kody: ["PSR"],
     ciekawostki: [
-      "Nazwa Środy Wielkopolskiej pochodzi od dnia targowego - środy; miasto otrzymało prawa miejskie między 1253 a 1281 r. jako miasto królewskie.",
+      "Nazwa Środy Wielkopolskiej pochodzi od dnia targowego – środy; miasto otrzymało prawa miejskie między 1253 a 1281 r. jako miasto królewskie.",
       "W Środzie Wielkopolskiej 28 czerwca 1943 r. urodził się Klaus von Klitzing, laureat Nagrody Nobla z fizyki.",
       "W Środzie Wielkopolskiej działa zakład Solaris Bus & Coach produkujący szkielety autobusów i trolejbusów."
     ],
@@ -3416,7 +3416,7 @@ export const powiaty: Powiat[] = [
     kody: ["PSE"],
     ciekawostki: [
       "Śrem otrzymał prawa miejskie w 1253 r. od Przemysła I, co czyni go jednym z najstarszych miast Wielkopolski, rówieśnym Poznaniowi.",
-      "Epidemia dżumy w latach 1653-1656 zabiła ponad 70% mieszkańców Śremu.",
+      "Epidemia dżumy w latach 1653–1656 zabiła ponad 70% mieszkańców Śremu.",
       "Odlewnia Żeliwa Śrem, działająca od 1968 r., produkuje m.in. odlewy do silników okrętowych."
     ],
     factsVerified: true,
@@ -3464,7 +3464,7 @@ export const powiaty: Powiat[] = [
     kody: ["ZCH"],
     ciekawostki: [
       "Choszczno lokowano na prawie magdeburskim w 1284 r., a pierwsza wzmianka o osadzie (jako Hoscno) pochodzi z 1233 r.",
-      "Zachowały się średniowieczne mury obronne z XIV-XV w. oraz barbakan Bramy Kamiennej, w którym dziś mieści się siedziba władz miasta.",
+      "Zachowały się średniowieczne mury obronne z XIV–XV w. oraz barbakan Bramy Kamiennej, w którym dziś mieści się siedziba władz miasta.",
       "W obozie jenieckim Oflag II B Arnswalde w Choszcznie przetrzymywany był podczas II wojny światowej major Henryk Sucharski, obrońca Westerplatte."
     ],
     factsVerified: true,
@@ -3500,7 +3500,7 @@ export const powiaty: Powiat[] = [
     kody: ["ZGY"],
     ciekawostki: [
       "W 1386 r. powstała w Gryficach Szkoła Łacińska, uznawana za najstarszą szkołę łacińską na Pomorzu.",
-      "Zachowały się gotyckie bramy miejskie - Kamienna i Wysoka - oraz Baszta Prochowa, pozostałości dawnego systemu obronnego z sześcioma basztami.",
+      "Zachowały się gotyckie bramy miejskie – Kamienna i Wysoka – oraz Baszta Prochowa, pozostałości dawnego systemu obronnego z sześcioma basztami.",
       "Miasto leży nad Regą, 22 km od Bałtyku; działa tu muzeum kolejki wąskotorowej z zabytkowym taborem."
     ],
     factsVerified: true,
@@ -3511,7 +3511,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "zachodniopomorskie",
     kody: ["ZGR"],
     ciekawostki: [
-      "W latach 1970-1974 zbudowano w pobliskim Nowym Czarnowie Elektrownię Dolna Odra, co przyczyniło się do wzrostu liczby mieszkańców Gryfina z ok. 6,5 tys. do 20 tys. w 1987 r.",
+      "W latach 1970–1974 zbudowano w pobliskim Nowym Czarnowie Elektrownię Dolna Odra, co przyczyniło się do wzrostu liczby mieszkańców Gryfina z ok. 6,5 tys. do 20 tys. w 1987 r.",
       "Zachowała się gotycka Brama Bańska z XIV w. o wysokości 15,3 m oraz fragmenty murów miejskich.",
       "W Gryfinie znajduje się największy cmentarz żołnierzy radzieckich na Pomorzu, liczący 7134 groby."
     ],
@@ -3535,7 +3535,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "zachodniopomorskie",
     kody: ["ZKO"],
     ciekawostki: [
-      "Powiat koszaliński to powiat ziemski otaczający miasto Koszalin (będące odrębną jednostką - miastem na prawach powiatu) i obejmujący 8 gmin: Bobolice, Mielno, Polanów, Sianów, Będzino, Biesiekierz, Manowo i Świeszyno.",
+      "Powiat koszaliński to powiat ziemski otaczający miasto Koszalin (będące odrębną jednostką – miastem na prawach powiatu) i obejmujący 8 gmin: Bobolice, Mielno, Polanów, Sianów, Będzino, Biesiekierz, Manowo i Świeszyno.",
       "Gmina Mielno nad Bałtykiem jest jednym z największych nadmorskich ośrodków wypoczynkowych regionu, obsługiwanym sezonowo koleją wąskotorową.",
       "Południowa część powiatu, w okolicach Polanowa i Bobolic, jest rozległym obszarem leśnym, gdzie rozwinął się przemysł drzewny."
     ],
@@ -3559,8 +3559,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "zachodniopomorskie",
     kody: ["ZMY"],
     ciekawostki: [
-      "W latach 1298-1537 Myślibórz był stolicą Nowej Marchii i głównym ośrodkiem gospodarczym regionu.",
-      "Zachowały się średniowieczne mury miejskie z basztami oraz gotyckie bramy - Pyrzycka i Nowogrodzka - z XIV w.",
+      "W latach 1298–1537 Myślibórz był stolicą Nowej Marchii i głównym ośrodkiem gospodarczym regionu.",
+      "Zachowały się średniowieczne mury miejskie z basztami oraz gotyckie bramy – Pyrzycka i Nowogrodzka – z XIV w.",
       "Miasto leży nad Jeziorem Myśliborskim, największym akwenem Pojezierza Myśliborskiego (ok. 618 ha, głębokość maks. 22,3 m)."
     ],
     factsVerified: true,
@@ -3597,7 +3597,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Baszta Morza Czerwonego w Stargardzie to największa baszta miejska w Polsce (34 m wysokości), część jednego z potężniejszych średniowiecznych systemów obronnych na Pomorzu.",
       "Kolegiata NMP Królowej Świata w Stargardzie jest najwyżej sklepionym kościołem w Polsce (32,5 m).",
-      "W latach 1668-1720 Stargard był stolicą Pomorza Tylnego."
+      "W latach 1668–1720 Stargard był stolicą Pomorza Tylnego."
     ],
     factsVerified: true,
   },
@@ -3608,7 +3608,7 @@ export const powiaty: Powiat[] = [
     kody: ["ZSZ"],
     ciekawostki: [
       "Szczecinek został założony w 1310 r. przez księcia Warcisława IV i od razu otrzymał prawa miejskie.",
-      "Miasto leży pomiędzy trzema jeziorami - Trzesiecko, Wielimie i Wilczkowo - połączonymi rzeką Niziczą.",
+      "Miasto leży pomiędzy trzema jeziorami – Trzesiecko, Wielimie i Wilczkowo – połączonymi rzeką Niziczą.",
       "W Szczecinku znajduje się najdłuższa w Europie wyciągowa linia do nart wodnych, o długości 1080 m."
     ],
     factsVerified: true,
@@ -3620,7 +3620,7 @@ export const powiaty: Powiat[] = [
     kody: ["ZSL"],
     ciekawostki: [
       "Sławno otrzymało prawa miejskie w 1317 r. na prawie lubeckim, a od 1719 r. jest siedzibą powiatu.",
-      "Zachowały się gotyckie bramy miejskie - Koszalińska i Słupska - z XV w. oraz kościół Wniebowzięcia NMP wznoszony w latach 1326-1364.",
+      "Zachowały się gotyckie bramy miejskie – Koszalińska i Słupska – z XV w. oraz kościół Wniebowzięcia NMP wznoszony w latach 1326–1364.",
       "W Sławnie urodziła się aktorka i piosenkarka Agnieszka Włodarczyk."
     ],
     factsVerified: true,
@@ -3631,7 +3631,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "zachodniopomorskie",
     kody: ["ZWA"],
     ciekawostki: [
-      "W 1368 r., na mocy traktatu Kazimierza Wielkiego z margrabią Ottonem V, ziemia wałecka została na trwałe włączona do Polski jako miasto królewskie.",
+      "W 1368 r., na mocy traktatu Kazimierza Wielkiego z margrabią Ottonem V, ziemia wałecka została na trwałe włączona do Polski, a Wałcz został miastem królewskim.",
       "W lutym 1945 r. wojska radzieckie zdobyły Wałcz, przełamując tu linię obronną Wału Pomorskiego.",
       "Miasto leży nad jeziorami Raduń (227 ha) i Zamkowe (133 ha), połączonymi rzeką Piławą."
     ],
@@ -3669,7 +3669,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "W 1469 r. doszło do tzw. wojny o krowę między mieszkańcami Świdwina i Białogardu, upamiętnianej dziś dorocznym festynem.",
       "Nad Regą stoi XIII-wieczny Zamek Joannicki, od XVI do XIX w. siedziba komandorii joannitów.",
-      "W Świdwinie urodził się Rudolf Virchow (1821-1902), niemiecki patolog i antropolog, twórca teorii patologii komórkowej."
+      "W Świdwinie urodził się Rudolf Virchow (1821–1902), niemiecki patolog i antropolog, twórca teorii patologii komórkowej."
     ],
     factsVerified: true,
   },
@@ -3727,8 +3727,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "łódzkie",
     kody: ["EKU"],
     ciekawostki: [
-      "W dniach 9-12 września 1939 r. w rejonie Kutna toczyły się walki bitwy nad Bzurą, największej bitwy kampanii wrześniowej.",
-      "Charles de Gaulle w latach 1919-1921 był instruktorem francuskiej misji wojskowej stacjonującej w Kutnie.",
+      "W dniach 9–12 września 1939 r. w rejonie Kutna toczyły się walki bitwy nad Bzurą, największej bitwy kampanii wrześniowej.",
+      "Charles de Gaulle w latach 1919–1921 był instruktorem francuskiej misji wojskowej stacjonującej w Kutnie.",
       "Na terenie powiatu znajduje się gotycki zamek w Oporowie, wzniesiony w XV w."
     ],
     factsVerified: true,
@@ -3775,9 +3775,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "łódzkie",
     kody: ["EPI"],
     ciekawostki: [
-      "W Sulejowie zachował się zespół opactwa cystersów, założony w latach 1176-1177 przez Kazimierza Sprawiedliwego.",
+      "W Sulejowie zachował się zespół opactwa cystersów, założony w latach 1176–1177 przez Kazimierza Sprawiedliwego.",
       "W 1410 r. wojska Władysława Jagiełły zatrzymały się w Sulejowie w drodze na bitwę pod Grunwaldem.",
-      "Zalew Sulejowski na Pilicy powstał w latach 1969-1973 w okolicach Smardzewic."
+      "Zalew Sulejowski na Pilicy powstał w latach 1969–1973 w okolicach Smardzewic."
     ],
     factsVerified: true,
   },
@@ -3787,9 +3787,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "łódzkie",
     kody: ["EPD"],
     ciekawostki: [
-      "Gotycki zamek w Uniejowie wzniesiono w latach 1360-1365.",
+      "Gotycki zamek w Uniejowie wzniesiono w latach 1360–1365.",
       "Renesansowy pałac w Poddębicach zbudował przed 1617 r. wojewoda Zygmunt Grudziński.",
-      "W Poddębicach w latach 2009-2010 wykonano odwiert geotermalny o głębokości ok. 2039 m, zasilający miejskie ciepłownictwo i baseny termalne."
+      "W Poddębicach w latach 2009–2010 wykonano odwiert geotermalny o głębokości ok. 2039 m, zasilający miejskie ciepłownictwo i baseny termalne."
     ],
     factsVerified: true,
   },
@@ -3812,7 +3812,7 @@ export const powiaty: Powiat[] = [
     kody: ["ERW"],
     ciekawostki: [
       "Rawa Mazowiecka otrzymała prawa miejskie w 1321 r. i była stolicą Księstwa Rawskiego.",
-      "Zamek książąt mazowieckich w Rawie Mazowieckiej wzniósł w latach 1355-1370 książę Siemowit III; dziś zachowały się jego ruiny.",
+      "Zamek książąt mazowieckich w Rawie Mazowieckiej wzniósł w latach 1355–1370 książę Siemowit III; dziś zachowały się jego ruiny.",
       "4 lutego 1863 r. Antoni Jeziorański zdobył koszary rosyjskie w Rawie podczas powstania styczniowego."
     ],
     factsVerified: true,
@@ -3835,7 +3835,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "łódzkie",
     kody: ["ESK"],
     ciekawostki: [
-      "Wieś Lipce zmieniła w 1983 r. nazwę na Lipce Reymontowskie na cześć Władysława Reymonta, który mieszkał tam w latach 1888-1893 i osadził w niej akcję powieści „Chłopi”.",
+      "Wieś Lipce zmieniła w 1983 r. nazwę na Lipce Reymontowskie na cześć Władysława Reymonta, który mieszkał tam w latach 1888–1893 i osadził w niej akcję powieści „Chłopi”.",
       "Powiat skierniewicki jako jedyny w województwie łódzkim nie posiada własnej flagi.",
       "W Skierniewicach, siedzibie powiatu, działa Instytut Ogrodnictwa, utworzony w 1951 r. jako Instytut Sadownictwa."
     ],
@@ -3861,7 +3861,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "1 września 1939 r. o godz. 4:40 Luftwaffe zbombardowała Wieluń, niszcząc ok. 90% zabudowy historycznego centrum miasta.",
       "Wieluń otrzymał prawa miejskie w 1283 r., wzorowane na prawie kaliskim.",
-      "W latach 1370-1391 Wieluń był stolicą Księstwa Wieluńskiego pod rządami Władysława Opolczyka."
+      "W latach 1370–1391 Wieluń był stolicą Księstwa Wieluńskiego pod rządami Władysława Opolczyka."
     ],
     factsVerified: true,
   },
@@ -3896,7 +3896,7 @@ export const powiaty: Powiat[] = [
     kody: ["EZG"],
     ciekawostki: [
       "30 marca 1821 r. zawarto tzw. umowę zgierską, która sprowadziła do miasta 300 zagranicznych sukienników i uczyniła Zgierz do 1831 r. głównym ośrodkiem produkcji sukienniczej w kraju.",
-      "W latach 1922-2018 przez Zgierz przebiegała najdłuższa w Polsce linia tramwajowa, łącząca Łódź, Zgierz i Ozorków.",
+      "W latach 1922–2018 przez Zgierz przebiegała najdłuższa w Polsce linia tramwajowa, łącząca Łódź, Zgierz i Ozorków.",
       "Zgierz uzyskał prawa miejskie przed 1288 r., potwierdzone przez Władysława Jagiełłę w 1420 r."
     ],
     factsVerified: true,
@@ -3908,7 +3908,7 @@ export const powiaty: Powiat[] = [
     kody: ["EL", "ED"],
     ciekawostki: [
       "Ulica Piotrkowska, licząca ok. 4,2 km, jest jedną z najdłuższych handlowych ulic w Europie.",
-      "Miasto rozwinęło się w XIX w. jako wielki ośrodek przemysłu włókienniczego (tzw. \"polski Manchester\").",
+      "Miasto rozwinęło się w XIX w. jako wielki ośrodek przemysłu włókienniczego (tzw. „polski Manchester”).",
       "W Łodzi działa jedna z najbardziej znanych na świecie szkół filmowych — Szkoła Filmowa w Łodzi."
     ],
     factsVerified: true,
@@ -3932,7 +3932,7 @@ export const powiaty: Powiat[] = [
     kody: ["ELC"],
     ciekawostki: [
       "Barwne stroje ludowe Łowicza rozsławił magazyn National Geographic w marcu 1933 r., publikując zdjęcia pod tytułem „Rainbow Costumes of Poland's Peasants”.",
-      "Najstarsza wzmianka o Łowiczu pochodzi z buli papieża Innocentego II z 1136 r.",
+      "Najstarsza wzmianka o Łowiczu pochodzi z bulli papieża Innocentego II z 1136 r.",
       "Arcybiskup gnieźnieński Jarosław Bogoria Skotnicki wzniósł ok. 1355 r. w Łowiczu gotycki zamek nad Bzurą, rezydencję arcybiskupów."
     ],
     factsVerified: true,
@@ -3956,7 +3956,7 @@ export const powiaty: Powiat[] = [
     kody: ["ELE"],
     ciekawostki: [
       "Romańska kolegiata w Tumie pod Łęczycą została konsekrowana 21 maja 1161 r. i należy do najcenniejszych zabytków architektury romańskiej w Polsce.",
-      "Zamek Królewski w Łęczycy (XIV-XVIII w.) związany jest z legendą o diable Borucie i mieści dziś Muzeum w Łęczycy.",
+      "Zamek Królewski w Łęczycy (XIV–XVIII w.) związany jest z legendą o diable Borucie i mieści dziś Muzeum w Łęczycy.",
       "Na terenie powiatu łęczyckiego znajduje się geometryczny środek Polski."
     ],
     factsVerified: true,
@@ -3991,7 +3991,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "śląskie",
     kody: ["SH"],
     ciekawostki: [
-      "Współczesny Chorzów powstał 1 lipca 1934 r. z połączenia miasta Królewska Huta (praw miejskich od 1868 r.) ze wsią Chorzów i gminą Nowe Hajduki.",
+      "Współczesny Chorzów powstał 1 lipca 1934 r. z połączenia miasta Królewska Huta (prawa miejskie od 1868 r.) ze wsią Chorzów i gminą Nowe Hajduki.",
       "Na początku XX w. i w latach 30. Królewska Huta/Chorzów należały do najgęściej zaludnionych miast w Europie.",
       "Na terenie Chorzowa, w Parku Śląskim, znajduje się Stadion Śląski, dawny stadion reprezentacji Polski w piłce nożnej, oraz Legendia – najstarszy stały lunapark w Polsce."
     ],
@@ -4041,7 +4041,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "W 1980 r. podpisano tu porozumienia jastrzębskie – ostatnie z porozumień sierpniowych kończących falę strajków.",
       "Miasto rozwinęło się jako uzdrowisko solankowo-jodowe od 1861 r.; status uzdrowiska formalnie utraciło w 2007 r.",
-      "Pierwsza kopalnia węgla koksowego, KWK Jastrzębie-Moszczenica, ruszyła w 1963 r. – tym samym roku miasto otrzymało prawa miejskie."
+      "Pierwsza kopalnia węgla koksowego, KWK Jastrzębie-Moszczenica, ruszyła w 1963 r. – w tym samym roku miasto otrzymało prawa miejskie."
     ],
     factsVerified: true,
   },
@@ -4196,8 +4196,8 @@ export const powiaty: Powiat[] = [
     kody: ["SBE"],
     ciekawostki: [
       "W Będzinie stoi gotycki zamek królewski z XIV w. wzniesiony za Kazimierza Wielkiego, dziś jeden z punktów Szlaku Orlich Gniazd.",
-      "8-9 września 1939 r. Niemcy podpalili będzińską synagogę razem z modlącymi się w niej Żydami.",
-      "Powiat leży w Zagłębiu Dąbrowskim, gdzie górnictwo węgla kamiennego rozwinęło się już w XVIII w. - pierwsza kopalnia powstała w 1788 r. w Strzyżowicach."
+      "8–9 września 1939 r. Niemcy podpalili będzińską synagogę razem z modlącymi się w niej Żydami.",
+      "Powiat leży w Zagłębiu Dąbrowskim, gdzie górnictwo węgla kamiennego rozwinęło się już w XVIII w. – pierwsza kopalnia powstała w 1788 r. w Strzyżowicach."
     ],
     factsVerified: true,
   },
@@ -4231,7 +4231,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "śląskie",
     kody: ["SGL"],
     ciekawostki: [
-      "W Toszku stoi zamek, którego początki sięgają grodu piastowskiego z X-XI w., murowany zaś wzniósł w XV w. książę toszecki Przemysław.",
+      "W Toszku stoi zamek, którego początki sięgają grodu piastowskiego z X–XI w., murowany zaś wzniósł w XV w. książę toszecki Przemysław.",
       "Z zamkiem w Toszku związana jest legenda o złotej kaczce siedzącej w podziemiach na jedenastu złotych jajach.",
       "Powiat gliwicki wchodzi w skład Górnośląskiego Okręgu Przemysłowego (GOP) i obejmuje 8 gmin, w tym miasta Knurów, Pyskowice i Toszek."
     ],
@@ -4243,7 +4243,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "śląskie",
     kody: ["SKL"],
     ciekawostki: [
-      "W Kłobucku w latach 1434-1449 kanonikiem był Jan Długosz, autor 'Roczników, czyli kronik sławnego Królestwa Polskiego'.",
+      "W Kłobucku w latach 1434–1449 kanonikiem był Jan Długosz, autor „Roczników, czyli kronik sławnego Królestwa Polskiego”.",
       "Zamek w Krzepicach wzniesiono w XIV w. z rozkazu Kazimierza Wielkiego; ostatecznie rozebrały go władze pruskie w XIX w.",
       "Na terenie powiatu leży fragment Załęczańskiego Parku Krajobrazowego wraz z zakolami rzeki Warty."
     ],
@@ -4256,8 +4256,8 @@ export const powiaty: Powiat[] = [
     kody: ["SLU"],
     ciekawostki: [
       "Lubliniec otrzymał prawa miejskie w 1300 r.",
-      "Działający w Lublińcu od 1894 r. szpital psychiatryczny był w czasie II wojny światowej miejscem realizacji nazistowskiej Akcji T4 - zamordowano tam 194 dzieci.",
-      "Znaczną część powiatu pokrywają lasy chronione w Parku Krajobrazowym 'Lasy nad Górną Liswartą'."
+      "Działający w Lublińcu od 1894 r. szpital psychiatryczny był w czasie II wojny światowej miejscem realizacji nazistowskiej Akcji T4 – zamordowano tam 194 dzieci.",
+      "Znaczną część powiatu pokrywają lasy chronione w Parku Krajobrazowym „Lasy nad Górną Liswartą”."
     ],
     factsVerified: true,
   },
@@ -4267,9 +4267,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "śląskie",
     kody: ["SMI"],
     ciekawostki: [
-      "W Mikołowie działa Kopalnia Doświadczalna 'Barbara' - jedyna tego typu placówka badawcza górnictwa w Polsce.",
-      "Karol Miarka senior założył w Mikołowie polską drukarnię i wydawał tam poczytne wśród Ślązaków czasopismo 'Katolik'.",
-      "Powiat mikołowski ma najwyższy wskaźnik urbanizacji spośród wszystkich powiatów ziemskich w Polsce - ok. 86%."
+      "W Mikołowie działa Kopalnia Doświadczalna „Barbara” – jedyna tego typu placówka badawcza górnictwa w Polsce.",
+      "Karol Miarka senior założył w Mikołowie polską drukarnię i wydawał tam poczytne wśród Ślązaków czasopismo „Katolik”.",
+      "Powiat mikołowski ma najwyższy wskaźnik urbanizacji spośród wszystkich powiatów ziemskich w Polsce – ok. 86%."
     ],
     factsVerified: true,
   },
@@ -4291,8 +4291,8 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "śląskie",
     kody: ["SPS"],
     ciekawostki: [
-      "Zamek w Pszczynie, dawna rezydencja książęcego rodu Hochbergów, uzyskał obecny, neobarokowy kształt podczas przebudowy w latach 1870-1876.",
-      "Żubry hodowane w pszczyńskich lasach książęcych odegrały kluczową rolę w odbudowie gatunku po jego wyginięciu w naturze - wśród 12 osobników uznawanych za 'ojców' współczesnej populacji żubra aż czterech pochodziło z Pszczyny.",
+      "Zamek w Pszczynie, dawna rezydencja książęcego rodu Hochbergów, uzyskał obecny, neobarokowy kształt podczas przebudowy w latach 1870–1876.",
+      "Żubry hodowane w pszczyńskich lasach książęcych odegrały kluczową rolę w odbudowie gatunku po jego wyginięciu w naturze – wśród 12 osobników uznawanych za „ojców” współczesnej populacji żubra aż czterech pochodziło z Pszczyny.",
       "Dawne Państwo Stanowe Pszczyńskie przekształcono w powiat pruski w 1742 r."
     ],
     factsVerified: true,
@@ -4305,7 +4305,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "W 1172 r. Mieszko Laskonogi uczynił Racibórz stolicą własnego księstwa (księstwa raciborskiego).",
       "24 sierpnia 1683 r. w zamku raciborskim zatrzymał się król Jan III Sobieski, jadąc na odsiecz oblężonemu Wiedniowi.",
-      "Kaplica zamkowa św. Tomasza Becketa w Raciborzu, wzniesiona w latach 1288-1293, uchodzi za perłę śląskiego gotyku."
+      "Kaplica zamkowa św. Tomasza Becketa w Raciborzu, wzniesiona w latach 1288–1293, uchodzi za perłę śląskiego gotyku."
     ],
     factsVerified: true,
   },
@@ -4315,7 +4315,7 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "śląskie",
     kody: ["SRB"],
     ciekawostki: [
-      "Kopalnia węgla kamiennego 'Dębieńsko' w Czerwionce-Leszczynach, największej gminie powiatu, ruszyła oficjalnie 2 listopada 1898 r. i działała (z przerwami) do 2000 r.",
+      "Kopalnia węgla kamiennego „Dębieńsko” w Czerwionce-Leszczynach, największej gminie powiatu, ruszyła oficjalnie 2 listopada 1898 r. i działała (z przerwami) do 2000 r.",
       "Powiat rybnicki ziemski leży w całości w granicach Rybnickiego Okręgu Węglowego (ROW), będącego częścią Górnośląskiego Okręgu Przemysłowego.",
       "Siedzibą władz powiatu jest miasto Rybnik, które samo jest miastem na prawach powiatu i formalnie nie wchodzi w skład powiatu ziemskiego."
     ],
@@ -4328,7 +4328,7 @@ export const powiaty: Powiat[] = [
     kody: ["STA", "ITA"],
     ciekawostki: [
       "Zabytkowa Kopalnia Srebra w Tarnowskich Górach wraz z systemem gospodarowania wodami podziemnymi została wpisana na Listę Światowego Dziedzictwa UNESCO 9 lipca 2017 r.",
-      "Sztolnia Czarnego Pstrąga to 600-metrowy fragment XIX-wiecznej sztolni odwadniającej 'Fryderyk', który zwiedza się łodziami.",
+      "Sztolnia Czarnego Pstrąga to 600-metrowy fragment XIX-wiecznej sztolni odwadniającej „Fryderyk”, który zwiedza się łodziami.",
       "Na terenie powiatu tarnogórskiego znajduje się Międzynarodowy Port Lotniczy Katowice w Pyrzowicach."
     ],
     factsVerified: true,
@@ -4340,7 +4340,7 @@ export const powiaty: Powiat[] = [
     kody: ["SWD", "SWZ"],
     ciekawostki: [
       "Wodzisław Śląski otrzymał prawa miejskie w 1257 r., prawdopodobnie z fundacji księcia Władysława Hermana.",
-      "Wzniesiony w latach 1743-1747 pałac Dietrichsteinów w Wodzisławiu Śląskim uchodzi za jedną z pierwszych budowli klasycystycznych w Europie.",
+      "Wzniesiony w latach 1743–1747 pałac Dietrichsteinów w Wodzisławiu Śląskim uchodzi za jedną z pierwszych budowli klasycystycznych w Europie.",
       "W Rydułtowach, mieście powiatu wodzisławskiego, znajduje się jedna z najwyższych hałd pogórniczych w Europie."
     ],
     factsVerified: true,
@@ -4351,9 +4351,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "śląskie",
     kody: ["SZA"],
     ciekawostki: [
-      "Zamek Ogrodzieniec w Podzamczu stoi na Górze Zamkowej (515 m n.p.m.) - najwyższym wzniesieniu Jury Krakowsko-Częstochowskiej.",
-      "Kamienny zamek w Ogrodzieńcu wzniósł w XIV w. Kazimierz Wielki; warownię zniszczyli Szwedzi w czasie potopu (1655-1660), a doszczętnie spalili w 1702 r. żołnierze Karola XII.",
-      "Ruiny zamku Ogrodzieniec posłużyły jako plan filmowy m.in. serialu Netfliksa 'Wiedźmin' (2019)."
+      "Zamek Ogrodzieniec w Podzamczu stoi na Górze Zamkowej (515 m n.p.m.) – najwyższym wzniesieniu Jury Krakowsko-Częstochowskiej.",
+      "Kamienny zamek w Ogrodzieńcu wzniósł w XIV w. Kazimierz Wielki; warownię zniszczyli Szwedzi w czasie potopu (1655–1660), a doszczętnie spalili w 1702 r. żołnierze Karola XII.",
+      "Ruiny zamku Ogrodzieniec posłużyły jako plan filmowy m.in. serialu Netfliksa „Wiedźmin” (2019)."
     ],
     factsVerified: true,
   },
@@ -4365,7 +4365,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "Świętochłowice, o powierzchni zaledwie 13,3 km², są najmniejszym w Polsce miastem na prawach powiatu i jednym z najgęściej zaludnionych miast w kraju.",
       "W dzielnicy Zgoda działał w 1945 r. powojenny obóz pracy, w którym w ciągu ok. 300 dni istnienia zginęło od 1500 do 2500 więźniów.",
-      "Pierwsza kopalnia węgla na terenie miasta, 'Król Saul', powstała w 1825 r."
+      "Pierwsza kopalnia węgla na terenie miasta, „Król Saul”, powstała w 1825 r."
     ],
     factsVerified: true,
   },
@@ -4376,7 +4376,7 @@ export const powiaty: Powiat[] = [
     kody: ["SZO"],
     ciekawostki: [
       "Żory otrzymały prawa miejskie na prawie magdeburskim w 1272 r. z fundacji księcia Władysława Opolskiego.",
-      "W 1345 r. Kazimierz Wielki oblegał otoczone murami Żory, lecz miasta nie zdobył - sąsiedni, pozbawiony fortyfikacji Rybnik spłonął wówczas doszczętnie.",
+      "W 1345 r. Kazimierz Wielki oblegał otoczone murami Żory, lecz miasta nie zdobył – sąsiedni, pozbawiony fortyfikacji Rybnik spłonął wówczas doszczętnie.",
       "Od 1702 r. w Żorach obchodzone jest corocznie Święto Ogniowe, upamiętniające wielki pożar, który wtedy strawił miasto."
     ],
     factsVerified: true,
@@ -4412,7 +4412,7 @@ export const powiaty: Powiat[] = [
     kody: ["TBU"],
     ciekawostki: [
       "Busko-Zdrój otrzymało prawa miejskie w 1287 r. od księcia Leszka Czarnego, utraciło je w 1869 r. na mocy carskiego ukazu, a odzyskało dopiero w 1916 r.",
-      "Busko-Zdrój to znane uzdrowisko wykorzystujące wody siarczkowe, jodkowo-bromkowe i borowinę - w kilkunastu sanatoriach wykonuje się tu rocznie ok. 1,5 mln zabiegów leczniczych.",
+      "Busko-Zdrój to znane uzdrowisko wykorzystujące wody siarczkowe, jodkowo-bromkowe i borowinę – w kilkunastu sanatoriach wykonuje się tu rocznie ok. 1,5 mln zabiegów leczniczych.",
       "W Wiślicy w powiecie buskim w 1347 r. Kazimierz Wielki zatwierdził Statuty wiślickie, a w tamtejszej bazylice zachowała się romańska Płyta Orantów datowana na ok. 1175 r."
     ],
     factsVerified: true,
@@ -4424,7 +4424,7 @@ export const powiaty: Powiat[] = [
     kody: ["TJE"],
     ciekawostki: [
       "W 1149 r. mnisi cystersi sprowadzeni z Morimond w Burgundii założyli w Jędrzejowie pierwsze opactwo cysterskie w Polsce.",
-      "Jędrzejów nazywany jest 'miastem zegarów' dzięki kolekcji ponad 600 zegarów słonecznych zebranych przez Feliksa Przypkowskiego, prezentowanej w muzeum uznawanym za jedno z największych tego typu na świecie.",
+      "Jędrzejów nazywany jest „miastem zegarów” dzięki kolekcji ponad 600 zegarów słonecznych zebranych przez Feliksa Przypkowskiego, prezentowanej w muzeum uznawanym za jedno z największych tego typu na świecie.",
       "W jędrzejowskim opactwie cysterskim żył i zmarł błogosławiony Wincenty Kadłubek, biskup krakowski i kronikarz, który zrzekł się urzędu i wstąpił do zakonu."
     ],
     factsVerified: true,
@@ -4437,7 +4437,7 @@ export const powiaty: Powiat[] = [
     ciekawostki: [
       "W 1845 r. w Łubnej koło Kazimierzy Wielkiej wybudowano jedną z pierwszych cukrowni w Królestwie Polskim.",
       "W pobliskich Słonowicach odkryto jeden z największych w Europie Środkowej kompleksów monumentalnych grobowców neolitycznych.",
-      "Kazimierza Wielka, choć jest siedzibą powiatu, prawa miejskie otrzymała dopiero w 1959 r. - wcześniej miała jedynie status osiedla."
+      "Kazimierza Wielka, choć jest siedzibą powiatu, prawa miejskie otrzymała dopiero w 1959 r. – wcześniej miała jedynie status osiedla."
     ],
     factsVerified: true,
   },
@@ -4459,9 +4459,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "świętokrzyskie",
     kody: ["TKN"],
     ciekawostki: [
-      "Końskie było jednym z ośrodków Staropolskiego Okręgu Przemysłowego, gdzie od XVIII w. działały odlewnie i rusznikarnia produkująca broń dla wojsk polskich.",
+      "Końskie były jednym z ośrodków Staropolskiego Okręgu Przemysłowego, gdzie od XVIII w. działały odlewnie i rusznikarnia produkująca broń dla wojsk polskich.",
       "Klasycystyczny zespół pałacowo-parkowy Małachowskich z lat 40. XVIII w., wzorowany na Pillnitz, uznawany był za jeden z najpiękniejszych parków w Polsce.",
-      "W okolicach Końskich działał w 1939 r. oddział partyzancki majora Henryka Dobrzańskiego ps. 'Hubal', uznawany za pierwszy regularny oddział partyzancki II wojny światowej w Europie."
+      "W okolicach Końskich działał w 1939 r. oddział partyzancki majora Henryka Dobrzańskiego ps. „Hubal”, uznawany za pierwszy regularny oddział partyzancki II wojny światowej w Europie."
     ],
     factsVerified: true,
   },
@@ -4471,9 +4471,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "świętokrzyskie",
     kody: ["TOP"],
     ciekawostki: [
-      "W kolegiacie św. Marcina w Opatowie, romańskiej budowli z II poł. XII w., znajduje się słynny brązowy nagrobek zwany 'Lamentem Opatowskim', przedstawiający żałobę 41 mieszkańców po śmierci Krzysztofa Szydłowieckiego.",
+      "W kolegiacie św. Marcina w Opatowie, romańskiej budowli z II poł. XII w., znajduje się słynny brązowy nagrobek zwany „Lamentem Opatowskim”, przedstawiający żałobę 41 mieszkańców po śmierci Krzysztofa Szydłowieckiego.",
       "21 lutego 1863 r. pod Opatowem rozegrała się jedna z ostatnich większych bitew powstania styczniowego.",
-      "Pod miastem znajdują się Podziemia Opatowskie - system piwnic i korytarzy wydrążonych w lessie, łączących niegdyś tamtejsze kamienice."
+      "Pod miastem znajdują się Podziemia Opatowskie – system piwnic i korytarzy wydrążonych w lessie, łączących niegdyś tamtejsze kamienice."
     ],
     factsVerified: true,
   },
@@ -4483,9 +4483,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "świętokrzyskie",
     kody: ["TOS"],
     ciekawostki: [
-      "27 grudnia 1905 r. w Ostrowcu proklamowano tzw. Republikę Ostrowiecką - krótkotrwały epizod samorządu robotniczego podczas rewolucji 1905 r.",
+      "27 grudnia 1905 r. w Ostrowcu proklamowano tzw. Republikę Ostrowiecką – krótkotrwały epizod samorządu robotniczego podczas rewolucji 1905 r.",
       "W Krzemionkach koło Ostrowca znajduje się neolityczna kopalnia krzemienia pasiastego, wpisana na Listę Światowego Dziedzictwa UNESCO.",
-      "Ostrowiec był głównym ośrodkiem Staropolskiego Okręgu Przemysłowego dzięki hucie żelaza wzniesionej w latach 1837-1839, rozwiniętej później w duży kombinat metalurgiczny."
+      "Ostrowiec był głównym ośrodkiem Staropolskiego Okręgu Przemysłowego dzięki hucie żelaza wzniesionej w latach 1837–1839, rozwiniętej później w duży kombinat metalurgiczny."
     ],
     factsVerified: true,
   },
@@ -4495,9 +4495,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "świętokrzyskie",
     kody: ["TPI"],
     ciekawostki: [
-      "W Pińczowie w latach 1556-1563 tłumaczono Biblię na język polski, a 4 września 1563 r. wydano tzw. Biblię brzeską (pińczowską).",
+      "W Pińczowie w latach 1556–1563 tłumaczono Biblię na język polski, a 4 września 1563 r. wydano tzw. Biblię brzeską (pińczowską).",
       "Pińczów był w XVI w. ważnym ośrodkiem ruchu ariańskiego, gdzie działał reformator Jan Łaski, zmarły i pochowany w tamtejszym zborze.",
-      "Stara Synagoga w Pińczowie, wzniesiona w latach 1594-1609, jest jedną z najstarszych zachowanych synagog w Polsce."
+      "Stara Synagoga w Pińczowie, wzniesiona w latach 1594–1609, jest jedną z najstarszych zachowanych synagog w Polsce."
     ],
     factsVerified: true,
   },
@@ -4507,9 +4507,9 @@ export const powiaty: Powiat[] = [
     wojewodztwo: "świętokrzyskie",
     kody: ["TSA"],
     ciekawostki: [
-      "Sandomierz leży na siedmiu wzgórzach, dlatego bywa nazywany 'małym Rzymem'.",
-      "Pod miastem, na głębokości 4-12 metrów, biegnie Podziemna Trasa Turystyczna wydrążona w lessowym podłożu.",
-      "W 1570 r. w Sandomierzu podpisano tzw. zgodę sandomierską - porozumienie polskich protestantów (luteranów, kalwinistów i braci czeskich)."
+      "Sandomierz leży na siedmiu wzgórzach, dlatego bywa nazywany „małym Rzymem”.",
+      "Pod miastem, na głębokości 4–12 metrów, biegnie Podziemna Trasa Turystyczna wydrążona w lessowym podłożu.",
+      "W 1570 r. w Sandomierzu podpisano tzw. zgodę sandomierską – porozumienie polskich protestantów (luteranów, kalwinistów i braci czeskich)."
     ],
     factsVerified: true,
   },
@@ -4532,7 +4532,7 @@ export const powiaty: Powiat[] = [
     kody: ["TST"],
     ciekawostki: [
       "W XIX w., dzięki planom przemysłowym Stanisława Staszica, Starachowice stały się jednym z największych ośrodków przemysłu metalowego Królestwa Polskiego; miejscowy wielki piec hutniczy działał do 1968 r.",
-      "W 1948 r. powstała Fabryka Samochodów Ciężarowych 'Star', która w szczytowym okresie zatrudniała ponad 20 tys. osób i dała nazwę popularnym polskim ciężarówkom marki Star.",
+      "W 1948 r. powstała Fabryka Samochodów Ciężarowych „Star”, która w szczytowym okresie zatrudniała ponad 20 tys. osób i dała nazwę popularnym polskim ciężarówkom marki Star.",
       "Miasto Starachowice powstało w 1939 r. z połączenia Starachowic i Wierzbnika, który prawa miejskie otrzymał już w 1624 r. od Zygmunta III Wazy."
     ],
     factsVerified: true,
@@ -4544,7 +4544,7 @@ export const powiaty: Powiat[] = [
     kody: ["TSZ"],
     ciekawostki: [
       "W 1970 r. odkryto w Grzybowie koło Staszowa złoża siarki, których wydobycie w latach 80. XX w. trafiało do odbiorców w 18 krajach świata.",
-      "W XVIII w. w Staszowie produkowano znane szable zwane 'staszówkami', a od 1821 r. także fajki 'stambułki'.",
+      "W XVIII w. w Staszowie produkowano znane szable zwane „staszówkami”, a od 1821 r. także fajki „stambułki”.",
       "W 1863 r. pod Staszowem powstańcy styczniowi stoczyli zwycięską bitwę z wojskami rosyjskimi."
     ],
     factsVerified: true,

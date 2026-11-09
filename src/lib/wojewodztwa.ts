@@ -58,3 +58,8 @@ export function getAllWojewodztwoSlugs(): string[] {
 export function miejscownik(nazwa: Wojewodztwo): string {
   return nazwa.replace(/ie$/, "im");
 }
+
+/** "mazowieckie" -> "mazowieckiego", do zdań "województwa …". */
+export function dopelniacz(nazwa: Wojewodztwo): string {
+  return nazwa.replace(/e$/, "ego");
+}

@@ -1,3 +1,5 @@
+import type { Powiat } from "@/types/powiat";
+
 export function capitalize(text: string): string {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
@@ -5,6 +7,55 @@ export function capitalize(text: string): string {
 /** Usuwa wiodące "powiat " z nazwy, np. "powiat Wrocław" -> "Wrocław". */
 export function bareName(nazwa: string): string {
   return nazwa.replace(/^powiat\s+/i, "");
+}
+
+type Nazwany = Pick<Powiat, "nazwa">;
+
+/** Miasto na prawach powiatu. W danych tylko takie nazwy są pisane wielką literą. */
+export function isMiasto({ nazwa }: Nazwany): boolean {
+  const pierwsza = bareName(nazwa)[0];
+  return pierwsza !== pierwsza.toLowerCase();
+}
+
+/**
+ * Odmiana powiatu ziemskiego. Wszystkie 314 nazw to przymiotniki na -ski, -cki,
+ * -zki lub -ni, więc końcówkę wystarczy dopisać do każdego słowa. Miast nie
+ * odmieniamy: „z miasta Wrocław” jest poprawne i nie wymaga słownika 66 form.
+ */
+function odmien(nazwa: string, koncowka: string): string {
+  return bareName(nazwa)
+    .split(" ")
+    .map((slowo) => slowo + koncowka)
+    .join(" ");
+}
+
+/** "Powiat gdański" | "Miasto Wrocław". */
+export function powiatNazwa(powiat: Nazwany): string {
+  return isMiasto(powiat) ? `Miasto ${bareName(powiat.nazwa)}` : capitalize(powiat.nazwa);
+}
+
+/** "powiat gdański" | "miasto Wrocław". W bierniku forma jest taka sama. */
+export function powiatMianownik(powiat: Nazwany): string {
+  return isMiasto(powiat) ? `miasto ${bareName(powiat.nazwa)}` : powiat.nazwa;
+}
+
+/** "powiatu gdańskiego" | "miasta Wrocław". */
+export function powiatDopelniacz(powiat: Nazwany): string {
+  return isMiasto(powiat)
+    ? `miasta ${bareName(powiat.nazwa)}`
+    : `powiatu ${odmien(powiat.nazwa, "ego")}`;
+}
+
+/** "powiecie gdańskim" | "mieście Wrocław". */
+export function powiatMiejscownik(powiat: Nazwany): string {
+  return isMiasto(powiat)
+    ? `mieście ${bareName(powiat.nazwa)}`
+    : `powiecie ${odmien(powiat.nazwa, "m")}`;
+}
+
+/** "powiat gdański" | "Wrocław": do tytułów, gdzie słowo „miasto” tylko zajmuje miejsce. */
+export function powiatKrotko(powiat: Nazwany): string {
+  return isMiasto(powiat) ? bareName(powiat.nazwa) : powiat.nazwa;
 }
 
 /**
