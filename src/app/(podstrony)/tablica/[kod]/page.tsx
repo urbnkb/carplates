@@ -1,20 +1,27 @@
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
-import { andList, bareName, capitalize } from "@/lib/format";
-import { dzielnicaSlug, getDzielniceForKod } from "@/lib/dzielnice";
+import { dzielnicaSlug, getDzielniceForKod, regionLabel, WARSZAWA_GEO_ID } from "@/lib/dzielnice";
+import {
+  andList,
+  powiatDopelniacz,
+  powiatKrotko,
+  powiatMianownik,
+  powiatMiejscownik,
+  powiatNazwa,
+} from "@/lib/format";
 import { findPowiatByKod, getAllKody } from "@/lib/kody";
 import { pageMetadata } from "@/lib/metadata";
-import { powiatSlug } from "@/lib/slug";
-import { serializeJsonLd } from "@/lib/jsonLd";
-import { SITE_URL } from "@/lib/site";
-import { wojewodztwoSlug } from "@/lib/wojewodztwa";
+import { powiatSlug, wikipediaUrl } from "@/lib/slug";
+import { serializeJsonLd, webPageJsonLd } from "@/lib/jsonLd";
+import { DATA_UPDATED, SITE_URL } from "@/lib/site";
+import { miejscownik, wojewodztwoSlug } from "@/lib/wojewodztwa";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { DzielniceLinks } from "@/components/DzielniceLinks";
-import { FactsCard } from "@/components/Facts";
 import PlatePreview from "@/components/PlatePreview";
-import ProductWindow from "@/components/ProductWindow";
 import RegionMap from "@/components/RegionMap";
+import Sasiedzi from "@/components/Sasiedzi";
+import type { Powiat } from "@/types/powiat";
 
 interface PageProps {
   params: Promise<{ kod: string }>;
@@ -37,24 +44,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const dzielnice = getDzielniceForKod(canonicalKod);
   const nazwy = andList.format(dzielnice.map((d) => d.nazwa));
 
-  // Kody warszawskie dostają dzielnicę wprost w tytule — to jest realne zapytanie
-  // wpisywane w wyszukiwarkę ("WH jaka dzielnica"), a wszystkie 15 kodów Warszawy
-  // miało dotąd identyczny, nieodróżnialny tytuł.
+  // Odpowiedź stoi w samym tytule: to pod nią ktoś wpisuje kod w wyszukiwarkę,
+  // a kody Warszawy dostają dzielnicę ("WH jaka dzielnica").
   const title =
     dzielnice.length === 1
-      ? `Tablica ${canonicalKod} — dzielnica ${nazwy} w Warszawie`
+      ? `Tablica ${canonicalKod}: dzielnica ${nazwy}, Warszawa`
       : dzielnice.length > 1
-        ? `Tablica ${canonicalKod} — dzielnice Warszawy: ${nazwy}`
-        : `Tablica ${canonicalKod} — skąd jest ta rejestracja?`;
+        ? `Tablica ${canonicalKod}: Warszawa, dzielnice ${nazwy}`
+        : `Tablica ${canonicalKod}: ${powiatKrotko(powiat)}, woj. ${powiat.wojewodztwo}`;
 
-  const description =
+  const skad =
     dzielnice.length === 1
-      ? `Tablica rejestracyjna ${canonicalKod} należy do dzielnicy ${nazwy} w Warszawie (woj. ${powiat.wojewodztwo}).`
+      ? `z dzielnicy ${nazwy} w Warszawie`
       : dzielnice.length > 1
-        ? `Tablica rejestracyjna ${canonicalKod} jest wspólna dla dzielnic Warszawy: ${nazwy} (woj. ${powiat.wojewodztwo}).`
-        : `Tablica rejestracyjna ${canonicalKod} należy do powiatu ${bareName(powiat.nazwa)} (woj. ${powiat.wojewodztwo}).`;
+        ? `z Warszawy i jest wspólna dla dzielnic ${nazwy}`
+        : `z ${powiatDopelniacz(powiat)} w województwie ${miejscownik(powiat.wojewodztwo)}`;
 
-  return pageMetadata({ title, description, path: `/tablica/${canonicalKod}` });
+  return pageMetadata({
+    title,
+    description: `Tablica rejestracyjna ${canonicalKod} pochodzi ${skad}. Co oznaczają jej litery, podobne kody i kody sąsiednich powiatów.`,
+    path: `/tablica/${canonicalKod}`,
+  });
+}
+
+/** "powiat gdański" | "miasto Wrocław" | "Warszawa (Mokotów)". */
+function opisKodu(kod: string, powiat: Powiat): string {
+  return powiat.geoId === WARSZAWA_GEO_ID ? regionLabel(powiat, kod) : powiatMianownik(powiat);
 }
 
 export default async function TablicaPage({ params }: PageProps) {
@@ -69,8 +84,31 @@ export default async function TablicaPage({ params }: PageProps) {
 
   const dzielnice = getDzielniceForKod(canonicalKod);
   const single = dzielnice.length === 1 ? dzielnice[0] : null;
+  const isWarszawa = dzielnice.length > 0;
 
+  const powiatPath = `/powiat/${powiatSlug(powiat)}`;
   const wojewodztwoPath = `/wojewodztwo/${wojewodztwoSlug(powiat.wojewodztwo)}`;
+  const title = `Skąd jest tablica ${canonicalKod}?`;
+
+  // Kody zaczynające się tak samo (GD i GDA) to najczęstsza pomyłka przy czytaniu tablicy.
+  const podobne = getAllKody().filter(
+    ({ kod: inny }) =>
+      inny !== canonicalKod && (inny.startsWith(canonicalKod) || canonicalKod.startsWith(inny)),
+  );
+
+  // Kilka kodów jednego powiatu nie powinno powielać tej samej ciekawostki.
+  const zrodloFaktu = single ?? powiat;
+  const fakt = zrodloFaktu.ciekawostki[powiat.kody.indexOf(canonicalKod) % zrodloFaktu.ciekawostki.length];
+  const oCzymFakt = single
+    ? `dzielnicy ${single.nazwa}`
+    : isWarszawa
+      ? "Warszawie"
+      : powiatMiejscownik(powiat);
+  const wiecejPath = single ? `/dzielnica/${dzielnicaSlug(single)}` : powiatPath;
+
+  const litera = canonicalKod[0];
+  const reszta = canonicalKod.slice(1);
+
   const wojewodztwoPlace = {
     "@type": "AdministrativeArea",
     name: `Województwo ${powiat.wojewodztwo}`,
@@ -90,41 +128,37 @@ export default async function TablicaPage({ params }: PageProps) {
       }
     : {
         "@type": "AdministrativeArea",
-        name: capitalize(powiat.nazwa),
+        name: powiatNazwa(powiat),
+        sameAs: wikipediaUrl(powiat),
         containedInPlace: wojewodztwoPlace,
       };
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: single
-      ? `Tablica ${canonicalKod} — Warszawa, dzielnica ${single.nazwa}`
-      : `Tablica ${canonicalKod} — powiat ${bareName(powiat.nazwa)}`,
-    url: `${SITE_URL}/tablica/${canonicalKod}`,
+  const jsonLd = webPageJsonLd(`/tablica/${canonicalKod}`, title, {
     about,
     mainEntity: {
       "@type": "DefinedTerm",
       name: canonicalKod,
+      inDefinedTermSet: {
+        "@type": "DefinedTermSet",
+        name: "Kody polskich tablic rejestracyjnych",
+        url: `${SITE_URL}/tablica`,
+      },
       description: single
         ? `Kod tablicy rejestracyjnej przypisany do dzielnicy ${single.nazwa} w Warszawie.`
         : dzielnice.length > 1
           ? `Kod tablicy rejestracyjnej wspólny dla dzielnic Warszawy: ${andList.format(dzielnice.map((d) => d.nazwa))}.`
-          : `Kod tablicy rejestracyjnej przypisany do powiatu ${bareName(powiat.nazwa)}.`,
+          : `Kod tablicy rejestracyjnej przypisany do ${powiatDopelniacz(powiat)}.`,
     },
-  };
-
-  const wojewodztwoLink = (
-    <Link href={wojewodztwoPath} className="font-medium text-accent hover:underline">
-      woj. {powiat.wojewodztwo}
-    </Link>
-  );
+  });
 
   const warszawaLink = (
-    <Link
-      href={`/powiat/${powiatSlug(powiat)}`}
-      className="font-medium text-accent hover:underline"
-    >
+    <Link href={powiatPath} className="link-accent">
       Warszawy
+    </Link>
+  );
+  const wojewodztwoLink = (
+    <Link href={wojewodztwoPath} className="link-accent">
+      {miejscownik(powiat.wojewodztwo)}
     </Link>
   );
 
@@ -140,59 +174,117 @@ export default async function TablicaPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
-      <header className="flex flex-col items-center gap-6 text-center">
-        <h1 className="text-4xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-5xl">
-          Tablica {canonicalKod}
-        </h1>
-        <PlatePreview code={canonicalKod} />
-        <p className="mx-auto max-w-md text-base text-zinc-600 sm:text-lg">
-          {single ? (
-            <>
-              Pochodzi z {warszawaLink}, z dzielnicy{" "}
-              <Link
-                href={`/dzielnica/${dzielnicaSlug(single)}`}
-                className="font-medium text-accent hover:underline"
-              >
-                {single.nazwa}
-              </Link>{" "}
-              ({wojewodztwoLink}).
-            </>
-          ) : dzielnice.length > 1 ? (
-            <>
-              Pochodzi z {warszawaLink} — kod {canonicalKod} jest wspólny dla dzielnic{" "}
-              <DzielniceLinks items={dzielnice} />, więc sama tablica nie wskazuje, z której z nich
-              pochodzi pojazd.
-            </>
-          ) : (
-            <>
-              Pochodzi z powiatu{" "}
-              <Link
-                href={`/powiat/${powiatSlug(powiat)}`}
-                className="font-medium text-accent hover:underline"
-              >
-                {bareName(powiat.nazwa)}
-              </Link>{" "}
-              ({wojewodztwoLink}).
-            </>
+
+      <div className="page-columns">
+        <div className="flex min-w-0 flex-col gap-8">
+          <header className="flex flex-col items-start gap-5">
+            <PlatePreview code={canonicalKod} />
+            <h1 className="page-title">{title}</h1>
+            <p className="lead-text">
+              {single ? (
+                <>
+                  Tablica {canonicalKod} pochodzi z {warszawaLink}, z dzielnicy{" "}
+                  <Link href={wiecejPath} className="link-accent">
+                    {single.nazwa}
+                  </Link>
+                  , w województwie {wojewodztwoLink}.
+                </>
+              ) : isWarszawa ? (
+                <>
+                  Tablica {canonicalKod} pochodzi z {warszawaLink}. Kod jest wspólny dla dzielnic{" "}
+                  <DzielniceLinks items={dzielnice} />, więc sama tablica nie wskazuje, z której z
+                  nich pochodzi pojazd.
+                </>
+              ) : (
+                <>
+                  Tablica {canonicalKod} pochodzi z{" "}
+                  <Link href={powiatPath} className="link-accent">
+                    {powiatDopelniacz(powiat)}
+                  </Link>{" "}
+                  w województwie {wojewodztwoLink}.
+                </>
+              )}
+            </p>
+          </header>
+
+          <section>
+            <h2 className="section-title">Co oznaczają litery {canonicalKod}?</h2>
+            <p className="body-text mt-2">
+              Pierwsza litera, <strong>{litera}</strong>, oznacza województwo{" "}
+              <Link href={wojewodztwoPath} className="link-accent">
+                {powiat.wojewodztwo}
+              </Link>
+              . {reszta.length > 1 ? "Kolejne litery" : "Druga litera"}, <strong>{reszta}</strong>,{" "}
+              {reszta.length > 1 ? "wskazują" : "wskazuje"}{" "}
+              {single
+                ? `dzielnicę ${single.nazwa} w Warszawie`
+                : isWarszawa
+                  ? "kilka dzielnic Warszawy"
+                  : powiatMianownik(powiat)}
+              .
+            </p>
+          </section>
+
+          {podobne.length > 0 && (
+            <section>
+              <h2 className="section-title">
+                {podobne.length === 1
+                  ? `Czym różni się ${canonicalKod} od ${podobne[0].kod}?`
+                  : `Kody podobne do ${canonicalKod}`}
+              </h2>
+              <p className="body-text mt-2">
+                {canonicalKod} to {opisKodu(canonicalKod, powiat)}, a{" "}
+                {podobne.map(({ kod: inny, powiat: innyPowiat }, i) => (
+                  <span key={inny}>
+                    {i > 0 && (i === podobne.length - 1 ? " i " : ", ")}
+                    <Link href={`/tablica/${inny}`} className="link-accent font-mono">
+                      {inny}
+                    </Link>{" "}
+                    to {opisKodu(inny, innyPowiat)}
+                  </span>
+                ))}
+                . Po kodzie na tablicy następuje wyróżnik pojazdu, który także może zawierać litery,
+                dlatego kody zaczynające się tak samo łatwo pomylić.
+              </p>
+            </section>
           )}
-        </p>
-      </header>
 
-      <ProductWindow>
-        <FactsCard
-          title={
-            single
-              ? `Ciekawostki o dzielnicy ${single.nazwa}`
-              : dzielnice.length > 1
-                ? "Ciekawostki o Warszawie"
-                : `Ciekawostki o powiecie ${bareName(powiat.nazwa)}`
-          }
-          powiat={powiat}
-          dzielnica={single}
-        />
+          <section>
+            <h2 className="section-title">Ciekawostka o {oCzymFakt}</h2>
+            <p className="body-text mt-2">{fakt}</p>
+            <Link href={wiecejPath} className="link-accent mt-2 inline-block">
+              Więcej o {oCzymFakt} →
+            </Link>
+          </section>
+        </div>
 
-        <RegionMap powiat={powiat} kod={canonicalKod} />
-      </ProductWindow>
+        <div className="min-w-0 lg:sticky lg:top-6">
+          <RegionMap powiat={powiat} kod={canonicalKod} />
+        </div>
+      </div>
+
+      <Sasiedzi powiat={powiat} title="Kody sąsiednich powiatów" />
+
+      <p className="text-sm text-zinc-600">
+        {isWarszawa ? (
+          <>
+            Źródła przypisania kodów do dzielnic opisuje strona{" "}
+            <Link href="/o-projekcie" className="link-accent">
+              O projekcie
+            </Link>
+            .
+          </>
+        ) : (
+          <>
+            Źródło kodu:{" "}
+            <a href="https://pl.wikisource.org/wiki/Polskie_tablice_rejestracyjne" className="link-accent">
+              Wikiźródła, „Polskie tablice rejestracyjne”
+            </a>
+            .
+          </>
+        )}{" "}
+        Stan danych: {DATA_UPDATED.label}.
+      </p>
     </>
   );
 }

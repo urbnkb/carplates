@@ -23,7 +23,8 @@ import {
 import { getDzielniceForKod, WARSZAWA_GEO_ID } from "@/lib/dzielnice";
 import { dzielnice } from "@/data/dzielnice";
 import { serializeJsonLd } from "@/lib/jsonLd";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL, WEBSITE_ID } from "@/lib/site";
+import { getAllKody } from "@/lib/kody";
 
 // WebSite to sygnał nazwy serwisu dla Google; WebApplication opisuje samo narzędzie,
 // a FAQPage pytania z sekcji pod wyszukiwarką.
@@ -32,6 +33,7 @@ const JSON_LD = serializeJsonLd({
   "@graph": [
     {
       "@type": "WebSite",
+      "@id": WEBSITE_ID,
       name: SITE_NAME,
       url: SITE_URL,
       inLanguage: "pl-PL",
@@ -51,6 +53,9 @@ const JSON_LD = serializeJsonLd({
     faqJsonLd,
   ],
 });
+
+// Puste pole nie zostawia lewej kolumny pustej: przykłady od razu pokazują, jak działa narzędzie.
+const PRZYKLADY = getAllKody().filter(({ kod }) => ["GDA", "KR", "PO", "WE"].includes(kod));
 
 export default function Home() {
   const [mode, setMode] = useState<Mode>("plate");
@@ -119,14 +124,14 @@ export default function Home() {
     : [];
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-surface">
+    <div className="min-h-screen overflow-x-clip bg-surface">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON_LD }} />
-      <main className="mx-auto flex max-w-2xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
-        <div className="flex w-full justify-end">
+      <main className="mx-auto flex max-w-5xl flex-col items-center gap-10 px-6 py-14 sm:py-20">
+        <div className="flex w-full max-w-2xl justify-end">
           <ModeToggle mode={mode} onChange={handleModeChange} />
         </div>
 
-        <div className="relative w-full">
+        <div className="relative w-full max-w-2xl">
           <HeroIcons />
           <ViewTransition key={mode} name="mode-header" share="auto" enter="auto" default="none">
             <header data-hero-header className="text-center">
@@ -149,7 +154,7 @@ export default function Home() {
                 <div className="flex w-full flex-col items-center gap-8">
                   <PlateVisual value={plateValue} onChange={setPlateValue} />
                   <PlateSuggestions
-                    suggestions={plateSuggestions}
+                    suggestions={plateValue ? plateSuggestions : PRZYKLADY}
                     activeCode={plateResult?.kod}
                     onSelect={setPlateValue}
                   />
@@ -184,7 +189,7 @@ export default function Home() {
           </ViewTransition>
 
           <ViewTransition key={showDzielniceMap ? "warszawa" : "poland"} name="map" share="auto" enter="auto" default="none">
-            <div className="w-full">
+            <div className="w-full lg:sticky lg:top-6">
               {showDzielniceMap ? (
                 <GeoMap map="warszawa" highlightedIds={highlightedDzielniceIds} />
               ) : (

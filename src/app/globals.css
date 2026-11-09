@@ -35,6 +35,50 @@ body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* W warstwie base, żeby `outline-none` z utilities nadal mogło to nadpisać. */
+@layer base {
+  ::selection {
+    background: var(--color-accent);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  a {
+    text-underline-offset: 3px;
+  }
+}
+
+@utility page-title {
+  @apply text-3xl leading-[1.1] font-extrabold tracking-tight text-balance text-zinc-900 sm:text-4xl lg:text-[2.75rem];
+  /* „zachodniopomorskie” nie mieści się w całości na 320 px. */
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+@utility section-title {
+  @apply text-xl leading-snug font-bold text-balance text-zinc-900;
+}
+
+@utility lead-text {
+  @apply text-lg leading-relaxed text-pretty text-zinc-700;
+}
+
+@utility body-text {
+  @apply leading-relaxed text-pretty text-zinc-700;
+}
+
+@utility page-columns {
+  @apply grid w-full items-start gap-10 lg:grid-cols-2 lg:gap-14;
+}
+
+@utility link-accent {
+  @apply font-medium text-accent hover:underline;
+}
+
 /*
  * Cienie neomorficzne w wariancie hairline. Wypukłe i wklęsłe trzymają parę
  * kierunkową (szary cień + biały refleks), bo to ona robi neomorfizm, ale
@@ -108,6 +152,27 @@ body {
 
 .map-shape[data-highlighted]:active {
   fill: #1e3a8a;
+}
+
+.map-shape[data-sasiad] {
+  fill: #c9d8f7;
+}
+
+.map-shape[data-sasiad]:hover {
+  fill: #a9c0f2;
+}
+
+.map-label {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  fill: var(--color-ink);
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+}
+
+.map-label[data-na-akcencie] {
+  fill: #ffffff;
 }
 
 /*

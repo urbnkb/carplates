@@ -19,8 +19,8 @@ export default function Facts({ powiat, dzielnica }: FactsProps) {
             key={i}
             className={
               factsVerified
-                ? "flex gap-2 text-sm text-zinc-700"
-                : "flex gap-2 text-sm italic text-zinc-600"
+                ? "flex gap-2 text-[15px] leading-relaxed text-zinc-700"
+                : "flex gap-2 text-[15px] leading-relaxed italic text-zinc-600"
             }
           >
             <span aria-hidden="true">•</span>
@@ -39,12 +39,12 @@ export default function Facts({ powiat, dzielnica }: FactsProps) {
   );
 }
 
-/** Ciekawostki we własnej karcie z nagłówkiem — tak stoją na podstronach. */
-export function FactsCard({ title, ...facts }: FactsProps & { title: string }) {
+/** Ciekawostki z nagłówkiem — tak stoją na podstronach, bez karty wokół. */
+export function FactsSection({ title, ...facts }: FactsProps & { title: string }) {
   return (
-    <div className="flex w-full max-w-xl flex-col gap-4 self-center neu-sunken rounded-2xl bg-well p-6">
-      <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">{title}</h2>
+    <section className="flex w-full flex-col">
+      <h2 className="section-title">{title}</h2>
       <Facts {...facts} />
-    </div>
+    </section>
   );
 }

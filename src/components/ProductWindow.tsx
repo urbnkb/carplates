@@ -10,11 +10,14 @@ interface ProductWindowProps {
  *
  * Zaokrąglenie zewnętrzne to 24 px wnętrza + 1 px krawędzi, żeby oba promienie
  * były koncentryczne.
+ *
+ * Od `lg` dwie kolumny: wynik po lewej nie spycha już mapy pod ekran, więc
+ * podświetlony powiat widać od razu po wpisaniu kodu.
  */
 export default function ProductWindow({ children }: ProductWindowProps) {
   return (
     <div className="neu-raised w-full rounded-[25px] bg-edge p-px">
-      <div className="flex flex-col items-center gap-8 rounded-3xl bg-surface p-6 sm:p-10">
+      <div className="grid items-start gap-8 rounded-3xl bg-surface p-6 sm:p-10 lg:grid-cols-2">
         {children}
       </div>
     </div>

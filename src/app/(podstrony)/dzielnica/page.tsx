@@ -13,11 +13,9 @@ export default function DzielnicaIndexPage() {
   return (
     <>
       <Breadcrumbs trail={[{ name: "Dzielnice Warszawy", path: "/dzielnica" }]} />
-      <header className="text-center">
-        <h1 className="text-3xl leading-[1.05] font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
-          Dzielnice Warszawy
-        </h1>
-        <p className="mx-auto mt-4 max-w-md text-base text-zinc-600">
+      <header className="flex max-w-2xl flex-col gap-4">
+        <h1 className="page-title">Dzielnice Warszawy i ich kody tablic</h1>
+        <p className="lead-text">
           Warszawa to jedyny powiat w Polsce, w którym kod tablicy wskazuje dzielnicę. Kody WW i WX
           są współdzielone przez kilka dzielnic naraz.
         </p>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DATA_UPDATED } from "@/lib/site";
 
 const HUBY = [
   { href: "/wojewodztwo", label: "Województwa" },
@@ -22,23 +23,22 @@ const HUBY = [
  */
 export default function SiteFooter() {
   return (
-    <footer className="mx-auto w-full max-w-2xl px-6 pb-10">
-      <nav
-        aria-label="Przeglądaj serwis"
-        className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-zinc-600"
-      >
-        <span>Przeglądaj:</span>
+    <footer className="mx-auto w-full max-w-5xl px-6 pb-10">
+      <div className="flex flex-col gap-2 border-t border-edge pt-6 text-sm text-zinc-600">
         {/*
           Bez separatorów między pozycjami — na wąskim ekranie lista zawija się
           do dwóch wierszy i kropka zostawała osierocona raz na końcu, raz na
           początku wiersza. Odstęp wystarczy do rozdzielenia pozycji.
         */}
-        {HUBY.map(({ href, label }) => (
-          <Link key={href} href={href} className="text-accent hover:underline">
-            {label}
-          </Link>
-        ))}
-      </nav>
+        <nav aria-label="Przeglądaj serwis" className="flex flex-wrap gap-x-5 gap-y-1">
+          {HUBY.map(({ href, label }) => (
+            <Link key={href} href={href} className="text-accent hover:underline">
+              {label}
+            </Link>
+          ))}
+        </nav>
+        <p>Dane z Wikiźródeł, Wikipedii i OpenStreetMap. Stan na {DATA_UPDATED.label}.</p>
+      </div>
     </footer>
   );
 }

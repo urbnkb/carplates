@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "maps": "node scripts/project-maps.mjs"
+    "maps": "node scripts/project-maps.mjs",
+    "check:seo": "node scripts/check-seo.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

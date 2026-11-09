@@ -1,5 +1,5 @@
 import { powiaty } from "@/data/powiaty";
-import { bareName, slugify } from "@/lib/format";
+import { bareName, isMiasto, slugify } from "@/lib/format";
 import type { Powiat } from "@/types/powiat";
 
 /**
@@ -17,6 +17,20 @@ for (const powiat of powiaty) {
 /** Czy w innym województwie jest powiat o tej samej nazwie (np. dwa "powiat brzeski"). */
 export function hasNamesake(powiat: Powiat): boolean {
   return (baseSlugCounts.get(slugify(bareName(powiat.nazwa))) ?? 0) > 1;
+}
+
+/**
+ * Hasło powiatu na polskiej Wikipedii. Reguła sprawdzona przez API Wikipedii
+ * na wszystkich 380 powiatach: każde hasło istnieje i nie jest ujednoznacznieniem.
+ */
+export function wikipediaUrl(powiat: Powiat): string {
+  const nazwa = bareName(powiat.nazwa);
+  const haslo = isMiasto(powiat)
+    ? nazwa
+    : hasNamesake(powiat)
+      ? `Powiat ${nazwa} (województwo ${powiat.wojewodztwo})`
+      : `Powiat ${nazwa}`;
+  return `https://pl.wikipedia.org/wiki/${encodeURI(haslo.replace(/ /g, "_"))}`;
 }
 
 function computeSlug(powiat: Powiat): string {

@@ -1,6 +1,9 @@
-import GeoMap from "@/components/GeoMap";
+import Link from "next/link";
+import DzielniceMap from "@/components/DzielniceMap";
+import PowiatyMap from "@/components/PowiatyMap";
 import { getDzielniceForKod, WARSZAWA_GEO_ID } from "@/lib/dzielnice";
-import { andList, capitalize } from "@/lib/format";
+import { andList, powiatNazwa } from "@/lib/format";
+import { dopelniacz, wojewodztwoSlug } from "@/lib/wojewodztwa";
 import type { Dzielnica } from "@/types/dzielnica";
 import type { Powiat } from "@/types/powiat";
 
@@ -18,25 +21,37 @@ interface RegionMapProps {
 
 export default function RegionMap({ powiat, kod, dzielnice }: RegionMapProps) {
   // Warunkiem mapy dzielnic jest niepusta lista, a nie samo geoId: nieznany kod
-  // zdegraduje się do mapy Polski zamiast wyrenderować całkiem szarą Warszawę.
+  // zdegraduje się do mapy województwa zamiast wyrenderować całkiem szarą Warszawę.
   const shown =
     dzielnice ?? (kod && powiat.geoId === WARSZAWA_GEO_ID ? getDzielniceForKod(kod) : []);
 
-  const heading =
-    shown.length === 1
-      ? `Dzielnica ${shown[0].nazwa} na mapie Warszawy`
-      : shown.length > 1
-        ? `${andList.format(shown.map((d) => d.nazwa))} na mapie Warszawy`
-        : `${capitalize(powiat.nazwa)} na mapie Polski`;
+  if (shown.length > 0) {
+    const heading =
+      shown.length === 1
+        ? `Dzielnica ${shown[0].nazwa} na mapie Warszawy`
+        : `${andList.format(shown.map((d) => d.nazwa))} na mapie Warszawy`;
+    return (
+      <section className="flex w-full flex-col gap-3">
+        <h2 className="section-title">{heading}</h2>
+        <DzielniceMap wybrane={shown.map((d) => d.geoId)} ariaLabel={heading} />
+      </section>
+    );
+  }
 
+  const nazwaWojewodztwa = dopelniacz(powiat.wojewodztwo);
+  const heading = `${powiatNazwa(powiat)} na mapie województwa ${nazwaWojewodztwa}`;
   return (
-    <section className="flex w-full flex-col items-center gap-3">
-      <h2 className="text-sm font-semibold tracking-wide text-zinc-600 uppercase">{heading}</h2>
-      {shown.length > 0 ? (
-        <GeoMap map="warszawa" highlightedIds={shown.map((d) => d.geoId)} ariaLabel={heading} />
-      ) : (
-        <GeoMap map="polska" highlightedIds={[powiat.geoId]} ariaLabel={heading} />
-      )}
+    <section className="flex w-full flex-col gap-3">
+      <h2 className="section-title">{heading}</h2>
+      <PowiatyMap
+        wojewodztwo={powiat.wojewodztwo}
+        wybrany={powiat.geoId}
+        wybranyKod={kod}
+        ariaLabel={heading}
+      />
+      <Link href={`/wojewodztwo/${wojewodztwoSlug(powiat.wojewodztwo)}`} className="link-accent text-sm">
+        Wszystkie kody województwa {nazwaWojewodztwa} →
+      </Link>
     </section>
   );
 }
