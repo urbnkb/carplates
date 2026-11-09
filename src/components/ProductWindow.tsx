@@ -17,7 +17,8 @@ interface ProductWindowProps {
 export default function ProductWindow({ children }: ProductWindowProps) {
   return (
     <div className="neu-raised w-full rounded-[25px] bg-edge p-px">
-      <div className="grid items-start gap-8 rounded-3xl bg-surface p-6 sm:p-10 lg:grid-cols-2">
+      {/* grid-cols-1, nie domyślna kolumna auto: ta rozciąga się do naturalnej szerokości pola i wypycha je poza kartę na telefonie. */}
+      <div className="grid grid-cols-1 items-start gap-8 rounded-3xl bg-surface p-6 sm:p-10 lg:grid-cols-2">
         {children}
       </div>
     </div>

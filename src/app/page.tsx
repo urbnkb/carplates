@@ -21,6 +21,7 @@ import {
   type LocationTarget,
 } from "@/lib/matchLocation";
 import { getDzielniceForKod, WARSZAWA_GEO_ID } from "@/lib/dzielnice";
+import { isMiasto } from "@/lib/format";
 import { dzielnice } from "@/data/dzielnice";
 import { serializeJsonLd } from "@/lib/jsonLd";
 import { SITE_NAME, SITE_URL, WEBSITE_ID } from "@/lib/site";
@@ -78,8 +79,14 @@ export default function Home() {
   );
   const resolvedTarget: LocationTarget | null = useMemo(() => {
     if (locationMatch.kind === "unique") return locationMatch.target;
-    if (locationMatch.kind === "ambiguous" && pinnedKey != null) {
-      return locationMatch.candidates.find((c) => locationTargetKey(c) === pinnedKey) ?? null;
+    if (locationMatch.kind === "ambiguous") {
+      return (
+        locationMatch.candidates.find((c) => locationTargetKey(c) === pinnedKey) ??
+        // „Olsztyn”: stolica województwa nie czeka na kliknięcie, a miasto
+        // w powiecie częstochowskim zostaje do wyboru obok.
+        locationMatch.candidates.find((c) => !c.miasto && !c.dzielnica && isMiasto(c.powiat)) ??
+        null
+      );
     }
     return null;
   }, [locationMatch, pinnedKey]);
@@ -141,7 +148,7 @@ export default function Home() {
               <p className="mx-auto mt-4 max-w-sm text-base text-zinc-600 sm:max-w-md sm:text-lg">
                 {mode === "plate"
                   ? "Wpisz początkowe znaki polskiej tablicy rejestracyjnej i sprawdź, z jakiego powiatu pochodzi pojazd."
-                  : "Wpisz nazwę gminy, miasta, powiatu lub dzielnicy Warszawy i sprawdź, jakie kody tablic tam obowiązują."}
+                  : "Wpisz nazwę miasta, powiatu lub dzielnicy Warszawy i sprawdź, jakie kody tablic tam obowiązują."}
               </p>
             </header>
           </ViewTransition>

@@ -39,6 +39,14 @@ export default function OProjekciePage() {
             więc potwierdzono je w infoboksach stron tych powiatów na Wikipedii.
           </li>
           <li>
+            Lista 1026 miast i powiatów, w których leżą, pochodzi z artykułu{" "}
+            <a href="https://pl.wikipedia.org/wiki/Dane_statystyczne_o_miastach_w_Polsce" className={LINK}>
+              „Dane statystyczne o miastach w Polsce”
+            </a>{" "}
+            na Wikipedii, według stanu na 1 stycznia 2026 r. Przypisanie każdego miasta do powiatu
+            porównano z infoboksem jego strony na Wikipedii.
+          </li>
+          <li>
             Granice powiatów pochodzą z repozytorium{" "}
             <a href="https://github.com/ppatrzyk/polska-geojson" className={LINK}>
               ppatrzyk/polska-geojson
